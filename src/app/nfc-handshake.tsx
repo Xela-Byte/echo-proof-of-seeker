@@ -2,62 +2,46 @@
  * NFC Handshake Screen (Placeholder)
  */
 
-import { LinearGradient } from 'expo-linear-gradient';
-import { router } from 'expo-router';
-import React from 'react';
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'
+import { LinearGradient } from 'expo-linear-gradient'
+import { router } from 'expo-router'
+import React from 'react'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 export default function NFCHandshakeScreen() {
   return (
-    <LinearGradient
-      colors={['#0a0015', '#1a0030', '#0a0015']}
-      style={styles.container}
-    >
-      <View style={styles.header}>
-        <TouchableOpacity onPress={() => router.back()}>
-          <Text style={styles.backButton}>← Back</Text>
-        </TouchableOpacity>
-        <Text style={styles.title}>Handshake</Text>
-        <View style={{ width: 60 }} />
-      </View>
-
-      <View style={styles.content}>
-        <Text style={styles.icon}>🤝</Text>
-        <Text style={styles.mainTitle}>NFC Handshake</Text>
-        <Text style={styles.description}>
-          NFC features require custom dev client build
-        </Text>
-        
-        <View style={styles.infoBox}>
-          <Text style={styles.infoText}>
-            Build with: npx expo run:android
-          </Text>
+    <LinearGradient colors={['#0a0015', '#1a0030', '#0a0015']} style={styles.container}>
+      <SafeAreaView style={{ flex: 1 }}>
+        <View style={styles.header}>
+          <TouchableOpacity onPress={() => router.back()} hitSlop={8}>
+            <Ionicons name="chevron-back" size={24} color="#14F195" />
+          </TouchableOpacity>
+          <Text style={styles.title}>Handshake</Text>
+          <View style={{ width: 24 }} />
         </View>
-      </View>
+
+        <View style={styles.content}>
+          <MaterialCommunityIcons name="handshake-outline" size={80} color="#FFFFFF" style={styles.icon} />
+          <Text style={styles.mainTitle}>NFC Handshake</Text>
+          <Text style={styles.description}>NFC features require custom dev client build</Text>
+
+          <View style={styles.infoBox}>
+            <Text style={styles.infoText}>Build with: npx expo run:android</Text>
+          </View>
+        </View>
+      </SafeAreaView>
     </LinearGradient>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
+  container: { flex: 1 },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: 24,
-    paddingTop: 60,
-  },
-  backButton: {
-    fontSize: 16,
-    color: '#14F195',
-    fontWeight: '600',
   },
   title: {
     fontSize: 20,
@@ -72,8 +56,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   icon: {
-    fontSize: 80,
     marginBottom: 20,
+    opacity: 0.9,
   },
   mainTitle: {
     fontSize: 28,
@@ -100,4 +84,4 @@ const styles = StyleSheet.create({
     color: '#FFC107',
     textAlign: 'center',
   },
-});
+})

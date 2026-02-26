@@ -2,10 +2,12 @@
  * Dashboard Screen - Expo Router version
  */
 
+import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'
 import { LinearGradient } from 'expo-linear-gradient'
 import { router } from 'expo-router'
 import React, { useEffect, useState } from 'react'
 import { RefreshControl, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
 import solanaService from '../../services/solanaService'
 
 export default function DashboardScreen() {
@@ -65,122 +67,127 @@ export default function DashboardScreen() {
 
   return (
     <LinearGradient colors={['#0a0015', '#1a0030', '#0a0015']} style={styles.container}>
-      <ScrollView
-        style={styles.scrollView}
-        refreshControl={
-          <RefreshControl refreshing={refreshing} onRefresh={handleRefresh} tintColor="#14F195" colors={['#14F195']} />
-        }
-      >
-        <View style={styles.header}>
-          <View>
-            <Text style={styles.title}>ECHO</Text>
-            <Text style={styles.subtitle}>Seeker Signal</Text>
-          </View>
-          <TouchableOpacity onPress={() => router.push('/settings')}>
-            <Text style={styles.settingsIcon}>⚙</Text>
-          </TouchableOpacity>
-        </View>
-
-        {publicKey && (
-          <View style={styles.walletCard}>
-            <Text style={styles.cardLabel}>Connected Wallet</Text>
-            <Text style={styles.walletAddress} numberOfLines={1}>
-              {publicKey}
-            </Text>
-          </View>
-        )}
-
-        {skrState && (
-          <View style={styles.skrCard}>
-            <View style={styles.skrHeader}>
-              <Text style={styles.cardTitle}>SKR Token Status</Text>
-              <Text style={styles.statusEmoji}>{getStatusEmoji(skrState.status)}</Text>
+      <SafeAreaView style={{ flex: 1 }}>
+        <ScrollView
+          style={styles.scrollView}
+          refreshControl={
+            <RefreshControl
+              refreshing={refreshing}
+              onRefresh={handleRefresh}
+              tintColor="#14F195"
+              colors={['#14F195']}
+            />
+          }
+        >
+          <View style={styles.header}>
+            <View>
+              <Text style={styles.title}>ECHO</Text>
+              <Text style={styles.subtitle}>Seeker Signal</Text>
             </View>
+            <TouchableOpacity onPress={() => router.push('/settings')} hitSlop={8}>
+              <Ionicons name="settings-outline" size={28} color="#FFFFFF" />
+            </TouchableOpacity>
+          </View>
 
-            <View style={styles.skrStats}>
-              <View style={styles.stat}>
-                <Text style={styles.statLabel}>Balance</Text>
-                <Text style={styles.statValue}>{skrState.balance.toFixed(2)}</Text>
+          {publicKey && (
+            <View style={styles.walletCard}>
+              <Text style={styles.cardLabel}>Connected Wallet</Text>
+              <Text style={styles.walletAddress} numberOfLines={1}>
+                {publicKey}
+              </Text>
+            </View>
+          )}
+
+          {skrState && (
+            <View style={styles.skrCard}>
+              <View style={styles.skrHeader}>
+                <Text style={styles.cardTitle}>SKR Token Status</Text>
+                <Text style={styles.statusEmoji}>{getStatusEmoji(skrState.status)}</Text>
               </View>
 
-              <View style={styles.stat}>
-                <Text style={styles.statLabel}>24h Change</Text>
-                <Text style={[styles.statValue, { color: skrState.changePercentage >= 0 ? '#14F195' : '#FF4757' }]}>
-                  {skrState.changePercentage >= 0 ? '+' : ''}
-                  {skrState.changePercentage.toFixed(2)}%
-                </Text>
+              <View style={styles.skrStats}>
+                <View style={styles.stat}>
+                  <Text style={styles.statLabel}>Balance</Text>
+                  <Text style={styles.statValue}>{skrState.balance.toFixed(2)}</Text>
+                </View>
+                <View style={styles.stat}>
+                  <Text style={styles.statLabel}>24h Change</Text>
+                  <Text style={[styles.statValue, { color: skrState.changePercentage >= 0 ? '#14F195' : '#FF4757' }]}>
+                    {skrState.changePercentage >= 0 ? '+' : ''}
+                    {skrState.changePercentage.toFixed(2)}%
+                  </Text>
+                </View>
+              </View>
+
+              <View style={styles.statusBadge}>
+                <LinearGradient
+                  colors={[getStatusColor(skrState.status), getStatusColor(skrState.status) + '88']}
+                  start={{ x: 0, y: 0 }}
+                  end={{ x: 1, y: 0 }}
+                  style={styles.statusBadgeGradient}
+                >
+                  <Text style={styles.statusText}>{skrState.status.toUpperCase().replace('_', ' ')}</Text>
+                </LinearGradient>
               </View>
             </View>
+          )}
 
-            <View style={styles.statusBadge}>
+          <View style={styles.statsGrid}>
+            <View style={styles.statsCard}>
+              <Text style={styles.statsNumber}>0</Text>
+              <Text style={styles.statsLabel}>Handshakes</Text>
+            </View>
+            <View style={styles.statsCard}>
+              <Text style={styles.statsNumber}>0</Text>
+              <Text style={styles.statsLabel}>Events</Text>
+            </View>
+          </View>
+
+          <View style={styles.actions}>
+            <TouchableOpacity
+              style={styles.primaryButton}
+              onPress={() => router.push('/nfc-handshake')}
+              activeOpacity={0.8}
+            >
               <LinearGradient
-                colors={[getStatusColor(skrState.status), getStatusColor(skrState.status) + '88']}
+                colors={['#9945FF', '#14F195']}
                 start={{ x: 0, y: 0 }}
                 end={{ x: 1, y: 0 }}
-                style={styles.statusBadgeGradient}
+                style={styles.buttonGradient}
               >
-                <Text style={styles.statusText}>{skrState.status.toUpperCase().replace('_', ' ')}</Text>
+                <MaterialCommunityIcons name="handshake-outline" size={24} color="#FFFFFF" />
+                <Text style={styles.buttonText}>New Handshake</Text>
               </LinearGradient>
-            </View>
-          </View>
-        )}
+            </TouchableOpacity>
 
-        <View style={styles.statsGrid}>
-          <View style={styles.statsCard}>
-            <Text style={styles.statsNumber}>0</Text>
-            <Text style={styles.statsLabel}>Handshakes</Text>
-          </View>
-
-          <View style={styles.statsCard}>
-            <Text style={styles.statsNumber}>0</Text>
-            <Text style={styles.statsLabel}>Events</Text>
-          </View>
-        </View>
-
-        <View style={styles.actions}>
-          <TouchableOpacity
-            style={styles.primaryButton}
-            onPress={() => router.push('/nfc-handshake')}
-            activeOpacity={0.8}
-          >
-            <LinearGradient
-              colors={['#9945FF', '#14F195']}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 0 }}
-              style={styles.buttonGradient}
+            <TouchableOpacity
+              style={styles.secondaryButton}
+              onPress={() => router.push('/x-banner-update')}
+              activeOpacity={0.8}
             >
-              <Text style={styles.buttonIcon}>🤝</Text>
-              <Text style={styles.buttonText}>New Handshake</Text>
-            </LinearGradient>
-          </TouchableOpacity>
+              <Ionicons name="image-outline" size={20} color="#14F195" />
+              <Text style={styles.secondaryButtonText}>Update Banner</Text>
+            </TouchableOpacity>
+          </View>
 
-          <TouchableOpacity style={styles.secondaryButton} onPress={() => {}} activeOpacity={0.8}>
-            <Text style={styles.secondaryButtonIcon}>📊</Text>
-            <Text style={styles.secondaryButtonText}>Update Banner</Text>
-          </TouchableOpacity>
-        </View>
-
-        <View style={styles.infoBox}>
-          <Text style={styles.infoText}>ℹ️ Running in demo mode. For full features, build with custom dev client.</Text>
-        </View>
-      </ScrollView>
+          <View style={styles.infoBox}>
+            <Ionicons name="information-circle-outline" size={16} color="#FFC107" />
+            <Text style={styles.infoText}>Running in demo mode. For full features, build with custom dev client.</Text>
+          </View>
+        </ScrollView>
+      </SafeAreaView>
     </LinearGradient>
   )
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  scrollView: {
-    flex: 1,
-  },
+  container: { flex: 1 },
+  scrollView: { flex: 1 },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: 24,
-    paddingTop: 60,
   },
   title: {
     fontSize: 32,
@@ -193,10 +200,6 @@ const styles = StyleSheet.create({
     color: '#14F195',
     letterSpacing: 2,
     marginTop: 4,
-  },
-  settingsIcon: {
-    fontSize: 28,
-    color: '#FFFFFF',
   },
   walletCard: {
     backgroundColor: 'rgba(153, 69, 255, 0.1)',
@@ -241,17 +244,13 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     letterSpacing: 1,
   },
-  statusEmoji: {
-    fontSize: 24,
-  },
+  statusEmoji: { fontSize: 24 },
   skrStats: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     marginBottom: 20,
   },
-  stat: {
-    alignItems: 'center',
-  },
+  stat: { alignItems: 'center' },
   statLabel: {
     fontSize: 12,
     color: '#FFFFFF',
@@ -322,9 +321,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     gap: 12,
   },
-  buttonIcon: {
-    fontSize: 24,
-  },
   buttonText: {
     fontSize: 16,
     fontWeight: '700',
@@ -343,9 +339,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: 'rgba(20, 241, 149, 0.3)',
   },
-  secondaryButtonIcon: {
-    fontSize: 20,
-  },
   secondaryButtonText: {
     fontSize: 16,
     fontWeight: '600',
@@ -354,6 +347,9 @@ const styles = StyleSheet.create({
     letterSpacing: 1,
   },
   infoBox: {
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    gap: 8,
     backgroundColor: 'rgba(255, 193, 7, 0.1)',
     borderRadius: 12,
     padding: 16,
@@ -363,9 +359,9 @@ const styles = StyleSheet.create({
     borderColor: 'rgba(255, 193, 7, 0.3)',
   },
   infoText: {
+    flex: 1,
     fontSize: 13,
     color: '#FFC107',
     lineHeight: 20,
-    textAlign: 'center',
   },
 })

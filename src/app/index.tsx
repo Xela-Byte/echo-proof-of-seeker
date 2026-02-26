@@ -6,6 +6,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { router } from 'expo-router';
 import React, { useEffect, useRef } from 'react';
 import { Animated, StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function SplashScreen() {
   const fadeAnim = useRef(new Animated.Value(0)).current;
@@ -57,6 +58,7 @@ export default function SplashScreen() {
       colors={['#0a0015', '#1a0030', '#0a0015']}
       style={styles.container}
     >
+      <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Animated.View
         style={[
           styles.content,
@@ -86,6 +88,7 @@ export default function SplashScreen() {
           <Text style={styles.powered}>Powered by Solana Mobile Stack</Text>
         </View>
       </Animated.View>
+      </SafeAreaView>
     </LinearGradient>
   );
 }

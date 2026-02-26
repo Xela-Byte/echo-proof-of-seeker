@@ -1,15 +1,28 @@
 {
   "expo": {
-    "scheme": "acme",
+    "scheme": "echo",
     "userInterfaceStyle": "automatic",
     "orientation": "default",
     "web": {
       "output": "static"
     },
     "name": "mobile_app",
-    "slug": "mobile_app",
+    "slug": "mobileapp",
     "android": {
       "package": "com.anonymous.kitexpouniwind"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "5a2721d8-0d1d-401b-8326-ebaa9c9f9416"
+      }
+    },
+    "owner": "importa-holdings-ltd",
+    "ios": {
+      "bundleIdentifier": "com.anonymous.kitexpouniwind",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
+    },
+    "plugins": ["expo-web-browser"]
   }
 }

@@ -2,10 +2,12 @@
  * Device Verification Screen
  */
 
+import { Ionicons } from '@expo/vector-icons'
 import { LinearGradient } from 'expo-linear-gradient'
 import { router } from 'expo-router'
 import React, { useEffect, useState } from 'react'
 import { ActivityIndicator, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
 import solanaService from '../../services/solanaService'
 
 export default function DeviceVerificationScreen() {
@@ -52,55 +54,64 @@ export default function DeviceVerificationScreen() {
 
   return (
     <LinearGradient colors={['#0a0015', '#1a0030', '#0a0015']} style={styles.container}>
-      <View style={styles.content}>
-        <View style={styles.statusContainer}>
-          {verifying && (
-            <>
-              <ActivityIndicator size="large" color="#14F195" />
-              <Text style={styles.statusTitle}>Verifying Device</Text>
-              <Text style={styles.statusText}>Checking for Seeker Genesis Token...</Text>
-            </>
-          )}
+      <SafeAreaView style={{ flex: 1 }}>
+        <TouchableOpacity style={styles.backRow} onPress={() => router.back()} hitSlop={8}>
+          <Ionicons name="chevron-back" size={24} color="#14F195" />
+        </TouchableOpacity>
 
-          {!verifying && verified && (
-            <>
-              <Text style={styles.successIcon}>✓</Text>
-              <Text style={styles.statusTitle}>Device Verified!</Text>
-              <Text style={styles.statusText}>Seeker Genesis Token confirmed</Text>
-              {publicKey && <Text style={styles.walletAddress}>{publicKey}</Text>}
-            </>
-          )}
+        <View style={styles.content}>
+          <View style={styles.statusContainer}>
+            {verifying && (
+              <>
+                <ActivityIndicator size="large" color="#14F195" />
+                <Text style={styles.statusTitle}>Verifying Device</Text>
+                <Text style={styles.statusText}>Checking for Seeker Genesis Token...</Text>
+              </>
+            )}
+
+            {!verifying && verified && (
+              <>
+                <Ionicons name="checkmark-circle" size={80} color="#14F195" style={styles.statusIcon} />
+                <Text style={styles.statusTitle}>Device Verified!</Text>
+                <Text style={styles.statusText}>Seeker Genesis Token confirmed</Text>
+                {publicKey && <Text style={styles.walletAddress}>{publicKey}</Text>}
+              </>
+            )}
+
+            {!verifying && error && (
+              <>
+                <Ionicons name="close-circle" size={80} color="#FF4757" style={styles.statusIcon} />
+                <Text style={styles.statusTitle}>Verification Failed</Text>
+                <Text style={styles.errorText}>{error}</Text>
+                {publicKey && <Text style={styles.walletAddress}>{publicKey}</Text>}
+              </>
+            )}
+          </View>
 
           {!verifying && error && (
-            <>
-              <Text style={styles.errorIcon}>✕</Text>
-              <Text style={styles.statusTitle}>Verification Failed</Text>
-              <Text style={styles.errorText}>{error}</Text>
-              {publicKey && <Text style={styles.walletAddress}>{publicKey}</Text>}
-            </>
+            <TouchableOpacity style={styles.button} onPress={verifyDevice}>
+              <LinearGradient
+                colors={['#9945FF', '#14F195']}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 0 }}
+                style={styles.buttonGradient}
+              >
+                <Text style={styles.buttonText}>Retry Verification</Text>
+              </LinearGradient>
+            </TouchableOpacity>
           )}
         </View>
-
-        {!verifying && error && (
-          <TouchableOpacity style={styles.button} onPress={verifyDevice}>
-            <LinearGradient
-              colors={['#9945FF', '#14F195']}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 0 }}
-              style={styles.buttonGradient}
-            >
-              <Text style={styles.buttonText}>Retry Verification</Text>
-            </LinearGradient>
-          </TouchableOpacity>
-        )}
-      </View>
+      </SafeAreaView>
     </LinearGradient>
   )
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+  container: { flex: 1 },
+  backRow: {
+    paddingHorizontal: 24,
+    paddingTop: 16,
+    paddingBottom: 4,
   },
   content: {
     flex: 1,
@@ -110,6 +121,9 @@ const styles = StyleSheet.create({
   statusContainer: {
     alignItems: 'center',
     marginBottom: 40,
+  },
+  statusIcon: {
+    marginBottom: 4,
   },
   statusTitle: {
     fontSize: 28,
@@ -125,20 +139,6 @@ const styles = StyleSheet.create({
     opacity: 0.7,
     textAlign: 'center',
     marginBottom: 20,
-  },
-  successIcon: {
-    fontSize: 80,
-    color: '#14F195',
-    textShadowColor: '#14F195',
-    textShadowOffset: { width: 0, height: 0 },
-    textShadowRadius: 20,
-  },
-  errorIcon: {
-    fontSize: 80,
-    color: '#FF4757',
-    textShadowColor: '#FF4757',
-    textShadowOffset: { width: 0, height: 0 },
-    textShadowRadius: 20,
   },
   errorText: {
     fontSize: 16,

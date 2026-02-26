@@ -25,6 +25,20 @@ This steps builds the dependencies for the development client.
 npm run android
 ```
 
+### Custom dev client (Android)
+
+Create an Android development build with EAS:
+
+```bash
+npm run dev:client:android
+```
+
+Then start the dev client session:
+
+```bash
+npm run dev
+```
+
 In the output, you'll find options to open the app in a:
 
 - [development build](https://docs.expo.dev/develop/development-builds/introduction/)

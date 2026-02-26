@@ -1,15 +1,16 @@
+import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'
 import { LinearGradient } from 'expo-linear-gradient'
 import { router } from 'expo-router'
 import React, { useState } from 'react'
 import { ActivityIndicator, Alert, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { SafeAreaView } from 'react-native-safe-area-context'
 import solanaService from '../../services/solanaService'
 
 export default function ConnectWalletScreen() {
-
   const [connecting, setConnecting] = useState(false)
+
   const handleConnect = async () => {
     setConnecting(true)
-
     try {
       await solanaService.connectWallet()
       router.push('/device-verification')
@@ -27,66 +28,70 @@ export default function ConnectWalletScreen() {
 
   return (
     <LinearGradient colors={['#0a0015', '#1a0030', '#0a0015']} style={styles.container}>
-      <View style={styles.content}>
-        <View style={styles.header}>
-          <Text style={styles.emoji}>◈</Text>
-          <Text style={styles.title}>Connect Your Wallet</Text>
-          <Text style={styles.description}>Echo requires a Solana wallet with Mobile Wallet Adapter support</Text>
-        </View>
-
-        <View style={styles.requirements}>
-          <Text style={styles.requirementsTitle}>Requirements:</Text>
-
-          <View style={styles.requirement}>
-            <Text style={styles.checkmark}>✓</Text>
-            <Text style={styles.requirementText}>Solana Seeker device</Text>
-          </View>
-
-          <View style={styles.requirement}>
-            <Text style={styles.checkmark}>✓</Text>
-            <Text style={styles.requirementText}>Compatible Solana wallet</Text>
-          </View>
-
-          <View style={styles.requirement}>
-            <Text style={styles.checkmark}>✓</Text>
-            <Text style={styles.requirementText}>Seeker Genesis Token (SGT)</Text>
-          </View>
-        </View>
-
-        <TouchableOpacity
-          style={[styles.button, connecting && styles.buttonDisabled]}
-          onPress={handleConnect}
-          disabled={connecting}
-          activeOpacity={0.8}
-        >
-          <LinearGradient
-            colors={['#9945FF', '#14F195']}
-            start={{ x: 0, y: 0 }}
-            end={{ x: 1, y: 0 }}
-            style={styles.buttonGradient}
-          >
-            {connecting ? (
-              <ActivityIndicator color="#FFFFFF" size="small" />
-            ) : (
-              <Text style={styles.buttonText}>Connect Wallet</Text>
-            )}
-          </LinearGradient>
+      <SafeAreaView style={{ flex: 1 }}>
+        <TouchableOpacity style={styles.backRow} onPress={() => router.back()} hitSlop={8}>
+          <Ionicons name="chevron-back" size={24} color="#14F195" />
         </TouchableOpacity>
 
-        <View style={styles.infoBox}>
-          <Text style={styles.infoText}>
-            ⚠️ Running in Expo Go uses demo mode. For full Mobile Wallet Adapter support, create a custom dev client
-            with: npx expo run:android
-          </Text>
+        <View style={styles.content}>
+          <View style={styles.header}>
+            <MaterialCommunityIcons name="wallet-outline" size={60} color="#14F195" style={styles.walletIcon} />
+            <Text style={styles.title}>Connect Your Wallet</Text>
+            <Text style={styles.description}>Echo requires a Solana wallet with Mobile Wallet Adapter support</Text>
+          </View>
+
+          <View style={styles.requirements}>
+            <Text style={styles.requirementsTitle}>Requirements:</Text>
+            {[
+              'Solana Seeker device',
+              'Compatible Solana wallet',
+              'Seeker Genesis Token (SGT)',
+            ].map((req) => (
+              <View key={req} style={styles.requirement}>
+                <Ionicons name="checkmark" size={18} color="#14F195" />
+                <Text style={styles.requirementText}>{req}</Text>
+              </View>
+            ))}
+          </View>
+
+          <TouchableOpacity
+            style={[styles.button, connecting && styles.buttonDisabled]}
+            onPress={handleConnect}
+            disabled={connecting}
+            activeOpacity={0.8}
+          >
+            <LinearGradient
+              colors={['#9945FF', '#14F195']}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 0 }}
+              style={styles.buttonGradient}
+            >
+              {connecting ? (
+                <ActivityIndicator color="#FFFFFF" size="small" />
+              ) : (
+                <Text style={styles.buttonText}>Connect Wallet</Text>
+              )}
+            </LinearGradient>
+          </TouchableOpacity>
+
+          <View style={styles.infoBox}>
+            <Text style={styles.infoText}>
+              Running in Expo Go uses demo mode. For full Mobile Wallet Adapter support, create a custom dev client
+              with: npx expo run:android
+            </Text>
+          </View>
         </View>
-      </View>
+      </SafeAreaView>
     </LinearGradient>
   )
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+  container: { flex: 1 },
+  backRow: {
+    paddingHorizontal: 24,
+    paddingTop: 16,
+    paddingBottom: 4,
   },
   content: {
     flex: 1,
@@ -97,13 +102,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 50,
   },
-  emoji: {
-    fontSize: 60,
+  walletIcon: {
     marginBottom: 20,
-    color: '#14F195',
-    textShadowColor: '#14F195',
-    textShadowOffset: { width: 0, height: 0 },
-    textShadowRadius: 15,
   },
   title: {
     fontSize: 32,
@@ -139,13 +139,8 @@ const styles = StyleSheet.create({
   requirement: {
     flexDirection: 'row',
     alignItems: 'center',
+    gap: 12,
     marginBottom: 12,
-  },
-  checkmark: {
-    fontSize: 18,
-    color: '#14F195',
-    marginRight: 12,
-    fontWeight: 'bold',
   },
   requirementText: {
     fontSize: 16,
@@ -157,9 +152,7 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     overflow: 'hidden',
   },
-  buttonDisabled: {
-    opacity: 0.6,
-  },
+  buttonDisabled: { opacity: 0.6 },
   buttonGradient: {
     paddingVertical: 18,
     alignItems: 'center',
