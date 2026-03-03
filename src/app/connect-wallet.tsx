@@ -5,15 +5,24 @@ import React, { useState } from 'react'
 import { ActivityIndicator, Alert, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import solanaService from '../../services/solanaService'
+import TokenGate from '../components/TokenGate'
+import { useTokenGate } from '../hooks/useTokenGate'
 
 export default function ConnectWalletScreen() {
   const [connecting, setConnecting] = useState(false)
+  const [walletConnected, setWalletConnected] = useState(false)
+  const [walletAddress, setWalletAddress] = useState<string | null>(null)
+  const { result, loading, error, checkHolder } = useTokenGate()
 
   const handleConnect = async () => {
     setConnecting(true)
     try {
-      await solanaService.connectWallet()
-      router.push('/device-verification')
+      const { publicKey } = await solanaService.connectWallet()
+      setWalletAddress(publicKey)
+      setWalletConnected(true)
+
+      // Automatically check for Seeker Genesis NFT
+      await checkHolder(publicKey)
     } catch (error) {
       console.error('Connection failed:', error)
       Alert.alert(
@@ -23,6 +32,14 @@ export default function ConnectWalletScreen() {
       )
     } finally {
       setConnecting(false)
+    }
+  }
+
+  const handleContinue = () => {
+    if (result?.isHolder) {
+      router.push('/device-verification')
+    } else {
+      Alert.alert('Access Denied', 'You need a Seeker Genesis NFT to access this app.', [{ text: 'OK' }])
     }
   }
 
@@ -36,50 +53,82 @@ export default function ConnectWalletScreen() {
         <View style={styles.content}>
           <View style={styles.header}>
             <MaterialCommunityIcons name="wallet-outline" size={60} color="#14F195" style={styles.walletIcon} />
-            <Text style={styles.title}>Connect Your Wallet</Text>
-            <Text style={styles.description}>Echo requires a Solana wallet with Mobile Wallet Adapter support</Text>
-          </View>
-
-          <View style={styles.requirements}>
-            <Text style={styles.requirementsTitle}>Requirements:</Text>
-            {[
-              'Solana Seeker device',
-              'Compatible Solana wallet',
-              'Seeker Genesis Token (SGT)',
-            ].map((req) => (
-              <View key={req} style={styles.requirement}>
-                <Ionicons name="checkmark" size={18} color="#14F195" />
-                <Text style={styles.requirementText}>{req}</Text>
-              </View>
-            ))}
-          </View>
-
-          <TouchableOpacity
-            style={[styles.button, connecting && styles.buttonDisabled]}
-            onPress={handleConnect}
-            disabled={connecting}
-            activeOpacity={0.8}
-          >
-            <LinearGradient
-              colors={['#9945FF', '#14F195']}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 0 }}
-              style={styles.buttonGradient}
-            >
-              {connecting ? (
-                <ActivityIndicator color="#FFFFFF" size="small" />
-              ) : (
-                <Text style={styles.buttonText}>Connect Wallet</Text>
-              )}
-            </LinearGradient>
-          </TouchableOpacity>
-
-          <View style={styles.infoBox}>
-            <Text style={styles.infoText}>
-              Running in Expo Go uses demo mode. For full Mobile Wallet Adapter support, create a custom dev client
-              with: npx expo run:android
+            <Text style={styles.title}>{walletConnected ? 'Token Gate Verification' : 'Connect Your Wallet'}</Text>
+            <Text style={styles.description}>
+              {walletConnected
+                ? 'Verifying Seeker Genesis NFT ownership...'
+                : 'Echo requires a Solana wallet with Seeker Genesis NFT'}
             </Text>
           </View>
+
+          {!walletConnected && (
+            <>
+              <View style={styles.requirements}>
+                <Text style={styles.requirementsTitle}>Requirements:</Text>
+                {['Solana Seeker device', 'Compatible Solana wallet', 'Seeker Genesis NFT 🔥'].map((req) => (
+                  <View key={req} style={styles.requirement}>
+                    <Ionicons name="checkmark" size={18} color="#14F195" />
+                    <Text style={styles.requirementText}>{req}</Text>
+                  </View>
+                ))}
+              </View>
+
+              <TouchableOpacity
+                style={[styles.button, connecting && styles.buttonDisabled]}
+                onPress={handleConnect}
+                disabled={connecting}
+                activeOpacity={0.8}
+              >
+                <LinearGradient
+                  colors={['#9945FF', '#14F195']}
+                  start={{ x: 0, y: 0 }}
+                  end={{ x: 1, y: 0 }}
+                  style={styles.buttonGradient}
+                >
+                  {connecting ? (
+                    <ActivityIndicator color="#FFFFFF" size="small" />
+                  ) : (
+                    <Text style={styles.buttonText}>Connect Wallet</Text>
+                  )}
+                </LinearGradient>
+              </TouchableOpacity>
+
+              <View style={styles.infoBox}>
+                <Text style={styles.infoText}>
+                  Running in Expo Go uses demo mode. For full Mobile Wallet Adapter support, create a custom dev client
+                  with: npx expo run:android
+                </Text>
+              </View>
+            </>
+          )}
+
+          {walletConnected && (
+            <>
+              <TokenGate result={result} loading={loading} error={error} />
+
+              {walletAddress && (
+                <View style={styles.walletInfo}>
+                  <Text style={styles.walletLabel}>Connected Wallet:</Text>
+                  <Text style={styles.walletAddress} numberOfLines={1} ellipsizeMode="middle">
+                    {walletAddress}
+                  </Text>
+                </View>
+              )}
+
+              {result?.isHolder && (
+                <TouchableOpacity style={styles.button} onPress={handleContinue} activeOpacity={0.8}>
+                  <LinearGradient
+                    colors={['#9945FF', '#14F195']}
+                    start={{ x: 0, y: 0 }}
+                    end={{ x: 1, y: 0 }}
+                    style={styles.buttonGradient}
+                  >
+                    <Text style={styles.buttonText}>Continue</Text>
+                  </LinearGradient>
+                </TouchableOpacity>
+              )}
+            </>
+          )}
         </View>
       </SafeAreaView>
     </LinearGradient>
@@ -176,5 +225,24 @@ const styles = StyleSheet.create({
     color: '#FFC107',
     lineHeight: 20,
     textAlign: 'center',
+  },
+  walletInfo: {
+    backgroundColor: 'rgba(153, 69, 255, 0.1)',
+    borderRadius: 12,
+    padding: 16,
+    marginBottom: 20,
+    borderWidth: 1,
+    borderColor: 'rgba(153, 69, 255, 0.3)',
+  },
+  walletLabel: {
+    fontSize: 12,
+    color: '#888',
+    marginBottom: 6,
+    fontWeight: '600',
+  },
+  walletAddress: {
+    fontSize: 14,
+    color: '#FFFFFF',
+    fontFamily: 'monospace',
   },
 })

@@ -5,6 +5,7 @@
 
 import { Connection, PublicKey } from '@solana/web3.js'
 import { Platform } from 'react-native'
+import { checkSeekerGenesisHolder, type SeekerGenesisResult } from './seekerGenesisService'
 
 // Constants
 const HELIUS_RPC_URL = process.env.EXPO_PUBLIC_HELIUS_RPC_URL || 'https://api.mainnet-beta.solana.com'
@@ -57,7 +58,7 @@ class SolanaService {
     if (!HAS_MWA_SUPPORT) {
       // Demo mode for Expo Go
       console.warn('⚠️ Running in Expo Go - MWA not available. Using demo wallet.')
-      const demoPublicKey = '9HrG3UAvzjNChfJPJoazmxGHPcfP9hTfZzuFbGKXUryx'
+      const demoPublicKey = 'DemoWalletPublicKeyBase58' // Replace with actual demo public key
 
       this.publicKey = new PublicKey(demoPublicKey)
       this.authToken = 'demo-auth-token'
@@ -125,65 +126,42 @@ class SolanaService {
   }
 
   /**
-   * Verify SGT using Helius
+   * Verify Seeker Genesis NFT ownership using official API
+   * The Seeker Genesis NFT is immutable and non-transferable
    */
   async verifySeekerGenesisToken(walletAddress: string): Promise<SeekerGenesisToken | null> {
-    if (!HAS_MWA_SUPPORT) {
-      // Demo mode - return mock SGT
-      console.warn('⚠️ Demo mode - returning mock SGT verification')
-      return {
-        mint: SEEKER_GENESIS_TOKEN_MINT,
-        owner: walletAddress,
-        verified: true,
-        metadata: {
-          name: 'Seeker Genesis Token (Demo)',
-          symbol: 'SGT',
-          uri: '',
-        },
-      }
-    }
-
     try {
-      const response = await fetch(HELIUS_RPC_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          jsonrpc: '2.0',
-          id: 'sgt-verification',
-          method: 'getAssetsByOwner',
-          params: {
-            ownerAddress: walletAddress,
-            page: 1,
-            limit: 1000,
-          },
-        }),
-      })
+      const result = await checkSeekerGenesisHolder(walletAddress)
 
-      const data = await response.json()
-
-      if (!data.result || !data.result.items) {
-        return null
-      }
-
-      const sgtAsset = data.result.items.find((asset: any) => asset.id === SEEKER_GENESIS_TOKEN_MINT)
-
-      if (!sgtAsset) {
+      if (!result.isHolder) {
         return null
       }
 
       return {
-        mint: sgtAsset.id,
+        mint: result.mint.mint,
         owner: walletAddress,
         verified: true,
         metadata: {
-          name: sgtAsset.content?.metadata?.name || 'Seeker Genesis Token',
-          symbol: sgtAsset.content?.metadata?.symbol || 'SGT',
-          uri: sgtAsset.content?.json_uri || '',
+          name: 'Seeker Genesis NFT',
+          symbol: 'SEEKER',
+          uri: `https://seeker-genesis.colmena.dev/api/holders/${walletAddress}`,
         },
       }
     } catch (error) {
-      console.error('SGT verification failed:', error)
-      throw new Error('Failed to verify Seeker Genesis Token')
+      console.error('Seeker Genesis verification failed:', error)
+      throw new Error('Failed to verify Seeker Genesis NFT ownership')
+    }
+  }
+
+  /**
+   * Get Seeker Genesis holder result with full details
+   */
+  async getSeekerGenesisHolderDetails(walletAddress: string): Promise<SeekerGenesisResult> {
+    try {
+      return await checkSeekerGenesisHolder(walletAddress)
+    } catch (error) {
+      console.error('Failed to get Seeker Genesis holder details:', error)
+      throw error
     }
   }
 

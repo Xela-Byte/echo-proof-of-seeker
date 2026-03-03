@@ -6,10 +6,10 @@
     "web": {
       "output": "static"
     },
-    "name": "mobile_app",
-    "slug": "mobileapp",
+    "name": "Echo: Proof of Seeker",
+    "slug": "com.xelabyte.echo_seeker",
     "android": {
-      "package": "com.anonymous.kitexpouniwind"
+      "package": "com.xelabyte.echo_seeker"
     },
     "extra": {
       "eas": {
@@ -18,7 +18,7 @@
     },
     "owner": "importa-holdings-ltd",
     "ios": {
-      "bundleIdentifier": "com.anonymous.kitexpouniwind",
+      "bundleIdentifier": "com.xelabyte.echo_seeker",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
       }
