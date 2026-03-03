@@ -7,7 +7,7 @@
     <key>CFBundleDevelopmentRegion</key>
     <string>$(DEVELOPMENT_LANGUAGE)</string>
     <key>CFBundleDisplayName</key>
-    <string>mobile_app</string>
+    <string>Echo: Proof of Seeker</string>
     <key>CFBundleExecutable</key>
     <string>$(EXECUTABLE_NAME)</string>
     <key>CFBundleIdentifier</key>
@@ -27,19 +27,21 @@
       <dict>
         <key>CFBundleURLSchemes</key>
         <array>
-          <string>acme</string>
-          <string>com.anonymous.kitexpouniwind</string>
+          <string>echo</string>
+          <string>com.xelabyte.echo-seeker</string>
         </array>
       </dict>
       <dict>
         <key>CFBundleURLSchemes</key>
         <array>
-          <string>exp+mobileapp</string>
+          <string>exp+com.xelabyte.echo-seeker</string>
         </array>
       </dict>
     </array>
     <key>CFBundleVersion</key>
     <string>1</string>
+    <key>ITSAppUsesNonExemptEncryption</key>
+    <false/>
     <key>LSMinimumSystemVersion</key>
     <string>12.0</string>
     <key>LSRequiresIPhoneOS</key>

@@ -1,4 +1,4 @@
-package com.anonymous.kitexpouniwind
+package com.xelabyte.echo_seeker
 
 import android.app.Application
 import android.content.res.Configuration

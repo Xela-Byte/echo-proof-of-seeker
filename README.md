@@ -1,4 +1,4 @@
-# mobile_app
+# Echo: Proof of Seeker
 
 This is an [Expo](https://expo.dev) project pre-configured with [Uniwind](https://uniwind.dev/) for styling and Solana libraries.
 

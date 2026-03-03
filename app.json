@@ -7,7 +7,7 @@
       "output": "static"
     },
     "name": "Echo: Proof of Seeker",
-    "slug": "com.xelabyte.echo_seeker",
+    "slug": "com.xelabyte.echo-seeker",
     "android": {
       "package": "com.xelabyte.echo_seeker"
     },
@@ -18,7 +18,7 @@
     },
     "owner": "importa-holdings-ltd",
     "ios": {
-      "bundleIdentifier": "com.xelabyte.echo_seeker",
+      "bundleIdentifier": "com.xelabyte.echo-seeker",
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false
       }

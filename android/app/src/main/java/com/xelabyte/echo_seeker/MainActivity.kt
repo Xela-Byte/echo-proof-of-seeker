@@ -1,4 +1,4 @@
-package com.anonymous.kitexpouniwind
+package com.xelabyte.echo_seeker
 import expo.modules.splashscreen.SplashScreenManager
 
 import android.os.Build

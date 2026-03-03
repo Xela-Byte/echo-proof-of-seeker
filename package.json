@@ -1,5 +1,5 @@
 {
-  "name": "mobile_app",
+  "name": "echo_seeker",
   "scripts": {
     "android": "expo run:android",
     "android:build": "expo prebuild -p android",
@@ -16,7 +16,7 @@
     "start": "expo start",
     "web": "expo start --web"
   },
-  "displayName": "Uniwind Mobile Kit Expo example",
+  "displayName": "Echo: Proof of Seeker",
   "description": "A template for building a Solana mobile app with Expo, React Native, Solana Kit, and Uniwind.",
   "usecase": "Mobile",
   "keywords": [

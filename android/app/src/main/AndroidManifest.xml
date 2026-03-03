@@ -24,8 +24,8 @@
         <action android:name="android.intent.action.VIEW"/>
         <category android:name="android.intent.category.DEFAULT"/>
         <category android:name="android.intent.category.BROWSABLE"/>
-        <data android:scheme="acme"/>
-        <data android:scheme="exp+mobileapp"/>
+        <data android:scheme="echo"/>
+        <data android:scheme="exp+com.xelabyte.echo-seeker"/>
       </intent-filter>
     </activity>
   </application>
