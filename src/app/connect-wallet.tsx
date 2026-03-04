@@ -1,7 +1,7 @@
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'
 import { LinearGradient } from 'expo-linear-gradient'
 import { router } from 'expo-router'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ActivityIndicator, Alert, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import solanaService from '../../services/solanaService'
@@ -14,6 +14,20 @@ export default function ConnectWalletScreen() {
   const [walletAddress, setWalletAddress] = useState<string | null>(null)
   const { result, loading, error, checkHolder } = useTokenGate()
 
+  // Auto-navigate after successful verification
+  useEffect(() => {
+    if (walletConnected && !loading && result?.isHolder) {
+      // Small delay for better UX - user can see the success state
+      const timer = setTimeout(() => {
+        router.push('/device-verification')
+      }, 1000)
+
+      return () => clearTimeout(timer)
+    } else if (walletConnected && !loading && result && !result.isHolder) {
+      Alert.alert('Access Denied', 'You need a Seeker Genesis NFT to access this app.', [{ text: 'OK' }])
+    }
+  }, [walletConnected, loading, result])
+
   const handleConnect = async () => {
     setConnecting(true)
     try {
@@ -24,6 +38,9 @@ export default function ConnectWalletScreen() {
       // Automatically check for Seeker Genesis NFT
       await checkHolder(publicKey)
     } catch (error) {
+      console.log('====================================')
+      console.log(error)
+      console.log('====================================')
       console.error('Connection failed:', error)
       Alert.alert(
         'Connection Failed',

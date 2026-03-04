@@ -1,10 +1,10 @@
 /**
- * Solana Service - Expo Go Compatible Version
- * NOTE: Full MWA features require custom dev client or standalone build
+ * Solana Service - Mobile Wallet Adapter Implementation
+ * Uses @solana-mobile/mobile-wallet-adapter-protocol-web3js for React Native
  */
 
+import { transact } from '@solana-mobile/mobile-wallet-adapter-protocol-web3js'
 import { Connection, PublicKey } from '@solana/web3.js'
-import { Platform } from 'react-native'
 import { checkSeekerGenesisHolder, type SeekerGenesisResult } from './seekerGenesisService'
 
 // Constants
@@ -12,8 +12,12 @@ const HELIUS_RPC_URL = process.env.EXPO_PUBLIC_HELIUS_RPC_URL || 'https://api.ma
 const SEEKER_GENESIS_TOKEN_MINT = 'SGTGenesisTokenMintAddress' // Replace with actual SGT mint
 const SKR_TOKEN_MINT = 'SKRTokenMintAddress' // Replace with actual SKR mint
 
-// Check if we're in a native build with MWA support
-const HAS_MWA_SUPPORT = Platform.OS === 'android' && !__DEV__
+// App identity for MWA
+const APP_IDENTITY = {
+  name: 'Echo - Seeker Signal',
+  uri: 'https://echo.seeker.app',
+  icon: 'relative/path/to/icon.png', // Update with your app icon
+}
 
 interface SignedPayload {
   message: string
@@ -51,74 +55,65 @@ class SolanaService {
   }
 
   /**
-   * Connect wallet - Expo Go compatible version
-   * In production, this will use Mobile Wallet Adapter
+   * Connect wallet using Mobile Wallet Adapter
+   * This will prompt the user to authorize the app with their Solana mobile wallet
    */
   async connectWallet(): Promise<{ publicKey: string; authToken: string }> {
-    if (!HAS_MWA_SUPPORT) {
-      // Demo mode for Expo Go
-      console.warn('⚠️ Running in Expo Go - MWA not available. Using demo wallet.')
-      const demoPublicKey = 'DemoWalletPublicKeyBase58' // Replace with actual demo public key
-
-      this.publicKey = new PublicKey(demoPublicKey)
-      this.authToken = 'demo-auth-token'
-
-      return {
-        publicKey: demoPublicKey,
-        authToken: this.authToken,
-      }
-    }
-
-    // Production: Use Mobile Wallet Adapter
     try {
-      const { transact } = await import('@solana-mobile/mobile-wallet-adapter-protocol-web3js')
-
       const result = await transact(async (wallet) => {
+        // Request authorization from the wallet
         const authorization = await wallet.authorize({
           cluster: 'mainnet-beta',
-          identity: {
-            name: 'Echo - Seeker Signal',
-            uri: 'https://echo.seeker.app',
-            icon: 'icon_base64_here',
-          },
+          identity: APP_IDENTITY,
         })
 
+        // The authorization contains the selected account and auth token
+        const selectedAccount = authorization.accounts[0]
+
         return {
-          publicKey: authorization.accounts[0].address,
+          publicKey: selectedAccount.address,
           authToken: authorization.auth_token,
+          walletUriBase: authorization.wallet_uri_base,
         }
       })
 
+      // Store the connection state
       this.publicKey = new PublicKey(result.publicKey)
       this.authToken = result.authToken
 
-      return result
+      console.log('✅ Wallet connected:', result.publicKey)
+
+      return {
+        publicKey: result.publicKey,
+        authToken: result.authToken,
+      }
     } catch (error) {
-      console.error('Wallet connection failed:', error)
+      console.error('❌ Wallet connection failed:', error)
       throw new Error('Failed to connect wallet via Mobile Wallet Adapter')
     }
   }
 
   /**
-   * Disconnect wallet
+   * Disconnect wallet and deauthorize the session
    */
   async disconnectWallet(): Promise<void> {
-    if (!HAS_MWA_SUPPORT) {
+    if (!this.authToken) {
+      console.log('⚠️ No active session to disconnect')
       this.publicKey = null
       this.authToken = null
       return
     }
 
     try {
-      const { transact } = await import('@solana-mobile/mobile-wallet-adapter-protocol-web3js')
+      await transact(async (wallet) => {
+        // Deauthorize the current session
+        await wallet.deauthorize({ auth_token: this.authToken! })
+      })
 
-      if (this.authToken) {
-        await transact(async (wallet) => {
-          await wallet.deauthorize({ auth_token: this.authToken! })
-        })
-      }
+      console.log('✅ Wallet disconnected')
     } catch (error) {
-      console.error('Wallet disconnect failed:', error)
+      console.error('❌ Wallet disconnect failed:', error)
+      // Continue with cleanup even if deauthorization fails
     } finally {
       this.publicKey = null
       this.authToken = null
@@ -166,23 +161,9 @@ class SolanaService {
   }
 
   /**
-   * Fetch SKR token state
+   * Fetch SKR token state using Helius RPC
    */
   async fetchSKRState(walletAddress: string): Promise<SKRState> {
-    if (!HAS_MWA_SUPPORT) {
-      // Demo mode - return mock data
-      const mockBalance = 10000 + Math.random() * 5000
-      const mockChange = -10 + Math.random() * 30
-
-      return {
-        balance: mockBalance,
-        change24h: mockChange,
-        changePercentage: (mockChange / mockBalance) * 100,
-        lastUpdated: Date.now(),
-        status: mockChange > 10 ? 'gold' : mockChange > 0 ? 'diamond_hands' : 'paper_hands',
-      }
-    }
-
     try {
       const response = await fetch(HELIUS_RPC_URL, {
         method: 'POST',
@@ -223,7 +204,7 @@ class SolanaService {
         status,
       }
     } catch (error) {
-      console.error('SKR state fetch failed:', error)
+      console.error('❌ SKR state fetch failed:', error)
       throw new Error('Failed to fetch SKR token state')
     }
   }
@@ -234,46 +215,122 @@ class SolanaService {
   }
 
   /**
-   * Sign message - Expo Go compatible
+   * Sign a message using Mobile Wallet Adapter
    */
   async signMessage(message: string): Promise<SignedPayload> {
-    if (!HAS_MWA_SUPPORT) {
-      // Demo mode - return mock signature
-      return {
-        message,
-        signature: 'demo-signature-base64',
-        publicKey: this.publicKey?.toBase58() || 'demo-public-key',
-        timestamp: Date.now(),
-      }
+    if (!this.publicKey || !this.authToken) {
+      throw new Error('Wallet not connected. Please connect your wallet first.')
     }
 
     try {
-      if (!this.publicKey || !this.authToken) {
-        throw new Error('Wallet not connected')
-      }
-
-      const { transact } = await import('@solana-mobile/mobile-wallet-adapter-protocol-web3js')
       const messageBuffer = new TextEncoder().encode(message)
 
-      const result = await transact(async (wallet) => {
-        const signedMessages = await wallet.signMessages({
+      const signedPayloads = await transact(async (wallet) => {
+        // Reauthorize if needed to ensure the session is valid
+        const authResult = await wallet.reauthorize({
           auth_token: this.authToken!,
+          identity: APP_IDENTITY,
+        })
+
+        // Update auth token if it changed
+        if (authResult.auth_token !== this.authToken) {
+          this.authToken = authResult.auth_token
+        }
+
+        // Sign the message
+        const signatures = await wallet.signMessages({
           addresses: [this.publicKey!.toBase58()],
           payloads: [messageBuffer],
         })
 
-        return signedMessages[0]
+        return signatures
       })
+
+      const signature = signedPayloads[0]
 
       return {
         message,
-        signature: Buffer.from(result).toString('base64'),
+        signature: Buffer.from(signature).toString('base64'),
         publicKey: this.publicKey.toBase58(),
         timestamp: Date.now(),
       }
     } catch (error) {
-      console.error('Message signing failed:', error)
+      console.error('❌ Message signing failed:', error)
       throw new Error('Failed to sign message')
+    }
+  }
+
+  /**
+   * Sign and send transaction using Mobile Wallet Adapter
+   * @param transaction - The transaction to sign and send
+   * @returns Transaction signature
+   */
+  async signAndSendTransaction(transaction: any): Promise<string> {
+    if (!this.publicKey || !this.authToken) {
+      throw new Error('Wallet not connected. Please connect your wallet first.')
+    }
+
+    try {
+      const signature = await transact(async (wallet) => {
+        // Reauthorize if needed to ensure the session is valid
+        const authResult = await wallet.reauthorize({
+          auth_token: this.authToken!,
+          identity: APP_IDENTITY,
+        })
+
+        // Update auth token if it changed
+        if (authResult.auth_token !== this.authToken) {
+          this.authToken = authResult.auth_token
+        }
+
+        // Sign and send the transaction
+        const signedTransactions = await wallet.signAndSendTransactions({
+          transactions: [transaction],
+        })
+
+        return signedTransactions[0]
+      })
+
+      console.log('✅ Transaction sent:', signature)
+      return Buffer.from(signature).toString('base64')
+    } catch (error) {
+      console.error('❌ Transaction failed:', error)
+      throw new Error('Failed to sign and send transaction')
+    }
+  }
+
+  /**
+   * Sign transactions without sending (for cases where you want to send manually)
+   */
+  async signTransactions(transactions: any[]): Promise<any[]> {
+    if (!this.publicKey || !this.authToken) {
+      throw new Error('Wallet not connected. Please connect your wallet first.')
+    }
+
+    try {
+      const signedTxs = await transact(async (wallet) => {
+        // Reauthorize if needed to ensure the session is valid
+        const authResult = await wallet.reauthorize({
+          auth_token: this.authToken!,
+          identity: APP_IDENTITY,
+        })
+
+        // Update auth token if it changed
+        if (authResult.auth_token !== this.authToken) {
+          this.authToken = authResult.auth_token
+        }
+
+        // Sign the transactions
+        return await wallet.signTransactions({
+          transactions,
+        })
+      })
+
+      console.log('✅ Transactions signed')
+      return signedTxs
+    } catch (error) {
+      console.error('❌ Transaction signing failed:', error)
+      throw new Error('Failed to sign transactions')
     }
   }
 
