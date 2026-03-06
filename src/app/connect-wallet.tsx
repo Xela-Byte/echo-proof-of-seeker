@@ -38,10 +38,10 @@ export default function ConnectWalletScreen() {
   }, [walletConnected, loading, result])
 
   const handleConnect = async () => {
-    if (__DEV__) {
-      router.push('/dashboard')
-      return
-    }
+    // if (__DEV__) {
+    //   router.push('/dashboard')
+    //   return
+    // }
     setConnecting(true)
     try {
       const { publicKey } = await solanaService.connectWallet()
@@ -297,6 +297,7 @@ const styles = StyleSheet.create({
   },
   scrSparkWalletIcon: {
     position: 'absolute',
+    zIndex: -1,
     top: -10,
     right: -15,
     opacity: 0.5,
@@ -304,6 +305,7 @@ const styles = StyleSheet.create({
   },
   scrCirclyWalletIcon: {
     position: 'absolute',
+    zIndex: -1,
     bottom: -5,
     left: -10,
     opacity: 0.4,
@@ -311,6 +313,7 @@ const styles = StyleSheet.create({
   },
   scrSmileHeader: {
     position: 'absolute',
+    zIndex: -1,
     top: -15,
     right: 10,
     opacity: 0.6,
@@ -318,6 +321,7 @@ const styles = StyleSheet.create({
   },
   scrArrowHeader: {
     position: 'absolute',
+    zIndex: -1,
     bottom: -20,
     left: 20,
     opacity: 0.45,
@@ -325,6 +329,7 @@ const styles = StyleSheet.create({
   },
   scrArrowRequirements: {
     position: 'absolute',
+    zIndex: -1,
     top: -15,
     right: 10,
     opacity: 0.4,
@@ -332,6 +337,7 @@ const styles = StyleSheet.create({
   },
   scrCirclyRequirements: {
     position: 'absolute',
+    zIndex: -1,
     bottom: 10,
     left: 15,
     opacity: 0.35,
@@ -339,6 +345,7 @@ const styles = StyleSheet.create({
   },
   scrSparkConnect: {
     position: 'absolute',
+    zIndex: -1,
     bottom: 10,
     right: -20,
     opacity: 0.5,
@@ -346,6 +353,7 @@ const styles = StyleSheet.create({
   },
   scrSmileConnect: {
     position: 'absolute',
+    zIndex: -1,
     top: -15,
     left: 15,
     opacity: 0.4,
@@ -353,6 +361,7 @@ const styles = StyleSheet.create({
   },
   scrSmileSuccess: {
     position: 'absolute',
+    zIndex: -1,
     top: -20,
     right: 15,
     opacity: 0.6,
@@ -360,6 +369,7 @@ const styles = StyleSheet.create({
   },
   scrCirclySuccess: {
     position: 'absolute',
+    zIndex: -1,
     bottom: 20,
     left: 20,
     opacity: 0.4,

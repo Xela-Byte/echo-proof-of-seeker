@@ -129,6 +129,7 @@ const styles = StyleSheet.create({
   },
   scrArrowBack: {
     position: 'absolute',
+    zIndex: -1,
     top: -5,
     right: -15,
     opacity: 0.4,
@@ -136,6 +137,7 @@ const styles = StyleSheet.create({
   },
   scrSparkBack: {
     position: 'absolute',
+    zIndex: -1,
     bottom: -10,
     left: 10,
     opacity: 0.35,
@@ -143,6 +145,7 @@ const styles = StyleSheet.create({
   },
   scrCirclyTitle: {
     position: 'absolute',
+    zIndex: -1,
     top: -10,
     right: -15,
     opacity: 0.45,
@@ -150,6 +153,7 @@ const styles = StyleSheet.create({
   },
   scrSmileTitle: {
     position: 'absolute',
+    zIndex: -1,
     bottom: -5,
     left: -10,
     opacity: 0.4,
@@ -157,6 +161,7 @@ const styles = StyleSheet.create({
   },
   scrSparkIcon: {
     position: 'absolute',
+    zIndex: -1,
     top: -15,
     right: -20,
     opacity: 0.5,
@@ -164,6 +169,7 @@ const styles = StyleSheet.create({
   },
   scrCirclyIcon: {
     position: 'absolute',
+    zIndex: -1,
     bottom: -10,
     left: -15,
     opacity: 0.4,
@@ -171,6 +177,7 @@ const styles = StyleSheet.create({
   },
   scrArrowTitle: {
     position: 'absolute',
+    zIndex: -1,
     top: -15,
     right: 10,
     opacity: 0.5,
@@ -178,6 +185,7 @@ const styles = StyleSheet.create({
   },
   scrSmileDesc: {
     position: 'absolute',
+    zIndex: -1,
     bottom: -15,
     left: 20,
     opacity: 0.4,
@@ -185,6 +193,7 @@ const styles = StyleSheet.create({
   },
   scrCirclyInfo: {
     position: 'absolute',
+    zIndex: -1,
     top: -20,
     right: 15,
     opacity: 0.5,
@@ -192,6 +201,7 @@ const styles = StyleSheet.create({
   },
   scrSparkInfo: {
     position: 'absolute',
+    zIndex: -1,
     bottom: 10,
     left: 20,
     opacity: 0.45,
@@ -199,6 +209,7 @@ const styles = StyleSheet.create({
   },
   scrArrowInfo: {
     position: 'absolute',
+    zIndex: -1,
     top: 10,
     left: 10,
     opacity: 0.35,

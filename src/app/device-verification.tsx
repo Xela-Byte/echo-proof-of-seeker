@@ -216,6 +216,7 @@ const styles = StyleSheet.create({
   },
   scrArrowBack: {
     position: 'absolute',
+    zIndex: -1,
     top: 10,
     right: 20,
     opacity: 0.4,
@@ -223,6 +224,7 @@ const styles = StyleSheet.create({
   },
   scrSparkBack: {
     position: 'absolute',
+    zIndex: -1,
     bottom: 0,
     left: 80,
     opacity: 0.35,
@@ -230,6 +232,7 @@ const styles = StyleSheet.create({
   },
   scrCirclyVerifying: {
     position: 'absolute',
+    zIndex: -1,
     top: 10,
     right: 20,
     opacity: 0.4,
@@ -237,6 +240,7 @@ const styles = StyleSheet.create({
   },
   scrSparkVerifying: {
     position: 'absolute',
+    zIndex: -1,
     bottom: 20,
     left: 15,
     opacity: 0.3,
@@ -244,6 +248,7 @@ const styles = StyleSheet.create({
   },
   scrSmileVerified: {
     position: 'absolute',
+    zIndex: -1,
     top: 15,
     right: 10,
     opacity: 0.6,
@@ -251,6 +256,7 @@ const styles = StyleSheet.create({
   },
   scrCirclyVerified: {
     position: 'absolute',
+    zIndex: -1,
     bottom: 30,
     left: 10,
     opacity: 0.4,
@@ -258,6 +264,7 @@ const styles = StyleSheet.create({
   },
   scrSparkVerified: {
     position: 'absolute',
+    zIndex: -1,
     top: 60,
     left: 5,
     opacity: 0.35,
@@ -265,6 +272,7 @@ const styles = StyleSheet.create({
   },
   scrArrowError: {
     position: 'absolute',
+    zIndex: -1,
     top: 10,
     left: 15,
     opacity: 0.5,
@@ -272,6 +280,7 @@ const styles = StyleSheet.create({
   },
   scrCirclyError: {
     position: 'absolute',
+    zIndex: -1,
     bottom: 20,
     right: 10,
     opacity: 0.4,
@@ -279,6 +288,7 @@ const styles = StyleSheet.create({
   },
   scrSparkError: {
     position: 'absolute',
+    zIndex: -1,
     top: 50,
     right: 20,
     opacity: 0.35,
@@ -286,6 +296,7 @@ const styles = StyleSheet.create({
   },
   scrSmileRetry: {
     position: 'absolute',
+    zIndex: -1,
     top: -10,
     right: 15,
     opacity: 0.5,
@@ -293,6 +304,7 @@ const styles = StyleSheet.create({
   },
   scrArrowRetry: {
     position: 'absolute',
+    zIndex: -1,
     bottom: 5,
     left: 20,
     opacity: 0.4,

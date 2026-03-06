@@ -188,6 +188,7 @@ const styles = StyleSheet.create({
   },
   scrSparkBack: {
     position: 'absolute',
+    zIndex: -1,
     top: -8,
     left: -10,
     opacity: 0.5,
@@ -195,6 +196,7 @@ const styles = StyleSheet.create({
   },
   scrSmileAbout: {
     position: 'absolute',
+    zIndex: -1,
     top: -15,
     right: 20,
     opacity: 0.5,
@@ -202,6 +204,7 @@ const styles = StyleSheet.create({
   },
   scrArrowFeatures: {
     position: 'absolute',
+    zIndex: -1,
     bottom: 10,
     right: 10,
     opacity: 0.4,

@@ -256,6 +256,7 @@ const styles = StyleSheet.create({
   },
   scrSparkProcessing: {
     position: 'absolute',
+    zIndex: -1,
     top: -20,
     right: 10,
     opacity: 0.5,
@@ -263,6 +264,7 @@ const styles = StyleSheet.create({
   },
   scrCirclyProcessing: {
     position: 'absolute',
+    zIndex: -1,
     bottom: 20,
     left: 15,
     opacity: 0.4,
@@ -270,6 +272,7 @@ const styles = StyleSheet.create({
   },
   scrArrowProcessing: {
     position: 'absolute',
+    zIndex: -1,
     top: 40,
     left: 5,
     opacity: 0.35,
@@ -277,6 +280,7 @@ const styles = StyleSheet.create({
   },
   scrSmileSuccess: {
     position: 'absolute',
+    zIndex: -1,
     top: -25,
     right: 5,
     opacity: 0.6,
@@ -284,6 +288,7 @@ const styles = StyleSheet.create({
   },
   scrSparkSuccess: {
     position: 'absolute',
+    zIndex: -1,
     bottom: 15,
     left: 10,
     opacity: 0.5,
@@ -291,6 +296,7 @@ const styles = StyleSheet.create({
   },
   scrCirclySuccess: {
     position: 'absolute',
+    zIndex: -1,
     top: 30,
     left: 0,
     opacity: 0.4,
@@ -298,6 +304,7 @@ const styles = StyleSheet.create({
   },
   scrArrowSuccess: {
     position: 'absolute',
+    zIndex: -1,
     bottom: 40,
     right: 15,
     opacity: 0.35,
@@ -305,6 +312,7 @@ const styles = StyleSheet.create({
   },
   scrArrowError: {
     position: 'absolute',
+    zIndex: -1,
     top: -20,
     left: 10,
     opacity: 0.5,
@@ -312,6 +320,7 @@ const styles = StyleSheet.create({
   },
   scrCirclyError: {
     position: 'absolute',
+    zIndex: -1,
     bottom: 10,
     right: 5,
     opacity: 0.45,
@@ -319,6 +328,7 @@ const styles = StyleSheet.create({
   },
   scrSparkError: {
     position: 'absolute',
+    zIndex: -1,
     top: 25,
     right: 0,
     opacity: 0.4,
@@ -326,6 +336,7 @@ const styles = StyleSheet.create({
   },
   scrSmileError: {
     position: 'absolute',
+    zIndex: -1,
     bottom: 45,
     left: 15,
     opacity: 0.35,

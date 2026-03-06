@@ -798,6 +798,7 @@ const styles = StyleSheet.create({
   },
   scrArrowBack: {
     position: 'absolute',
+    zIndex: -1,
     width: 35,
     height: 35,
     left: 50,
@@ -807,6 +808,7 @@ const styles = StyleSheet.create({
   },
   scrSmileTitle: {
     position: 'absolute',
+    zIndex: -1,
     width: 45,
     height: 45,
     right: -20,
@@ -816,6 +818,7 @@ const styles = StyleSheet.create({
   },
   scrCirclyConnected: {
     position: 'absolute',
+    zIndex: -1,
     width: 40,
     height: 40,
     right: -10,
@@ -825,6 +828,7 @@ const styles = StyleSheet.create({
   },
   scrSparkConnect: {
     position: 'absolute',
+    zIndex: -1,
     width: 40,
     height: 40,
     right: -15,
@@ -834,15 +838,16 @@ const styles = StyleSheet.create({
   },
   scrArrowError: {
     position: 'absolute',
+    zIndex: -1,
     width: 30,
     height: 30,
     right: 30,
     top: 5,
     opacity: 0.5,
     transform: [{ rotate: '30deg' }],
-    zIndex: 10,
   },
   scrArrowPreview: {
+    zIndex: -1,
     width: 35,
     height: 35,
     opacity: 0.5,
@@ -850,6 +855,7 @@ const styles = StyleSheet.create({
   },
   scrSparkRandomize: {
     position: 'absolute',
+    zIndex: -1,
     width: 45,
     height: 45,
     left: -20,
@@ -859,6 +865,7 @@ const styles = StyleSheet.create({
   },
   scrCirclyRandomize: {
     position: 'absolute',
+    zIndex: -1,
     width: 50,
     height: 50,
     right: -15,
@@ -868,6 +875,7 @@ const styles = StyleSheet.create({
   },
   scrSmileSuccess: {
     position: 'absolute',
+    zIndex: -1,
     width: 50,
     height: 50,
     right: 20,
@@ -877,6 +885,7 @@ const styles = StyleSheet.create({
   },
   scrArrowError2: {
     position: 'absolute',
+    zIndex: -1,
     width: 40,
     height: 40,
     left: 15,
@@ -886,6 +895,7 @@ const styles = StyleSheet.create({
   },
   scrSparkError: {
     position: 'absolute',
+    zIndex: -1,
     width: 35,
     height: 35,
     right: 25,
@@ -895,6 +905,7 @@ const styles = StyleSheet.create({
   },
   scrCirclyApply: {
     position: 'absolute',
+    zIndex: -1,
     width: 55,
     height: 55,
     right: 15,
@@ -904,6 +915,7 @@ const styles = StyleSheet.create({
   },
   scrSparkApply: {
     position: 'absolute',
+    zIndex: -1,
     width: 50,
     height: 50,
     left: 10,
@@ -913,6 +925,7 @@ const styles = StyleSheet.create({
   },
   scrSmileApply: {
     position: 'absolute',
+    zIndex: -1,
     width: 45,
     height: 45,
     left: 50,

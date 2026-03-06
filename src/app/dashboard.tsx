@@ -98,7 +98,13 @@ export default function DashboardScreen() {
               <SvgXml xml={scrSmileSvg} width="50" height="50" style={styles.scrSmileTitle} />
             </View>
             <View style={styles.settingsIconContainer}>
-              <TouchableOpacity onPress={() => router.push('/settings')} hitSlop={8}>
+              <TouchableOpacity
+                onPress={() => {
+                  console.log('Navigating to settings')
+                  router.push('/settings')
+                }}
+                hitSlop={8}
+              >
                 <Ionicons name="settings-outline" size={28} color="#0A0A18" />
               </TouchableOpacity>
               <SvgXml xml={scrSparkSvg} width="35" height="35" style={styles.scrSparkSettings} />
@@ -108,7 +114,7 @@ export default function DashboardScreen() {
 
           {publicKey && (
             <View style={styles.walletCardContainer}>
-              <BrutalistBox backgroundColor="#FFFFFF" style={styles.cardWrapper} contentStyle={styles.cardContent}>
+              <BrutalistBox backgroundColor="#FEF5E7" style={styles.cardWrapper} contentStyle={styles.cardContent}>
                 <Text style={styles.cardLabel}>Connected Wallet</Text>
                 <Text style={styles.walletAddress} numberOfLines={1}>
                   {publicKey}
@@ -121,7 +127,7 @@ export default function DashboardScreen() {
 
           {skrState && (
             <View style={styles.skrCardContainer}>
-              <BrutalistBox backgroundColor="#FFFFFF" style={styles.cardWrapper} contentStyle={styles.skrCardContent}>
+              <BrutalistBox backgroundColor="#FEF5E7" style={styles.cardWrapper} contentStyle={styles.skrCardContent}>
                 <View style={styles.skrHeader}>
                   <Text style={styles.cardTitle}>SKR Token Status</Text>
                   <MaterialCommunityIcons name={getStatusIcon(skrState.status)} size={24} color="#0A0A18" />
@@ -477,6 +483,7 @@ const styles = StyleSheet.create({
   },
   scrArrowTitle: {
     position: 'absolute',
+    zIndex: -1,
     left: -15,
     top: -10,
     opacity: 0.4,
@@ -484,6 +491,7 @@ const styles = StyleSheet.create({
   },
   scrSmileTitle: {
     position: 'absolute',
+    zIndex: -1,
     right: -20,
     bottom: -15,
     opacity: 0.5,
@@ -491,6 +499,7 @@ const styles = StyleSheet.create({
   },
   scrSparkSettings: {
     position: 'absolute',
+    zIndex: -1,
     top: -10,
     right: -15,
     opacity: 0.5,
@@ -498,6 +507,7 @@ const styles = StyleSheet.create({
   },
   scrCirclySettings: {
     position: 'absolute',
+    zIndex: -1,
     bottom: -10,
     left: -10,
     opacity: 0.35,
@@ -505,6 +515,7 @@ const styles = StyleSheet.create({
   },
   scrSparkWallet: {
     position: 'absolute',
+    zIndex: -1,
     top: 10,
     left: 20,
     opacity: 0.4,
@@ -512,6 +523,7 @@ const styles = StyleSheet.create({
   },
   scrCirclyWallet: {
     position: 'absolute',
+    zIndex: -1,
     bottom: 15,
     right: 15,
     opacity: 0.3,
@@ -519,6 +531,7 @@ const styles = StyleSheet.create({
   },
   scrArrowSKR: {
     position: 'absolute',
+    zIndex: -1,
     top: 15,
     right: 20,
     opacity: 0.45,
@@ -526,6 +539,7 @@ const styles = StyleSheet.create({
   },
   scrSmileSKR: {
     position: 'absolute',
+    zIndex: -1,
     bottom: 10,
     left: 25,
     opacity: 0.5,
@@ -533,6 +547,7 @@ const styles = StyleSheet.create({
   },
   scrArrowStats: {
     position: 'absolute',
+    zIndex: -1,
     top: 10,
     right: 30,
     opacity: 0.4,
@@ -540,6 +555,7 @@ const styles = StyleSheet.create({
   },
   scrSparkStats: {
     position: 'absolute',
+    zIndex: -1,
     bottom: 15,
     left: 25,
     opacity: 0.45,
@@ -547,6 +563,7 @@ const styles = StyleSheet.create({
   },
   scrCirclyStats: {
     position: 'absolute',
+    zIndex: -1,
     top: -10,
     left: 15,
     opacity: 0.3,
@@ -554,6 +571,7 @@ const styles = StyleSheet.create({
   },
   scrCirclyBanner: {
     position: 'absolute',
+    zIndex: -1,
     bottom: 5,
     right: -10,
     opacity: 0.3,

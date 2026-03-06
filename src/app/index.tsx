@@ -157,6 +157,7 @@ const styles = StyleSheet.create({
   },
   scrSparkLogo: {
     position: 'absolute',
+    zIndex: -1,
     top: -10,
     right: -25,
     opacity: 0.5,
@@ -164,6 +165,7 @@ const styles = StyleSheet.create({
   },
   scrSmileTitle: {
     position: 'absolute',
+    zIndex: -1,
     top: -20,
     right: -50,
     opacity: 0.4,
