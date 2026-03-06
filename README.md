@@ -48,6 +48,16 @@ In the output, you'll find options to open the app in a:
 
 You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
 
+## Building Release APK
+
+To build a production-ready ARM64-v8a APK:
+
+```bash
+npm run build:arm64
+```
+
+The APK will be automatically placed in the `releases/` folder with a versioned filename. See [BUILD.md](BUILD.md) for detailed build instructions and options.
+
 ## Learn more
 
 To learn more about developing your project with Expo, look at the following resources:

@@ -4,6 +4,7 @@
     "android": "expo run:android",
     "android:build": "expo prebuild -p android",
     "build": "tsc --noEmit && npm run android:build",
+    "build:arm64": "bash scripts/build-arm64.sh",
     "ci": "tsc --noEmit && npm run lint:check && npm run fmt:check && npm run android:build",
     "dev:client:android": "eas build --profile development --platform android",
     "dev": "expo start --clear --dev-client --reset-cache",

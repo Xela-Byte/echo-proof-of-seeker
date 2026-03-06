@@ -40,4 +40,7 @@ yarn-error.*
 # typescript
 *.tsbuildinfo
 
+# releases - ignore APK files but keep README
+releases/*.apk
+
 app-example
