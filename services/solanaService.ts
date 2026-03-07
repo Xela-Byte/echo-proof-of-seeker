@@ -15,8 +15,8 @@ const SKR_TOKEN_MINT = 'SKRbvo6Gf7GondiT3BbTfuRDPqLWei4j2Qy2NPGZhW3'
 // App identity for MWA
 const APP_IDENTITY = {
   name: 'Echo: Proof of Seeker',
-  uri: 'https://echo.seeker.app',
-  icon: 'relative/path/to/icon.png', // Update with your app icon
+  uri: 'https://echoseeker.com',
+  icon: 'https://res.cloudinary.com/dgpkqad1m/image/upload/v1772873588/icon_x0r1gt.png',
 }
 
 interface SignedPayload {
