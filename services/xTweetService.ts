@@ -27,11 +27,36 @@ export const HANDSHAKE_TWEET_TEMPLATES = [
 
 /**
  * Get a random tweet template and format it with the username
+ * Ensures the tweet stays within Twitter's 280 character limit
  */
 export function getRandomHandshakeTweet(username: string): string {
+  const MAX_TWEET_LENGTH = 280
   const randomIndex = Math.floor(Math.random() * HANDSHAKE_TWEET_TEMPLATES.length)
   const template = HANDSHAKE_TWEET_TEMPLATES[randomIndex]
-  return template.replace('{username}', username)
+  let tweet = template.replace('{username}', username)
+
+  // Check if tweet exceeds character limit
+  if (tweet.length > MAX_TWEET_LENGTH) {
+    // Try a simpler fallback template
+    const fallbackTemplate = 'Just connected with @{username} via Seeker Mobile! 🤝 #EchoSeeker #ProofOfSeeker'
+    tweet = fallbackTemplate.replace('{username}', username)
+
+    // If still too long, truncate the username itself
+    if (tweet.length > MAX_TWEET_LENGTH) {
+      const overflow = tweet.length - MAX_TWEET_LENGTH
+      const maxUsernameLength = username.length - overflow - 3 // -3 for ellipsis
+
+      if (maxUsernameLength > 0) {
+        const truncatedUsername = username.substring(0, maxUsernameLength) + '...'
+        tweet = fallbackTemplate.replace('{username}', truncatedUsername)
+      } else {
+        // Username is extremely long, use generic message
+        tweet = 'Just completed a Seeker handshake! 🤝 #EchoSeeker #ProofOfSeeker'
+      }
+    }
+  }
+
+  return tweet
 }
 
 /**
@@ -39,6 +64,12 @@ export function getRandomHandshakeTweet(username: string): string {
  * Uses POST /2/tweets endpoint
  */
 export async function postTweet(text: string, credentials: XAuthCredentials): Promise<{ id: string; text: string }> {
+  // Validate tweet length before posting
+  const MAX_TWEET_LENGTH = 280
+  if (text.length > MAX_TWEET_LENGTH) {
+    throw new Error(`Tweet exceeds ${MAX_TWEET_LENGTH} character limit (${text.length} characters)`)
+  }
+
   const url = `${X_API_BASE_URL}/tweets`
 
   const bodyData = { text }
