@@ -1,0 +1,1942 @@
+
+> echo_seeker@1.0.0 android /Users/admin/echo-mobile
+> expo run:android
+
+env: load .env
+env: export EXPO_PUBLIC_HELIUS_RPC_URL EXPO_PUBLIC_X_CONSUMER_KEY EXPO_PUBLIC_X_CONSUMER_SECRET EXPO_PUBLIC_X_ACCESS_TOKEN EXPO_PUBLIC_X_ACCESS_TOKEN_SECRET SEEKER_GENESIS_TOKEN_MINT SKR_TOKEN_MINT
+› Building app...
+Configuration on demand is an incubating feature.
+> Task :expo-gradle-plugin:expo-autolinking-plugin-shared:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :gradle-plugin:shared:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :expo-gradle-plugin:expo-autolinking-settings-plugin:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :gradle-plugin:settings-plugin:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :gradle-plugin:settings-plugin:pluginDescriptors UP-TO-DATE
+> Task :expo-gradle-plugin:expo-autolinking-settings-plugin:pluginDescriptors UP-TO-DATE
+> Task :gradle-plugin:settings-plugin:processResources UP-TO-DATE
+> Task :expo-gradle-plugin:expo-autolinking-settings-plugin:processResources UP-TO-DATE
+> Task :expo-gradle-plugin:expo-autolinking-plugin-shared:compileKotlin UP-TO-DATE
+> Task :gradle-plugin:shared:compileKotlin UP-TO-DATE
+> Task :gradle-plugin:shared:compileJava NO-SOURCE
+> Task :expo-gradle-plugin:expo-autolinking-plugin-shared:compileJava NO-SOURCE
+> Task :gradle-plugin:shared:processResources NO-SOURCE
+> Task :expo-gradle-plugin:expo-autolinking-plugin-shared:processResources NO-SOURCE
+> Task :gradle-plugin:shared:classes UP-TO-DATE
+> Task :expo-gradle-plugin:expo-autolinking-plugin-shared:classes UP-TO-DATE
+> Task :expo-gradle-plugin:expo-autolinking-plugin-shared:jar UP-TO-DATE
+> Task :gradle-plugin:shared:jar UP-TO-DATE
+> Task :gradle-plugin:settings-plugin:compileKotlin UP-TO-DATE
+> Task :gradle-plugin:settings-plugin:compileJava NO-SOURCE
+> Task :gradle-plugin:settings-plugin:classes UP-TO-DATE
+> Task :gradle-plugin:settings-plugin:jar UP-TO-DATE
+> Task :expo-gradle-plugin:expo-autolinking-settings-plugin:compileKotlin UP-TO-DATE
+> Task :expo-gradle-plugin:expo-autolinking-settings-plugin:compileJava NO-SOURCE
+> Task :expo-gradle-plugin:expo-autolinking-settings-plugin:classes UP-TO-DATE
+> Task :expo-gradle-plugin:expo-autolinking-settings-plugin:jar UP-TO-DATE
+> Task :expo-gradle-plugin:expo-autolinking-plugin:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :gradle-plugin:react-native-gradle-plugin:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :expo-dev-launcher-gradle-plugin:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :expo-module-gradle-plugin:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :expo-dev-launcher-gradle-plugin:pluginDescriptors UP-TO-DATE
+> Task :expo-module-gradle-plugin:pluginDescriptors UP-TO-DATE
+> Task :expo-module-gradle-plugin:processResources UP-TO-DATE
+> Task :expo-dev-launcher-gradle-plugin:processResources UP-TO-DATE
+> Task :expo-gradle-plugin:expo-autolinking-plugin:compileKotlin UP-TO-DATE
+> Task :gradle-plugin:react-native-gradle-plugin:compileKotlin UP-TO-DATE
+> Task :expo-gradle-plugin:expo-autolinking-plugin:compileJava NO-SOURCE
+> Task :expo-gradle-plugin:expo-autolinking-plugin:pluginDescriptors UP-TO-DATE
+> Task :gradle-plugin:react-native-gradle-plugin:compileJava NO-SOURCE
+> Task :expo-gradle-plugin:expo-autolinking-plugin:processResources UP-TO-DATE
+> Task :gradle-plugin:react-native-gradle-plugin:pluginDescriptors UP-TO-DATE
+> Task :expo-gradle-plugin:expo-autolinking-plugin:classes UP-TO-DATE
+> Task :gradle-plugin:react-native-gradle-plugin:processResources UP-TO-DATE
+> Task :gradle-plugin:react-native-gradle-plugin:classes UP-TO-DATE
+> Task :expo-gradle-plugin:expo-autolinking-plugin:jar UP-TO-DATE
+> Task :gradle-plugin:react-native-gradle-plugin:jar UP-TO-DATE
+> Task :expo-module-gradle-plugin:compileKotlin UP-TO-DATE
+> Task :expo-dev-launcher-gradle-plugin:compileKotlin UP-TO-DATE
+> Task :expo-module-gradle-plugin:compileJava NO-SOURCE
+> Task :expo-dev-launcher-gradle-plugin:compileJava NO-SOURCE
+> Task :expo-module-gradle-plugin:classes UP-TO-DATE
+> Task :expo-dev-launcher-gradle-plugin:classes UP-TO-DATE
+> Task :expo-module-gradle-plugin:jar UP-TO-DATE
+> Task :expo-dev-launcher-gradle-plugin:jar UP-TO-DATE
+
+> Configure project :app
+ ℹ️  [33mApplying gradle plugin[0m '[32mexpo-dev-launcher-gradle-plugin[0m'
+
+> Configure project :
+[32m[ExpoRootProject][0m Using the following versions:
+  - buildTools:  [32m36.0.0[0m
+  - minSdk:      [32m24[0m
+  - compileSdk:  [32m36[0m
+  - targetSdk:   [32m36[0m
+  - ndk:         [32m27.1.12297006[0m
+  - kotlin:      [32m2.1.20[0m
+  - ksp:         [32m2.1.20-2.0.1[0m
+
+> Configure project :expo
+
+Using expo modules
+  - [32mexpo-asset[0m (11.0.5)
+  - [32mexpo-constants[0m (18.0.13)
+  - [32mexpo-dev-client[0m (6.0.20)
+  - [32mexpo-dev-launcher[0m (6.0.20)
+  - [32mexpo-dev-menu[0m (7.0.18)
+  - [32mexpo-dev-menu-interface[0m (2.0.0)
+  - [32mexpo-json-utils[0m (0.15.0)
+  - [32mexpo-manifests[0m (1.0.10)
+  - [32mexpo-modules-core[0m (3.0.29)
+  - [32mexpo-updates-interface[0m (2.0.0)
+  - [33m[📦][0m [32mexpo-file-system[0m (19.0.21)
+  - [33m[📦][0m [32mexpo-font[0m (14.0.11)
+  - [33m[📦][0m [32mexpo-image-loader[0m (6.0.0)
+  - [33m[📦][0m [32mexpo-image-manipulator[0m (14.0.8)
+  - [33m[📦][0m [32mexpo-keep-awake[0m (15.0.8)
+  - [33m[📦][0m [32mexpo-linear-gradient[0m (15.0.8)
+  - [33m[📦][0m [32mexpo-linking[0m (8.0.11)
+  - [33m[📦][0m [32mexpo-sharing[0m (14.0.8)
+  - [33m[📦][0m [32mexpo-splash-screen[0m (31.0.13)
+  - [33m[📦][0m [32mexpo-web-browser[0m (15.0.10)
+
+
+> Configure project :react-native-quick-crypto
+[NitroModules] 🔥 QuickCrypto is boosted by nitro!
+[QuickCrypto] Has libsodium disabled!
+
+> Configure project :react-native-nitro-modules
+[NitroModules] 🔥 Your app is boosted by nitro modules!
+
+> Task :expo-asset:preBuild UP-TO-DATE
+> Task :expo-modules-core:preBuild UP-TO-DATE
+> Task :expo-dev-client:preBuild UP-TO-DATE
+> Task :expo-dev-menu-interface:preBuild UP-TO-DATE
+> Task :expo-dev-launcher:preBuild UP-TO-DATE
+> Task :expo-dev-menu:preBuild UP-TO-DATE
+> Task :expo-manifests:preBuild UP-TO-DATE
+> Task :expo-json-utils:preBuild UP-TO-DATE
+> Task :expo-json-utils:preDebugBuild UP-TO-DATE
+> Task :expo-dev-launcher:preDebugBuild UP-TO-DATE
+> Task :expo:generatePackagesList UP-TO-DATE
+> Task :expo-asset:preDebugBuild UP-TO-DATE
+> Task :expo-dev-client:preDebugBuild UP-TO-DATE
+> Task :expo-dev-menu:preDebugBuild UP-TO-DATE
+> Task :expo-manifests:preDebugBuild UP-TO-DATE
+> Task :expo:preBuild UP-TO-DATE
+> Task :expo-dev-menu-interface:preDebugBuild UP-TO-DATE
+> Task :expo:preDebugBuild UP-TO-DATE
+> Task :expo-asset:writeDebugAarMetadata
+> Task :expo-modules-core:preDebugBuild UP-TO-DATE
+> Task :expo-dev-menu:writeDebugAarMetadata
+> Task :expo-updates-interface:preBuild UP-TO-DATE
+> Task :expo-updates-interface:preDebugBuild UP-TO-DATE
+> Task :expo-json-utils:writeDebugAarMetadata
+> Task :expo-dev-client:writeDebugAarMetadata
+> Task :expo:writeDebugAarMetadata
+> Task :expo-dev-menu-interface:writeDebugAarMetadata
+> Task :react-native-gesture-handler:generateCodegenSchemaFromJavaScript UP-TO-DATE
+> Task :react-native-hce:preBuild UP-TO-DATE
+> Task :react-native-hce:preDebugBuild UP-TO-DATE
+> Task :react-native-async-storage_async-storage:generateCodegenSchemaFromJavaScript UP-TO-DATE
+> Task :expo-manifests:writeDebugAarMetadata
+> Task :expo-dev-launcher:writeDebugAarMetadata
+> Task :expo-modules-core:writeDebugAarMetadata
+> Task :expo-updates-interface:writeDebugAarMetadata
+> Task :react-native-get-random-values:generateCodegenSchemaFromJavaScript UP-TO-DATE
+> Task :react-native-nfc-manager:preBuild UP-TO-DATE
+> Task :react-native-nfc-manager:preDebugBuild UP-TO-DATE
+> Task :react-native-async-storage_async-storage:generateCodegenArtifactsFromSchema UP-TO-DATE
+> Task :react-native-gesture-handler:generateCodegenArtifactsFromSchema UP-TO-DATE
+> Task :react-native-async-storage_async-storage:preBuild UP-TO-DATE
+> Task :react-native-hce:writeDebugAarMetadata
+> Task :react-native-get-random-values:generateCodegenArtifactsFromSchema UP-TO-DATE
+> Task :react-native-gesture-handler:preBuild UP-TO-DATE
+> Task :react-native-gesture-handler:preDebugBuild UP-TO-DATE
+> Task :react-native-async-storage_async-storage:preDebugBuild UP-TO-DATE
+> Task :react-native-get-random-values:preBuild UP-TO-DATE
+> Task :react-native-quick-base64:generateCodegenSchemaFromJavaScript UP-TO-DATE
+> Task :react-native-get-random-values:preDebugBuild UP-TO-DATE
+> Task :react-native-nitro-modules:generateCodegenSchemaFromJavaScript UP-TO-DATE
+> Task :react-native-nfc-manager:writeDebugAarMetadata
+> Task :react-native-async-storage_async-storage:writeDebugAarMetadata
+> Task :react-native-gesture-handler:writeDebugAarMetadata
+> Task :react-native-get-random-values:writeDebugAarMetadata
+> Task :react-native-quick-base64:generateCodegenArtifactsFromSchema UP-TO-DATE
+> Task :react-native-nitro-modules:generateCodegenArtifactsFromSchema UP-TO-DATE
+> Task :react-native-quick-base64:preBuild UP-TO-DATE
+> Task :react-native-safe-area-context:generateCodegenSchemaFromJavaScript UP-TO-DATE
+> Task :react-native-quick-base64:preDebugBuild UP-TO-DATE
+> Task :react-native-quick-crypto:generateCodegenSchemaFromJavaScript UP-TO-DATE
+> Task :react-native-quick-base64:writeDebugAarMetadata
+> Task :react-native-safe-area-context:generateCodegenArtifactsFromSchema UP-TO-DATE
+> Task :react-native-screens:generateCodegenSchemaFromJavaScript UP-TO-DATE
+> Task :react-native-safe-area-context:preBuild UP-TO-DATE
+> Task :react-native-safe-area-context:preDebugBuild UP-TO-DATE
+> Task :react-native-svg:generateCodegenSchemaFromJavaScript UP-TO-DATE
+> Task :react-native-view-shot:generateCodegenSchemaFromJavaScript UP-TO-DATE
+> Task :react-native-quick-crypto:generateCodegenArtifactsFromSchema UP-TO-DATE
+> Task :react-native-quick-crypto:preBuild UP-TO-DATE
+> Task :react-native-quick-crypto:preDebugBuild UP-TO-DATE
+> Task :react-native-quick-crypto:writeDebugAarMetadata UP-TO-DATE
+> Task :react-native-safe-area-context:writeDebugAarMetadata
+> Task :react-native-screens:generateCodegenArtifactsFromSchema UP-TO-DATE
+> Task :react-native-svg:generateCodegenArtifactsFromSchema UP-TO-DATE
+> Task :react-native-view-shot:generateCodegenArtifactsFromSchema UP-TO-DATE
+> Task :react-native-view-shot:preBuild UP-TO-DATE
+> Task :solana-mobile_mobile-wallet-adapter-protocol:generateCodegenSchemaFromJavaScript UP-TO-DATE
+> Task :react-native-screens:preBuild UP-TO-DATE
+> Task :react-native-screens:preDebugBuild UP-TO-DATE
+> Task :react-native-svg:preBuild UP-TO-DATE
+> Task :react-native-svg:preDebugBuild UP-TO-DATE
+> Task :react-native-nitro-modules:prepareHeaders UP-TO-DATE
+> Task :react-native-nitro-modules:preBuild UP-TO-DATE
+> Task :react-native-nitro-modules:preDebugBuild UP-TO-DATE
+> Task :react-native-view-shot:preDebugBuild UP-TO-DATE
+> Task :react-native-svg:writeDebugAarMetadata
+> Task :react-native-screens:writeDebugAarMetadata
+> Task :react-native-view-shot:writeDebugAarMetadata
+> Task :react-native-nitro-modules:writeDebugAarMetadata
+> Task :solana-mobile_mobile-wallet-adapter-protocol:generateCodegenArtifactsFromSchema UP-TO-DATE
+> Task :solana-mobile_mobile-wallet-adapter-protocol:preBuild UP-TO-DATE
+> Task :solana-mobile_mobile-wallet-adapter-protocol:preDebugBuild UP-TO-DATE
+> Task :solana-mobile_mobile-wallet-adapter-protocol:writeDebugAarMetadata UP-TO-DATE
+> Task :react-native-reanimated:assertMinimalReactNativeVersionTask
+> Task :react-native-reanimated:assertNewArchitectureEnabledTask SKIPPED
+> Task :expo-dev-launcher:generateDebugResValues FROM-CACHE
+> Task :expo-dev-client:generateDebugResValues FROM-CACHE
+> Task :expo-dev-menu:generateDebugResValues FROM-CACHE
+> Task :expo:generateDebugResValues FROM-CACHE
+> Task :expo-asset:generateDebugResValues FROM-CACHE
+> Task :expo-dev-client:generateDebugResources FROM-CACHE
+> Task :expo:generateDebugResources FROM-CACHE
+> Task :expo-dev-launcher:generateDebugResources FROM-CACHE
+> Task :expo-asset:generateDebugResources FROM-CACHE
+> Task :expo-dev-menu:generateDebugResources FROM-CACHE
+> Task :expo-dev-client:packageDebugResources FROM-CACHE
+> Task :expo-asset:packageDebugResources FROM-CACHE
+> Task :react-native-worklets:assertMinimalReactNativeVersionTask
+> Task :react-native-worklets:assertNewArchitectureEnabledTask SKIPPED
+> Task :expo-dev-menu-interface:generateDebugResValues FROM-CACHE
+> Task :react-native-worklets:generateCodegenSchemaFromJavaScript UP-TO-DATE
+> Task :expo-dev-menu-interface:generateDebugResources FROM-CACHE
+> Task :expo:packageDebugResources FROM-CACHE
+> Task :react-native-worklets:generateCodegenArtifactsFromSchema UP-TO-DATE
+> Task :expo-json-utils:generateDebugResValues FROM-CACHE
+> Task :expo-json-utils:generateDebugResources FROM-CACHE
+> Task :expo-dev-menu-interface:packageDebugResources FROM-CACHE
+> Task :expo-manifests:generateDebugResValues FROM-CACHE
+> Task :expo-dev-launcher:packageDebugResources FROM-CACHE
+> Task :expo-manifests:generateDebugResources FROM-CACHE
+> Task :expo-modules-core:generateDebugResValues FROM-CACHE
+> Task :react-native-worklets:prepareWorkletsHeadersForPrefabs UP-TO-DATE
+> Task :react-native-worklets:preBuild
+> Task :react-native-worklets:preDebugBuild
+> Task :react-native-worklets:writeDebugAarMetadata UP-TO-DATE
+> Task :expo-json-utils:packageDebugResources FROM-CACHE
+> Task :expo-constants:createExpoConfig
+> Task :expo-constants:preBuild
+> Task :expo-constants:preDebugBuild
+> Task :expo-updates-interface:generateDebugResValues FROM-CACHE
+> Task :expo-manifests:packageDebugResources FROM-CACHE
+> Task :expo-modules-core:generateDebugResources FROM-CACHE
+> Task :react-native-async-storage_async-storage:generateDebugResValues FROM-CACHE
+> Task :expo-updates-interface:generateDebugResources FROM-CACHE
+> Task :expo-constants:generateDebugResValues FROM-CACHE
+> Task :expo-constants:writeDebugAarMetadata
+> Task :react-native-async-storage_async-storage:generateDebugResources FROM-CACHE
+> Task :expo-constants:generateDebugResources FROM-CACHE
+> Task :expo-updates-interface:packageDebugResources FROM-CACHE
+> Task :expo-modules-core:packageDebugResources FROM-CACHE
+> Task :react-native-gesture-handler:generateDebugResValues FROM-CACHE
+> Task :react-native-gesture-handler:generateDebugResources FROM-CACHE
+> Task :react-native-reanimated:assertWorkletsVersionTask
+> Task :react-native-reanimated:generateCodegenSchemaFromJavaScript UP-TO-DATE
+> Task :expo-constants:packageDebugResources FROM-CACHE
+> Task :react-native-async-storage_async-storage:packageDebugResources FROM-CACHE
+> Task :react-native-get-random-values:generateDebugResValues FROM-CACHE
+> Task :react-native-reanimated:generateCodegenArtifactsFromSchema UP-TO-DATE
+> Task :react-native-hce:generateDebugResValues FROM-CACHE
+> Task :react-native-gesture-handler:packageDebugResources FROM-CACHE
+> Task :react-native-get-random-values:generateDebugResources FROM-CACHE
+> Task :react-native-nfc-manager:generateDebugResValues FROM-CACHE
+> Task :react-native-hce:generateDebugResources FROM-CACHE
+> Task :react-native-nfc-manager:generateDebugResources FROM-CACHE
+> Task :expo-dev-menu:packageDebugResources FROM-CACHE
+> Task :react-native-get-random-values:packageDebugResources FROM-CACHE
+> Task :react-native-nitro-modules:generateDebugResValues FROM-CACHE
+> Task :react-native-nfc-manager:packageDebugResources FROM-CACHE
+> Task :react-native-quick-base64:generateDebugResValues FROM-CACHE
+> Task :react-native-quick-crypto:generateDebugResValues UP-TO-DATE
+> Task :react-native-quick-base64:generateDebugResources FROM-CACHE
+> Task :react-native-nitro-modules:generateDebugResources FROM-CACHE
+> Task :react-native-reanimated:prepareReanimatedHeadersForPrefabs UP-TO-DATE
+> Task :react-native-reanimated:preBuild
+> Task :react-native-reanimated:preDebugBuild
+> Task :react-native-reanimated:writeDebugAarMetadata UP-TO-DATE
+> Task :react-native-quick-crypto:generateDebugResources UP-TO-DATE
+> Task :react-native-reanimated:generateDebugResValues UP-TO-DATE
+> Task :react-native-reanimated:generateDebugResources UP-TO-DATE
+> Task :react-native-reanimated:packageDebugResources UP-TO-DATE
+> Task :react-native-quick-crypto:packageDebugResources UP-TO-DATE
+> Task :react-native-nitro-modules:packageDebugResources FROM-CACHE
+> Task :react-native-quick-base64:packageDebugResources FROM-CACHE
+> Task :react-native-hce:packageDebugResources
+> Task :app:generateAutolinkingNewArchitectureFiles UP-TO-DATE
+> Task :react-native-screens:generateDebugResValues FROM-CACHE
+> Task :react-native-worklets:generateDebugResValues UP-TO-DATE
+> Task :react-native-svg:generateDebugResValues FROM-CACHE
+> Task :react-native-safe-area-context:generateDebugResValues FROM-CACHE
+> Task :app:generateAutolinkingPackageList UP-TO-DATE
+> Task :react-native-view-shot:generateDebugResValues FROM-CACHE
+> Task :react-native-worklets:generateDebugResources UP-TO-DATE
+> Task :react-native-safe-area-context:generateDebugResources FROM-CACHE
+> Task :app:generateCodegenSchemaFromJavaScript SKIPPED
+> Task :react-native-svg:generateDebugResources FROM-CACHE
+> Task :app:generateCodegenArtifactsFromSchema SKIPPED
+> Task :app:generateReactNativeEntryPoint UP-TO-DATE
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :react-native-worklets:packageDebugResources UP-TO-DATE
+> Task :app:mergeDebugNativeDebugMetadata NO-SOURCE
+> Task :react-native-view-shot:generateDebugResources FROM-CACHE
+> Task :solana-mobile_mobile-wallet-adapter-protocol:generateDebugResValues UP-TO-DATE
+> Task :app:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :solana-mobile_mobile-wallet-adapter-protocol:generateDebugResources UP-TO-DATE
+> Task :app:generateDebugBuildConfig UP-TO-DATE
+> Task :react-native-screens:generateDebugResources FROM-CACHE
+> Task :react-native-safe-area-context:packageDebugResources FROM-CACHE
+> Task :react-native-svg:packageDebugResources FROM-CACHE
+> Task :solana-mobile_mobile-wallet-adapter-protocol:packageDebugResources UP-TO-DATE
+> Task :expo-constants:extractDeepLinksDebug FROM-CACHE
+> Task :expo:extractDeepLinksDebug FROM-CACHE
+> Task :expo-asset:extractDeepLinksDebug FROM-CACHE
+> Task :react-native-view-shot:packageDebugResources FROM-CACHE
+> Task :expo-dev-client:extractDeepLinksDebug FROM-CACHE
+> Task :expo-dev-launcher:extractDeepLinksDebug FROM-CACHE
+> Task :expo:processDebugManifest FROM-CACHE
+> Task :expo-constants:processDebugManifest FROM-CACHE
+> Task :expo-asset:processDebugManifest FROM-CACHE
+> Task :expo-dev-menu-interface:extractDeepLinksDebug FROM-CACHE
+> Task :expo-manifests:extractDeepLinksDebug FROM-CACHE
+> Task :expo-json-utils:extractDeepLinksDebug FROM-CACHE
+> Task :expo-dev-client:processDebugManifest FROM-CACHE
+> Task :expo-modules-core:extractDeepLinksDebug FROM-CACHE
+> Task :expo-updates-interface:extractDeepLinksDebug FROM-CACHE
+> Task :react-native-async-storage_async-storage:extractDeepLinksDebug FROM-CACHE
+> Task :expo-dev-menu:extractDeepLinksDebug FROM-CACHE
+> Task :app:checkDebugAarMetadata UP-TO-DATE
+> Task :react-native-gesture-handler:extractDeepLinksDebug FROM-CACHE
+> Task :expo-dev-launcher:processDebugManifest FROM-CACHE
+> Task :expo-json-utils:processDebugManifest FROM-CACHE
+> Task :expo-manifests:processDebugManifest FROM-CACHE
+> Task :react-native-screens:packageDebugResources FROM-CACHE
+> Task :expo-dev-menu-interface:processDebugManifest FROM-CACHE
+> Task :expo-modules-core:processDebugManifest FROM-CACHE
+> Task :app:generateDebugResValues
+> Task :expo-updates-interface:processDebugManifest FROM-CACHE
+> Task :expo-dev-menu:processDebugManifest FROM-CACHE
+> Task :react-native-quick-crypto:extractDeepLinksDebug UP-TO-DATE
+> Task :react-native-quick-base64:extractDeepLinksDebug FROM-CACHE
+> Task :react-native-reanimated:extractDeepLinksDebug UP-TO-DATE
+> Task :react-native-hce:extractDeepLinksDebug FROM-CACHE
+> Task :react-native-nfc-manager:extractDeepLinksDebug FROM-CACHE
+> Task :react-native-get-random-values:extractDeepLinksDebug FROM-CACHE
+> Task :react-native-gesture-handler:processDebugManifest FROM-CACHE
+> Task :react-native-nitro-modules:extractDeepLinksDebug FROM-CACHE
+> Task :react-native-safe-area-context:extractDeepLinksDebug FROM-CACHE
+> Task :react-native-async-storage_async-storage:processDebugManifest FROM-CACHE
+> Task :react-native-screens:extractDeepLinksDebug FROM-CACHE
+> Task :react-native-quick-crypto:processDebugManifest UP-TO-DATE
+> Task :react-native-reanimated:processDebugManifest UP-TO-DATE
+> Task :react-native-nfc-manager:processDebugManifest FROM-CACHE
+> Task :react-native-worklets:extractDeepLinksDebug UP-TO-DATE
+> Task :app:mapDebugSourceSetPaths UP-TO-DATE
+> Task :solana-mobile_mobile-wallet-adapter-protocol:extractDeepLinksDebug UP-TO-DATE
+> Task :react-native-svg:extractDeepLinksDebug FROM-CACHE
+> Task :react-native-view-shot:extractDeepLinksDebug FROM-CACHE
+> Task :react-native-safe-area-context:processDebugManifest FROM-CACHE
+> Task :react-native-quick-base64:processDebugManifest FROM-CACHE
+> Task :react-native-get-random-values:processDebugManifest FROM-CACHE
+> Task :react-native-nitro-modules:processDebugManifest FROM-CACHE
+> Task :react-native-screens:processDebugManifest FROM-CACHE
+> Task :app:generateDebugResources UP-TO-DATE
+> Task :react-native-worklets:processDebugManifest UP-TO-DATE
+> Task :expo:compileDebugLibraryResources FROM-CACHE
+> Task :expo-asset:compileDebugLibraryResources FROM-CACHE
+> Task :expo-constants:compileDebugLibraryResources FROM-CACHE
+> Task :expo-dev-client:compileDebugLibraryResources FROM-CACHE
+> Task :expo:parseDebugLocalResources FROM-CACHE
+> Task :solana-mobile_mobile-wallet-adapter-protocol:processDebugManifest UP-TO-DATE
+> Task :react-native-svg:processDebugManifest FROM-CACHE
+> Task :react-native-view-shot:processDebugManifest FROM-CACHE
+> Task :expo-dev-launcher:compileDebugLibraryResources FROM-CACHE
+> Task :expo-dev-menu:compileDebugLibraryResources FROM-CACHE
+> Task :expo-asset:parseDebugLocalResources FROM-CACHE
+
+> Task :react-native-hce:processDebugManifest
+package="com.reactnativehce" found in source AndroidManifest.xml: /Users/admin/echo-mobile/node_modules/react-native-hce/android/src/main/AndroidManifest.xml.
+Setting the namespace via the package attribute in the source AndroidManifest.xml is no longer supported, and the value is ignored.
+Recommendation: remove package="com.reactnativehce" from the source AndroidManifest.xml: /Users/admin/echo-mobile/node_modules/react-native-hce/android/src/main/AndroidManifest.xml.
+
+> Task :expo-constants:parseDebugLocalResources FROM-CACHE
+> Task :expo-dev-client:parseDebugLocalResources FROM-CACHE
+> Task :expo-dev-menu-interface:compileDebugLibraryResources FROM-CACHE
+> Task :expo-json-utils:compileDebugLibraryResources FROM-CACHE
+> Task :expo:generateDebugRFile FROM-CACHE
+> Task :expo-dev-menu:parseDebugLocalResources FROM-CACHE
+> Task :expo-manifests:compileDebugLibraryResources FROM-CACHE
+> Task :expo-dev-launcher:parseDebugLocalResources FROM-CACHE
+> Task :expo-dev-menu-interface:parseDebugLocalResources FROM-CACHE
+> Task :expo-modules-core:compileDebugLibraryResources FROM-CACHE
+> Task :expo-json-utils:parseDebugLocalResources FROM-CACHE
+> Task :expo-asset:generateDebugRFile FROM-CACHE
+> Task :expo-manifests:parseDebugLocalResources FROM-CACHE
+> Task :expo-updates-interface:compileDebugLibraryResources FROM-CACHE
+> Task :expo-constants:generateDebugRFile FROM-CACHE
+> Task :expo-dev-menu:generateDebugRFile FROM-CACHE
+> Task :expo-dev-client:generateDebugRFile FROM-CACHE
+> Task :expo-updates-interface:parseDebugLocalResources FROM-CACHE
+> Task :expo-modules-core:parseDebugLocalResources FROM-CACHE
+> Task :react-native-gesture-handler:compileDebugLibraryResources FROM-CACHE
+> Task :react-native-async-storage_async-storage:compileDebugLibraryResources FROM-CACHE
+> Task :expo-dev-menu-interface:generateDebugRFile FROM-CACHE
+> Task :react-native-get-random-values:compileDebugLibraryResources FROM-CACHE
+> Task :expo-dev-launcher:generateDebugRFile FROM-CACHE
+> Task :react-native-hce:compileDebugLibraryResources FROM-CACHE
+> Task :react-native-gesture-handler:parseDebugLocalResources FROM-CACHE
+> Task :react-native-nfc-manager:compileDebugLibraryResources FROM-CACHE
+> Task :expo-json-utils:generateDebugRFile FROM-CACHE
+> Task :expo-manifests:generateDebugRFile FROM-CACHE
+> Task :react-native-get-random-values:parseDebugLocalResources FROM-CACHE
+> Task :react-native-async-storage_async-storage:parseDebugLocalResources FROM-CACHE
+> Task :react-native-quick-crypto:compileDebugLibraryResources UP-TO-DATE
+> Task :react-native-nitro-modules:compileDebugLibraryResources FROM-CACHE
+> Task :react-native-quick-base64:compileDebugLibraryResources FROM-CACHE
+> Task :expo-modules-core:generateDebugRFile FROM-CACHE
+> Task :react-native-nfc-manager:parseDebugLocalResources FROM-CACHE
+> Task :react-native-hce:parseDebugLocalResources FROM-CACHE
+> Task :expo-updates-interface:generateDebugRFile FROM-CACHE
+> Task :react-native-quick-crypto:parseDebugLocalResources UP-TO-DATE
+> Task :react-native-reanimated:compileDebugLibraryResources UP-TO-DATE
+> Task :react-native-quick-base64:parseDebugLocalResources FROM-CACHE
+> Task :react-native-nitro-modules:parseDebugLocalResources FROM-CACHE
+> Task :react-native-safe-area-context:compileDebugLibraryResources FROM-CACHE
+> Task :react-native-gesture-handler:generateDebugRFile FROM-CACHE
+> Task :react-native-get-random-values:generateDebugRFile FROM-CACHE
+> Task :react-native-reanimated:parseDebugLocalResources UP-TO-DATE
+> Task :react-native-async-storage_async-storage:generateDebugRFile FROM-CACHE
+> Task :react-native-quick-crypto:generateDebugRFile UP-TO-DATE
+> Task :react-native-nfc-manager:generateDebugRFile FROM-CACHE
+> Task :react-native-safe-area-context:parseDebugLocalResources FROM-CACHE
+> Task :react-native-worklets:compileDebugLibraryResources UP-TO-DATE
+> Task :react-native-reanimated:generateDebugRFile UP-TO-DATE
+> Task :expo:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :react-native-svg:compileDebugLibraryResources FROM-CACHE
+> Task :solana-mobile_mobile-wallet-adapter-protocol:compileDebugLibraryResources UP-TO-DATE
+> Task :react-native-quick-base64:generateDebugRFile FROM-CACHE
+> Task :expo-asset:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :react-native-worklets:parseDebugLocalResources UP-TO-DATE
+> Task :solana-mobile_mobile-wallet-adapter-protocol:parseDebugLocalResources UP-TO-DATE
+> Task :react-native-nitro-modules:generateDebugRFile FROM-CACHE
+> Task :expo-modules-core:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :react-native-safe-area-context:generateDebugRFile FROM-CACHE
+> Task :expo-constants:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :react-native-worklets:generateDebugRFile UP-TO-DATE
+> Task :expo-dev-client:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :solana-mobile_mobile-wallet-adapter-protocol:generateDebugRFile UP-TO-DATE
+> Task :expo-dev-launcher:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :react-native-hce:generateDebugRFile
+> Task :expo-dev-menu:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :react-native-screens:compileDebugLibraryResources FROM-CACHE
+> Task :react-native-svg:parseDebugLocalResources FROM-CACHE
+> Task :expo:generateDebugBuildConfig FROM-CACHE
+> Task :expo-modules-core:generateDebugBuildConfig FROM-CACHE
+> Task :expo-asset:generateDebugBuildConfig FROM-CACHE
+> Task :expo-dev-menu:generateDebugBuildConfig FROM-CACHE
+> Task :expo-dev-menu-interface:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :expo-dev-client:dataBindingMergeDependencyArtifactsDebug
+> Task :expo-json-utils:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :expo-constants:generateDebugBuildConfig FROM-CACHE
+> Task :expo-asset:javaPreCompileDebug FROM-CACHE
+> Task :react-native-svg:generateDebugRFile FROM-CACHE
+> Task :expo-dev-launcher:dataBindingMergeDependencyArtifactsDebug
+> Task :expo-dev-client:generateDebugBuildConfig FROM-CACHE
+> Task :expo-manifests:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :expo-constants:javaPreCompileDebug FROM-CACHE
+> Task :expo-updates-interface:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :expo-json-utils:generateDebugBuildConfig FROM-CACHE
+> Task :expo-dev-menu:javaPreCompileDebug FROM-CACHE
+> Task :expo-json-utils:javaPreCompileDebug FROM-CACHE
+> Task :expo-updates-interface:generateDebugBuildConfig FROM-CACHE
+> Task :expo:javaPreCompileDebug FROM-CACHE
+> Task :react-native-gesture-handler:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :react-native-async-storage_async-storage:generateDebugBuildConfig FROM-CACHE
+> Task :expo-dev-client:dataBindingGenBaseClassesDebug FROM-CACHE
+> Task :expo-updates-interface:javaPreCompileDebug FROM-CACHE
+> Task :expo-dev-launcher:generateDebugBuildConfig FROM-CACHE
+> Task :react-native-gesture-handler:generateDebugBuildConfig FROM-CACHE
+> Task :react-native-async-storage_async-storage:javaPreCompileDebug FROM-CACHE
+> Task :react-native-reanimated:generateDebugBuildConfig UP-TO-DATE
+> Task :react-native-worklets:generateDebugBuildConfig UP-TO-DATE
+> Task :react-native-reanimated:javaPreCompileDebug UP-TO-DATE
+> Task :expo-dev-client:javaPreCompileDebug FROM-CACHE
+> Task :react-native-worklets:javaPreCompileDebug UP-TO-DATE
+> Task :react-native-gesture-handler:javaPreCompileDebug FROM-CACHE
+> Task :react-native-svg:generateDebugBuildConfig FROM-CACHE
+> Task :expo-dev-menu-interface:generateDebugBuildConfig FROM-CACHE
+> Task :react-native-screens:parseDebugLocalResources FROM-CACHE
+> Task :expo-dev-menu-interface:javaPreCompileDebug FROM-CACHE
+> Task :react-native-view-shot:compileDebugLibraryResources FROM-CACHE
+> Task :react-native-hce:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :react-native-svg:javaPreCompileDebug FROM-CACHE
+> Task :expo-manifests:generateDebugBuildConfig FROM-CACHE
+> Task :react-native-get-random-values:generateDebugBuildConfig FROM-CACHE
+> Task :react-native-screens:generateDebugRFile FROM-CACHE
+> Task :react-native-get-random-values:javaPreCompileDebug FROM-CACHE
+> Task :react-native-nfc-manager:generateDebugBuildConfig FROM-CACHE
+> Task :react-native-worklets:compileDebugJavaWithJavac UP-TO-DATE
+> Task :react-native-worklets:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :expo-manifests:javaPreCompileDebug FROM-CACHE
+> Task :react-native-nitro-modules:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :react-native-reanimated:compileDebugJavaWithJavac UP-TO-DATE
+> Task :react-native-async-storage_async-storage:compileDebugJavaWithJavac FROM-CACHE
+> Task :react-native-reanimated:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :react-native-hce:generateDebugBuildConfig
+> Task :react-native-quick-base64:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :react-native-view-shot:parseDebugLocalResources FROM-CACHE
+> Task :react-native-nfc-manager:javaPreCompileDebug FROM-CACHE
+> Task :react-native-quick-base64:generateDebugBuildConfig FROM-CACHE
+> Task :react-native-nitro-modules:generateDebugBuildConfig FROM-CACHE
+> Task :react-native-async-storage_async-storage:bundleLibCompileToJarDebug
+> Task :react-native-quick-crypto:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :expo-dev-launcher:dataBindingGenBaseClassesDebug FROM-CACHE
+> Task :expo-dev-launcher:checkApolloVersions UP-TO-DATE
+> Task :react-native-hce:compileDebugKotlin NO-SOURCE
+> Task :react-native-quick-crypto:generateDebugBuildConfig UP-TO-DATE
+> Task :expo-dev-launcher:generateServiceApolloOptions UP-TO-DATE
+> Task :react-native-quick-base64:compileDebugKotlin NO-SOURCE
+> Task :react-native-quick-crypto:javaPreCompileDebug UP-TO-DATE
+> Task :react-native-safe-area-context:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :react-native-hce:javaPreCompileDebug FROM-CACHE
+> Task :react-native-quick-base64:javaPreCompileDebug FROM-CACHE
+> Task :react-native-safe-area-context:generateDebugBuildConfig FROM-CACHE
+> Task :react-native-get-random-values:compileDebugJavaWithJavac FROM-CACHE
+> Task :expo-dev-launcher:generateServiceApolloSources UP-TO-DATE
+> Task :expo-dev-launcher:javaPreCompileDebug FROM-CACHE
+> Task :react-native-screens:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :react-native-get-random-values:bundleLibCompileToJarDebug
+> Task :solana-mobile_mobile-wallet-adapter-protocol:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :solana-mobile_mobile-wallet-adapter-protocol:generateDebugBuildConfig UP-TO-DATE
+> Task :react-native-quick-base64:compileDebugJavaWithJavac FROM-CACHE
+> Task :react-native-screens:generateDebugBuildConfig FROM-CACHE
+> Task :react-native-view-shot:generateDebugRFile FROM-CACHE
+> Task :react-native-view-shot:generateDebugBuildConfig FROM-CACHE
+> Task :react-native-nfc-manager:compileDebugJavaWithJavac FROM-CACHE
+> Task :react-native-view-shot:javaPreCompileDebug FROM-CACHE
+> Task :react-native-nfc-manager:bundleLibCompileToJarDebug
+> Task :react-native-quick-base64:bundleLibCompileToJarDebug
+> Task :expo:mergeDebugShaders
+> Task :expo:compileDebugShaders NO-SOURCE
+> Task :expo:generateDebugAssets UP-TO-DATE
+> Task :expo:mergeDebugAssets
+> Task :solana-mobile_mobile-wallet-adapter-protocol:compileDebugKotlin UP-TO-DATE
+> Task :expo-constants:mergeDebugShaders
+> Task :solana-mobile_mobile-wallet-adapter-protocol:javaPreCompileDebug UP-TO-DATE
+> Task :expo-asset:mergeDebugShaders
+> Task :react-native-view-shot:compileDebugJavaWithJavac FROM-CACHE
+> Task :expo-constants:compileDebugShaders NO-SOURCE
+> Task :react-native-view-shot:bundleLibCompileToJarDebug
+> Task :expo-constants:generateDebugAssets UP-TO-DATE
+> Task :expo-asset:compileDebugShaders NO-SOURCE
+> Task :expo-asset:generateDebugAssets UP-TO-DATE
+> Task :expo-asset:mergeDebugAssets
+> Task :expo-dev-client:mergeDebugShaders
+> Task :expo-dev-client:compileDebugShaders NO-SOURCE
+> Task :expo-dev-client:generateDebugAssets UP-TO-DATE
+> Task :solana-mobile_mobile-wallet-adapter-protocol:compileDebugJavaWithJavac UP-TO-DATE
+> Task :solana-mobile_mobile-wallet-adapter-protocol:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :expo-dev-client:mergeDebugAssets
+> Task :expo-dev-launcher:mergeDebugShaders
+> Task :expo-dev-launcher:compileDebugShaders NO-SOURCE
+> Task :expo-dev-launcher:generateDebugAssets UP-TO-DATE
+> Task :expo-dev-menu:mergeDebugShaders
+> Task :expo-dev-menu:compileDebugShaders NO-SOURCE
+> Task :expo-dev-menu:generateDebugAssets UP-TO-DATE
+> Task :expo-dev-menu-interface:mergeDebugShaders
+> Task :expo-dev-menu-interface:compileDebugShaders NO-SOURCE
+> Task :expo-dev-menu-interface:generateDebugAssets UP-TO-DATE
+> Task :expo-dev-launcher:mergeDebugAssets
+> Task :expo-dev-menu-interface:mergeDebugAssets
+> Task :expo-dev-menu:mergeDebugAssets
+> Task :expo-constants:mergeDebugAssets
+> Task :expo-json-utils:mergeDebugShaders
+> Task :expo-json-utils:compileDebugShaders NO-SOURCE
+> Task :expo-updates-interface:mergeDebugShaders
+> Task :expo-json-utils:generateDebugAssets UP-TO-DATE
+> Task :react-native-async-storage_async-storage:mergeDebugShaders
+> Task :expo-updates-interface:compileDebugShaders NO-SOURCE
+> Task :expo-updates-interface:generateDebugAssets UP-TO-DATE
+> Task :react-native-async-storage_async-storage:compileDebugShaders NO-SOURCE
+> Task :react-native-async-storage_async-storage:generateDebugAssets UP-TO-DATE
+> Task :react-native-async-storage_async-storage:mergeDebugAssets
+> Task :expo-json-utils:mergeDebugAssets
+> Task :react-native-gesture-handler:mergeDebugShaders
+> Task :react-native-gesture-handler:compileDebugShaders NO-SOURCE
+> Task :react-native-get-random-values:mergeDebugShaders
+> Task :expo-updates-interface:mergeDebugAssets
+> Task :react-native-gesture-handler:generateDebugAssets UP-TO-DATE
+> Task :react-native-get-random-values:compileDebugShaders NO-SOURCE
+> Task :react-native-get-random-values:generateDebugAssets UP-TO-DATE
+> Task :react-native-nfc-manager:mergeDebugShaders
+> Task :react-native-get-random-values:mergeDebugAssets
+> Task :react-native-gesture-handler:mergeDebugAssets
+> Task :react-native-nfc-manager:compileDebugShaders NO-SOURCE
+> Task :react-native-nfc-manager:generateDebugAssets UP-TO-DATE
+> Task :react-native-quick-crypto:mergeDebugShaders UP-TO-DATE
+> Task :react-native-quick-crypto:compileDebugShaders NO-SOURCE
+> Task :react-native-quick-crypto:generateDebugAssets UP-TO-DATE
+> Task :react-native-quick-crypto:mergeDebugAssets UP-TO-DATE
+> Task :react-native-nfc-manager:mergeDebugAssets
+> Task :react-native-reanimated:mergeDebugShaders UP-TO-DATE
+> Task :react-native-reanimated:compileDebugShaders NO-SOURCE
+> Task :react-native-reanimated:generateDebugAssets UP-TO-DATE
+> Task :react-native-reanimated:mergeDebugAssets UP-TO-DATE
+> Task :react-native-worklets:mergeDebugShaders UP-TO-DATE
+> Task :react-native-worklets:compileDebugShaders NO-SOURCE
+> Task :react-native-worklets:generateDebugAssets UP-TO-DATE
+> Task :react-native-worklets:mergeDebugAssets UP-TO-DATE
+> Task :react-native-quick-base64:mergeDebugShaders
+> Task :solana-mobile_mobile-wallet-adapter-protocol:mergeDebugShaders UP-TO-DATE
+> Task :solana-mobile_mobile-wallet-adapter-protocol:compileDebugShaders NO-SOURCE
+> Task :solana-mobile_mobile-wallet-adapter-protocol:generateDebugAssets UP-TO-DATE
+> Task :solana-mobile_mobile-wallet-adapter-protocol:mergeDebugAssets UP-TO-DATE
+> Task :solana-mobile_mobile-wallet-adapter-protocol:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :react-native-quick-base64:compileDebugShaders NO-SOURCE
+> Task :react-native-quick-base64:generateDebugAssets UP-TO-DATE
+> Task :react-native-quick-base64:mergeDebugAssets
+> Task :react-native-worklets:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :react-native-reanimated:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :react-native-quick-base64:bundleLibRuntimeToJarDebug
+> Task :react-native-async-storage_async-storage:bundleLibRuntimeToJarDebug
+> Task :react-native-view-shot:mergeDebugShaders
+> Task :react-native-view-shot:compileDebugShaders NO-SOURCE
+> Task :react-native-view-shot:generateDebugAssets UP-TO-DATE
+> Task :expo-manifests:mergeDebugShaders
+> Task :expo-manifests:compileDebugShaders NO-SOURCE
+> Task :expo-manifests:generateDebugAssets UP-TO-DATE
+> Task :react-native-view-shot:mergeDebugAssets
+> Task :expo-manifests:mergeDebugAssets
+> Task :react-native-get-random-values:bundleLibRuntimeToJarDebug
+> Task :react-native-view-shot:bundleLibRuntimeToJarDebug
+> Task :react-native-nfc-manager:bundleLibRuntimeToJarDebug
+> Task :react-native-safe-area-context:compileDebugKotlin FROM-CACHE
+> Task :react-native-nitro-modules:compileDebugKotlin FROM-CACHE
+> Task :react-native-get-random-values:processDebugJavaRes NO-SOURCE
+> Task :react-native-nfc-manager:processDebugJavaRes NO-SOURCE
+> Task :react-native-quick-base64:processDebugJavaRes NO-SOURCE
+> Task :react-native-reanimated:processDebugJavaRes NO-SOURCE
+> Task :react-native-async-storage_async-storage:processDebugJavaRes NO-SOURCE
+> Task :react-native-view-shot:processDebugJavaRes NO-SOURCE
+> Task :react-native-nitro-modules:javaPreCompileDebug FROM-CACHE
+> Task :react-native-worklets:processDebugJavaRes NO-SOURCE
+> Task :react-native-svg:compileDebugJavaWithJavac FROM-CACHE
+> Task :solana-mobile_mobile-wallet-adapter-protocol:processDebugJavaRes UP-TO-DATE
+> Task :expo-constants:mergeDebugJniLibFolders
+> Task :expo-asset:mergeDebugJniLibFolders
+> Task :expo-asset:mergeDebugNativeLibs NO-SOURCE
+> Task :react-native-svg:mergeDebugShaders
+> Task :react-native-svg:compileDebugShaders NO-SOURCE
+> Task :react-native-svg:generateDebugAssets UP-TO-DATE
+> Task :expo-asset:copyDebugJniLibsProjectOnly
+> Task :react-native-nitro-modules:compileDebugJavaWithJavac FROM-CACHE
+> Task :expo-constants:mergeDebugNativeLibs NO-SOURCE
+> Task :expo-constants:copyDebugJniLibsProjectOnly
+> Task :react-native-svg:mergeDebugAssets
+> Task :expo-dev-client:mergeDebugJniLibFolders
+> Task :react-native-nitro-modules:bundleLibCompileToJarDebug
+> Task :react-native-svg:processDebugJavaRes NO-SOURCE
+> Task :react-native-svg:bundleLibCompileToJarDebug
+> Task :expo-dev-client:mergeDebugNativeLibs NO-SOURCE
+> Task :expo:mergeDebugJniLibFolders
+> Task :react-native-nitro-modules:mergeDebugShaders
+> Task :react-native-svg:bundleLibRuntimeToJarDebug
+> Task :react-native-nitro-modules:compileDebugShaders NO-SOURCE
+> Task :react-native-nitro-modules:generateDebugAssets UP-TO-DATE
+> Task :expo-dev-client:copyDebugJniLibsProjectOnly
+> Task :expo:mergeDebugNativeLibs NO-SOURCE
+> Task :expo:copyDebugJniLibsProjectOnly
+> Task :react-native-safe-area-context:javaPreCompileDebug FROM-CACHE
+> Task :react-native-nitro-modules:mergeDebugAssets
+> Task :react-native-quick-crypto:compileDebugKotlin UP-TO-DATE
+> Task :react-native-nitro-modules:bundleLibRuntimeToJarDebug
+> Task :react-native-quick-crypto:compileDebugJavaWithJavac UP-TO-DATE
+> Task :react-native-quick-crypto:bundleLibCompileToJarDebug UP-TO-DATE
+> Task :react-native-quick-crypto:bundleLibRuntimeToJarDebug UP-TO-DATE
+> Task :react-native-safe-area-context:compileDebugJavaWithJavac FROM-CACHE
+> Task :react-native-nitro-modules:processDebugJavaRes
+> Task :react-native-quick-crypto:processDebugJavaRes UP-TO-DATE
+> Task :react-native-safe-area-context:bundleLibCompileToJarDebug
+> Task :react-native-safe-area-context:mergeDebugShaders
+> Task :react-native-safe-area-context:compileDebugShaders NO-SOURCE
+> Task :react-native-safe-area-context:generateDebugAssets UP-TO-DATE
+> Task :expo-dev-menu-interface:mergeDebugJniLibFolders
+> Task :expo-dev-menu-interface:mergeDebugNativeLibs NO-SOURCE
+> Task :react-native-safe-area-context:mergeDebugAssets
+> Task :expo-dev-menu-interface:copyDebugJniLibsProjectOnly
+> Task :react-native-safe-area-context:processDebugJavaRes
+> Task :react-native-safe-area-context:bundleLibRuntimeToJarDebug
+> Task :expo-json-utils:mergeDebugJniLibFolders
+> Task :expo-json-utils:mergeDebugNativeLibs NO-SOURCE
+> Task :expo-json-utils:copyDebugJniLibsProjectOnly
+> Task :expo-updates-interface:mergeDebugJniLibFolders
+> Task :expo-manifests:mergeDebugJniLibFolders
+> Task :expo-manifests:mergeDebugNativeLibs NO-SOURCE
+> Task :expo-updates-interface:mergeDebugNativeLibs NO-SOURCE
+> Task :expo-manifests:copyDebugJniLibsProjectOnly
+> Task :expo-updates-interface:copyDebugJniLibsProjectOnly
+> Task :expo-dev-menu:mergeDebugJniLibFolders
+> Task :react-native-async-storage_async-storage:mergeDebugJniLibFolders
+> Task :react-native-get-random-values:mergeDebugJniLibFolders
+> Task :react-native-get-random-values:mergeDebugNativeLibs NO-SOURCE
+> Task :react-native-async-storage_async-storage:mergeDebugNativeLibs NO-SOURCE
+> Task :react-native-async-storage_async-storage:copyDebugJniLibsProjectOnly
+> Task :react-native-get-random-values:copyDebugJniLibsProjectOnly
+> Task :expo-dev-menu:mergeDebugNativeLibs NO-SOURCE
+> Task :react-native-nfc-manager:mergeDebugJniLibFolders
+> Task :react-native-nfc-manager:mergeDebugNativeLibs NO-SOURCE
+> Task :expo-dev-menu:copyDebugJniLibsProjectOnly
+> Task :react-native-nfc-manager:copyDebugJniLibsProjectOnly
+> Task :react-native-reanimated:mergeDebugJniLibFolders UP-TO-DATE
+> Task :react-native-quick-crypto:mergeDebugJniLibFolders UP-TO-DATE
+> Task :react-native-safe-area-context:mergeDebugJniLibFolders
+> Task :react-native-safe-area-context:mergeDebugNativeLibs NO-SOURCE
+> Task :expo-dev-launcher:mergeDebugJniLibFolders
+> Task :expo-dev-launcher:mergeDebugNativeLibs NO-SOURCE
+> Task :react-native-svg:mergeDebugJniLibFolders
+> Task :react-native-svg:mergeDebugNativeLibs NO-SOURCE
+> Task :expo-dev-launcher:copyDebugJniLibsProjectOnly
+> Task :react-native-svg:copyDebugJniLibsProjectOnly
+> Task :react-native-view-shot:mergeDebugJniLibFolders
+> Task :react-native-view-shot:mergeDebugNativeLibs NO-SOURCE
+> Task :react-native-view-shot:copyDebugJniLibsProjectOnly
+> Task :solana-mobile_mobile-wallet-adapter-protocol:mergeDebugJniLibFolders UP-TO-DATE
+> Task :solana-mobile_mobile-wallet-adapter-protocol:mergeDebugNativeLibs NO-SOURCE
+> Task :solana-mobile_mobile-wallet-adapter-protocol:copyDebugJniLibsProjectOnly UP-TO-DATE
+> Task :react-native-safe-area-context:copyDebugJniLibsProjectOnly
+> Task :react-native-screens:compileDebugKotlin FROM-CACHE
+> Task :react-native-quick-base64:configureCMakeDebug[arm64-v8a]
+> Task :react-native-screens:javaPreCompileDebug FROM-CACHE
+> Task :react-native-screens:compileDebugJavaWithJavac FROM-CACHE
+> Task :react-native-screens:mergeDebugShaders
+> Task :react-native-screens:compileDebugShaders NO-SOURCE
+> Task :react-native-screens:generateDebugAssets UP-TO-DATE
+> Task :react-native-screens:mergeDebugAssets
+> Task :react-native-screens:bundleLibCompileToJarDebug
+> Task :react-native-screens:processDebugJavaRes
+> Task :react-native-gesture-handler:compileDebugKotlin FROM-CACHE
+> Task :react-native-screens:bundleLibRuntimeToJarDebug
+> Task :react-native-screens:configureCMakeDebug[arm64-v8a]
+> Task :react-native-gesture-handler:compileDebugJavaWithJavac FROM-CACHE
+> Task :react-native-gesture-handler:bundleLibCompileToJarDebug
+> Task :react-native-gesture-handler:processDebugJavaRes
+> Task :react-native-gesture-handler:bundleLibRuntimeToJarDebug
+> Task :react-native-gesture-handler:mergeDebugJniLibFolders
+
+> Task :react-native-hce:compileDebugJavaWithJavac
+Note: /Users/admin/echo-mobile/node_modules/react-native-hce/android/src/main/java/com/reactnativehce/HcePackage.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+
+> Task :expo-modules-core:compileDebugKotlin FROM-CACHE
+> Task :expo-modules-core:javaPreCompileDebug FROM-CACHE
+> Task :react-native-hce:mergeDebugShaders
+> Task :react-native-hce:compileDebugShaders NO-SOURCE
+> Task :react-native-hce:bundleLibCompileToJarDebug
+> Task :react-native-hce:generateDebugAssets UP-TO-DATE
+> Task :react-native-hce:mergeDebugAssets
+> Task :react-native-hce:processDebugJavaRes NO-SOURCE
+> Task :react-native-hce:bundleLibRuntimeToJarDebug
+> Task :react-native-hce:mergeDebugJniLibFolders
+> Task :react-native-hce:mergeDebugNativeLibs NO-SOURCE
+> Task :react-native-hce:copyDebugJniLibsProjectOnly
+> Task :expo-modules-core:compileDebugJavaWithJavac FROM-CACHE
+> Task :expo-modules-core:mergeDebugShaders
+> Task :expo-modules-core:compileDebugShaders NO-SOURCE
+> Task :expo-modules-core:generateDebugAssets UP-TO-DATE
+> Task :expo-modules-core:mergeDebugAssets
+> Task :expo-modules-core:processDebugJavaRes
+> Task :expo-modules-core:configureCMakeDebug[arm64-v8a]
+> Task :expo-modules-core:bundleLibRuntimeToJarDebug
+> Task :expo-modules-core:bundleLibCompileToJarDebug
+> Task :react-native-nitro-modules:configureCMakeDebug[arm64-v8a]
+> Task :react-native-worklets:configureCMakeDebug[arm64-v8a]
+> Task :react-native-quick-base64:buildCMakeDebug[arm64-v8a]
+> Task :react-native-quick-base64:mergeDebugJniLibFolders
+> Task :react-native-quick-base64:mergeDebugNativeLibs
+> Task :react-native-quick-base64:copyDebugJniLibsProjectOnly
+> Task :app:packageDebugResources
+> Task :app:createDebugCompatibleScreenManifests UP-TO-DATE
+> Task :app:extractDeepLinksDebug UP-TO-DATE
+> Task :app:parseDebugLocalResources
+> Task :app:processDebugMainManifest UP-TO-DATE
+> Task :app:processDebugManifest UP-TO-DATE
+> Task :app:processDebugManifestForPackage UP-TO-DATE
+> Task :app:javaPreCompileDebug UP-TO-DATE
+> Task :app:mergeDebugShaders UP-TO-DATE
+> Task :app:compileDebugShaders NO-SOURCE
+> Task :app:generateDebugAssets UP-TO-DATE
+> Task :app:mergeDebugAssets UP-TO-DATE
+> Task :app:compressDebugAssets UP-TO-DATE
+> Task :app:desugarDebugFileDependencies UP-TO-DATE
+> Task :app:checkDebugDuplicateClasses UP-TO-DATE
+> Task :app:mergeExtDexDebug UP-TO-DATE
+> Task :app:mergeDebugJniLibFolders UP-TO-DATE
+> Task :app:validateSigningDebug UP-TO-DATE
+> Task :app:writeDebugAppMetadata UP-TO-DATE
+> Task :app:writeDebugSigningConfigVersions UP-TO-DATE
+> Task :app:mergeDebugResources
+> Task :app:processDebugResources
+> Task :react-native-screens:buildCMakeDebug[arm64-v8a]
+> Task :react-native-screens:mergeDebugJniLibFolders
+> Task :react-native-screens:mergeDebugNativeLibs
+> Task :react-native-screens:copyDebugJniLibsProjectOnly
+> Task :react-native-nitro-modules:buildCMakeDebug[arm64-v8a]
+> Task :react-native-nitro-modules:externalNativeBuildDebug
+> Task :react-native-nitro-modules:generateJsonModelDebug
+> Task :react-native-nitro-modules:prefabDebugConfigurePackage
+> Task :react-native-nitro-modules:prefabDebugPackage
+> Task :react-native-nitro-modules:mergeDebugJniLibFolders
+> Task :react-native-nitro-modules:mergeDebugNativeLibs
+> Task :expo-modules-core:buildCMakeDebug[arm64-v8a]
+> Task :expo-modules-core:mergeDebugJniLibFolders
+> Task :expo-dev-client:compileDebugKotlin NO-SOURCE
+> Task :expo-dev-client:compileDebugJavaWithJavac FROM-CACHE
+> Task :expo-dev-client:bundleLibCompileToJarDebug
+> Task :react-native-nitro-modules:copyDebugJniLibsProjectOnly
+> Task :expo-dev-client:bundleLibRuntimeToJarDebug
+> Task :expo-dev-client:processDebugJavaRes NO-SOURCE
+> Task :react-native-worklets:buildCMakeDebug[arm64-v8a][worklets]
+> Task :react-native-worklets:externalNativeBuildDebug
+> Task :react-native-worklets:generateJsonModelDebug
+> Task :react-native-worklets:prefabDebugConfigurePackage
+> Task :expo-json-utils:compileDebugKotlin FROM-CACHE
+> Task :expo-updates-interface:compileDebugKotlin FROM-CACHE
+> Task :expo-json-utils:compileDebugJavaWithJavac FROM-CACHE
+> Task :expo-updates-interface:compileDebugJavaWithJavac FROM-CACHE
+> Task :expo-dev-menu-interface:compileDebugKotlin FROM-CACHE
+> Task :expo-json-utils:bundleLibCompileToJarDebug
+> Task :expo-updates-interface:bundleLibCompileToJarDebug
+> Task :expo-json-utils:bundleLibRuntimeToJarDebug
+> Task :expo-updates-interface:bundleLibRuntimeToJarDebug
+> Task :expo-dev-menu-interface:compileDebugJavaWithJavac FROM-CACHE
+> Task :expo-json-utils:processDebugJavaRes
+> Task :expo-asset:compileDebugKotlin FROM-CACHE
+> Task :expo-constants:compileDebugKotlin FROM-CACHE
+> Task :expo-updates-interface:processDebugJavaRes
+> Task :expo-dev-menu-interface:bundleLibCompileToJarDebug
+> Task :expo-dev-menu-interface:bundleLibRuntimeToJarDebug
+> Task :expo-constants:compileDebugJavaWithJavac FROM-CACHE
+> Task :expo-asset:compileDebugJavaWithJavac FROM-CACHE
+> Task :expo-dev-menu-interface:processDebugJavaRes
+> Task :expo-constants:bundleLibCompileToJarDebug
+> Task :expo-asset:bundleLibCompileToJarDebug
+> Task :expo-asset:processDebugJavaRes
+> Task :expo-asset:bundleLibRuntimeToJarDebug
+> Task :expo-constants:bundleLibRuntimeToJarDebug
+> Task :expo-constants:processDebugJavaRes
+> Task :expo-manifests:compileDebugKotlin FROM-CACHE
+> Task :expo-manifests:compileDebugJavaWithJavac FROM-CACHE
+> Task :expo-manifests:bundleLibCompileToJarDebug
+> Task :expo-manifests:bundleLibRuntimeToJarDebug
+> Task :expo-manifests:processDebugJavaRes
+> Task :react-native-worklets:prefabDebugPackage
+> Task :react-native-worklets:mergeDebugJniLibFolders UP-TO-DATE
+> Task :expo-modules-core:mergeDebugNativeLibs
+> Task :expo-modules-core:copyDebugJniLibsProjectOnly
+> Task :expo-dev-menu:compileDebugKotlin FROM-CACHE
+> Task :expo-dev-menu:compileDebugJavaWithJavac FROM-CACHE
+> Task :expo-dev-menu:processDebugJavaRes
+> Task :expo-dev-menu:bundleLibCompileToJarDebug
+> Task :expo-dev-menu:bundleLibRuntimeToJarDebug
+> Task :expo-dev-launcher:compileDebugKotlin FROM-CACHE
+> Task :expo-dev-launcher:compileDebugJavaWithJavac FROM-CACHE
+> Task :expo-dev-launcher:processDebugJavaRes
+> Task :expo-dev-launcher:bundleLibRuntimeToJarDebug
+> Task :expo-dev-launcher:bundleLibCompileToJarDebug
+> Task :react-native-quick-crypto:configureCMakeDebug[arm64-v8a]
+> Task :react-native-worklets:mergeDebugNativeLibs
+> Task :expo:compileDebugKotlin FROM-CACHE
+> Task :expo:compileDebugJavaWithJavac FROM-CACHE
+> Task :expo:processDebugJavaRes
+> Task :expo:bundleLibCompileToJarDebug
+> Task :expo:bundleLibRuntimeToJarDebug
+> Task :react-native-worklets:copyDebugJniLibsProjectOnly
+> Task :react-native-reanimated:configureCMakeDebug[arm64-v8a]
+> Task :react-native-reanimated:generateJsonModelDebug
+> Task :react-native-reanimated:prefabDebugConfigurePackage
+
+> Task :react-native-quick-crypto:buildCMakeDebug[arm64-v8a]
+C/C++: ninja: Entering directory `/Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/.cxx/Debug/4c24x1f3/arm64-v8a'
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/cipher/OCBCipher.cpp:1:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/cipher/OCBCipher.hpp:10:8: warning: 'margelo::nitro::crypto::OCBCipher::init' hides overloaded virtual function [-Woverloaded-virtual]
+C/C++:    10 |   void init(const std::shared_ptr<ArrayBuffer>& key, const std::shared_ptr<ArrayBuffer>& iv, size_t tag_len = 16);
+C/C++:       |        ^
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/cipher/HybridCipher.hpp:30:16: note: hidden overloaded virtual function 'margelo::nitro::crypto::HybridCipher::init' declared here: different number of parameters (2 vs 3)
+C/C++:    30 |   virtual void init(const std::shared_ptr<ArrayBuffer> cipher_key, const std::shared_ptr<ArrayBuffer> iv);
+C/C++:       |                ^
+C/C++: 1 warning generated.
+
+> Task :app:compileDebugKotlin
+w: file:///Users/admin/echo-mobile/android/app/src/main/java/com/xelabyte/echo_seeker/MainApplication.kt:9:8 'class ReactNativeHost : Any' is deprecated. Deprecated in Java.
+w: file:///Users/admin/echo-mobile/android/app/src/main/java/com/xelabyte/echo_seeker/MainApplication.kt:21:16 This declaration overrides a deprecated member but is not marked as deprecated itself. Add the '@Deprecated' annotation or suppress the diagnostic.
+w: file:///Users/admin/echo-mobile/android/app/src/main/java/com/xelabyte/echo_seeker/MainApplication.kt:21:33 'class ReactNativeHost : Any' is deprecated. Deprecated in Java.
+
+> Task :react-native-quick-crypto:buildCMakeDebug[arm64-v8a]
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/certificate/HybridCertificate.cpp:3:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:248:37: warning: 'RSA_free' is deprecated [-Wdeprecated-declarations]
+C/C++:   248 | using RSAPointer = DeleteFnPtr<RSA, RSA_free>;
+C/C++:       |                                     ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/rsa.h:304:1: note: 'RSA_free' has been explicitly marked deprecated here
+C/C++:   304 | OSSL_DEPRECATEDIN_3_0 void RSA_free(RSA *r);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/certificate/HybridCertificate.cpp:3:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:245:49: warning: 'RSA_free' is deprecated [-Wdeprecated-declarations]
+C/C++:   245 | using DeleteFnPtr = typename FunctionDeleter<T, function>::Pointer;
+C/C++:       |                                                 ^
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:248:20: note: in instantiation of template type alias 'DeleteFnPtr' requested here
+C/C++:   248 | using RSAPointer = DeleteFnPtr<RSA, RSA_free>;
+C/C++:       |                    ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/rsa.h:304:1: note: 'RSA_free' has been explicitly marked deprecated here
+C/C++:   304 | OSSL_DEPRECATEDIN_3_0 void RSA_free(RSA *r);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/certificate/HybridCertificate.cpp:3:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:1085:19: warning: 'DH_free' is deprecated [-Wdeprecated-declarations]
+C/C++:  1085 |   DeleteFnPtr<DH, DH_free> dh_;
+C/C++:       |                   ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/dh.h:211:1: note: 'DH_free' has been explicitly marked deprecated here
+C/C++:   211 | OSSL_DEPRECATEDIN_3_0 void DH_free(DH *dh);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/certificate/HybridCertificate.cpp:3:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:245:49: warning: 'DH_free' is deprecated [-Wdeprecated-declarations]
+C/C++:   245 | using DeleteFnPtr = typename FunctionDeleter<T, function>::Pointer;
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/dh.h:211:1: note: 'DH_free' has been explicitly marked deprecated here
+C/C++:   211 | OSSL_DEPRECATEDIN_3_0 void DH_free(DH *dh);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/certificate/HybridCertificate.cpp:3:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:1429:23: warning: 'EC_KEY_free' is deprecated [-Wdeprecated-declarations]
+C/C++:  1429 |   DeleteFnPtr<EC_KEY, EC_KEY_free> key_;
+C/C++:       |                       ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/ec.h:1022:1: note: 'EC_KEY_free' has been explicitly marked deprecated here
+C/C++:  1022 | OSSL_DEPRECATEDIN_3_0 void EC_KEY_free(EC_KEY *key);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/certificate/HybridCertificate.cpp:3:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:245:49: warning: 'EC_KEY_free' is deprecated [-Wdeprecated-declarations]
+C/C++:   245 | using DeleteFnPtr = typename FunctionDeleter<T, function>::Pointer;
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/ec.h:1022:1: note: 'EC_KEY_free' has been explicitly marked deprecated here
+C/C++:  1022 | OSSL_DEPRECATEDIN_3_0 void EC_KEY_free(EC_KEY *key);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/certificate/HybridCertificate.cpp:3:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:1509:25: warning: 'HMAC_CTX_free' is deprecated [-Wdeprecated-declarations]
+C/C++:  1509 |   DeleteFnPtr<HMAC_CTX, HMAC_CTX_free> ctx_;
+C/C++:       |                         ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/hmac.h:35:1: note: 'HMAC_CTX_free' has been explicitly marked deprecated here
+C/C++:    35 | OSSL_DEPRECATEDIN_3_0 void HMAC_CTX_free(HMAC_CTX *ctx);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/certificate/HybridCertificate.cpp:3:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:245:49: warning: 'HMAC_CTX_free' is deprecated [-Wdeprecated-declarations]
+C/C++:   245 | using DeleteFnPtr = typename FunctionDeleter<T, function>::Pointer;
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/hmac.h:35:1: note: 'HMAC_CTX_free' has been explicitly marked deprecated here
+C/C++:    35 | OSSL_DEPRECATEDIN_3_0 void HMAC_CTX_free(HMAC_CTX *ctx);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: 8 warnings generated.
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/argon2/HybridArgon2.cpp:3:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:248:37: warning: 'RSA_free' is deprecated [-Wdeprecated-declarations]
+C/C++:   248 | using RSAPointer = DeleteFnPtr<RSA, RSA_free>;
+C/C++:       |                                     ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/rsa.h:304:1: note: 'RSA_free' has been explicitly marked deprecated here
+C/C++:   304 | OSSL_DEPRECATEDIN_3_0 void RSA_free(RSA *r);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/argon2/HybridArgon2.cpp:3:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:245:49: warning: 'RSA_free' is deprecated [-Wdeprecated-declarations]
+C/C++:   245 | using DeleteFnPtr = typename FunctionDeleter<T, function>::Pointer;
+C/C++:       |                                                 ^
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:248:20: note: in instantiation of template type alias 'DeleteFnPtr' requested here
+C/C++:   248 | using RSAPointer = DeleteFnPtr<RSA, RSA_free>;
+C/C++:       |                    ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/rsa.h:304:1: note: 'RSA_free' has been explicitly marked deprecated here
+C/C++:   304 | OSSL_DEPRECATEDIN_3_0 void RSA_free(RSA *r);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/argon2/HybridArgon2.cpp:3:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:1085:19: warning: 'DH_free' is deprecated [-Wdeprecated-declarations]
+C/C++:  1085 |   DeleteFnPtr<DH, DH_free> dh_;
+C/C++:       |                   ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/dh.h:211:1: note: 'DH_free' has been explicitly marked deprecated here
+C/C++:   211 | OSSL_DEPRECATEDIN_3_0 void DH_free(DH *dh);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/argon2/HybridArgon2.cpp:3:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:245:49: warning: 'DH_free' is deprecated [-Wdeprecated-declarations]
+C/C++:   245 | using DeleteFnPtr = typename FunctionDeleter<T, function>::Pointer;
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/dh.h:211:1: note: 'DH_free' has been explicitly marked deprecated here
+C/C++:   211 | OSSL_DEPRECATEDIN_3_0 void DH_free(DH *dh);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/argon2/HybridArgon2.cpp:3:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:1429:23: warning: 'EC_KEY_free' is deprecated [-Wdeprecated-declarations]
+C/C++:  1429 |   DeleteFnPtr<EC_KEY, EC_KEY_free> key_;
+C/C++:       |                       ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/ec.h:1022:1: note: 'EC_KEY_free' has been explicitly marked deprecated here
+C/C++:  1022 | OSSL_DEPRECATEDIN_3_0 void EC_KEY_free(EC_KEY *key);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/argon2/HybridArgon2.cpp:3:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:245:49: warning: 'EC_KEY_free' is deprecated [-Wdeprecated-declarations]
+C/C++:   245 | using DeleteFnPtr = typename FunctionDeleter<T, function>::Pointer;
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/ec.h:1022:1: note: 'EC_KEY_free' has been explicitly marked deprecated here
+C/C++:  1022 | OSSL_DEPRECATEDIN_3_0 void EC_KEY_free(EC_KEY *key);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/argon2/HybridArgon2.cpp:3:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:1509:25: warning: 'HMAC_CTX_free' is deprecated [-Wdeprecated-declarations]
+C/C++:  1509 |   DeleteFnPtr<HMAC_CTX, HMAC_CTX_free> ctx_;
+C/C++:       |                         ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/hmac.h:35:1: note: 'HMAC_CTX_free' has been explicitly marked deprecated here
+C/C++:    35 | OSSL_DEPRECATEDIN_3_0 void HMAC_CTX_free(HMAC_CTX *ctx);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/argon2/HybridArgon2.cpp:3:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:245:49: warning: 'HMAC_CTX_free' is deprecated [-Wdeprecated-declarations]
+C/C++:   245 | using DeleteFnPtr = typename FunctionDeleter<T, function>::Pointer;
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/hmac.h:35:1: note: 'HMAC_CTX_free' has been explicitly marked deprecated here
+C/C++:    35 | OSSL_DEPRECATEDIN_3_0 void HMAC_CTX_free(HMAC_CTX *ctx);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: 8 warnings generated.
+
+> Task :app:mergeLibDexDebug
+
+> Task :react-native-quick-crypto:buildCMakeDebug[arm64-v8a]
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/cipher/HybridCipher.cpp:11:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:248:37: warning: 'RSA_free' is deprecated [-Wdeprecated-declarations]
+C/C++:   248 | using RSAPointer = DeleteFnPtr<RSA, RSA_free>;
+C/C++:       |                                     ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/rsa.h:304:1: note: 'RSA_free' has been explicitly marked deprecated here
+C/C++:   304 | OSSL_DEPRECATEDIN_3_0 void RSA_free(RSA *r);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/cipher/HybridCipher.cpp:11:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:245:49: warning: 'RSA_free' is deprecated [-Wdeprecated-declarations]
+C/C++:   245 | using DeleteFnPtr = typename FunctionDeleter<T, function>::Pointer;
+C/C++:       |                                                 ^
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:248:20: note: in instantiation of template type alias 'DeleteFnPtr' requested here
+C/C++:   248 | using RSAPointer = DeleteFnPtr<RSA, RSA_free>;
+C/C++:       |                    ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/rsa.h:304:1: note: 'RSA_free' has been explicitly marked deprecated here
+C/C++:   304 | OSSL_DEPRECATEDIN_3_0 void RSA_free(RSA *r);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/cipher/HybridCipher.cpp:11:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:1085:19: warning: 'DH_free' is deprecated [-Wdeprecated-declarations]
+C/C++:  1085 |   DeleteFnPtr<DH, DH_free> dh_;
+C/C++:       |                   ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/dh.h:211:1: note: 'DH_free' has been explicitly marked deprecated here
+C/C++:   211 | OSSL_DEPRECATEDIN_3_0 void DH_free(DH *dh);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/cipher/HybridCipher.cpp:11:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:245:49: warning: 'DH_free' is deprecated [-Wdeprecated-declarations]
+C/C++:   245 | using DeleteFnPtr = typename FunctionDeleter<T, function>::Pointer;
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/dh.h:211:1: note: 'DH_free' has been explicitly marked deprecated here
+C/C++:   211 | OSSL_DEPRECATEDIN_3_0 void DH_free(DH *dh);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/cipher/HybridCipher.cpp:11:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:1429:23: warning: 'EC_KEY_free' is deprecated [-Wdeprecated-declarations]
+C/C++:  1429 |   DeleteFnPtr<EC_KEY, EC_KEY_free> key_;
+C/C++:       |                       ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/ec.h:1022:1: note: 'EC_KEY_free' has been explicitly marked deprecated here
+C/C++:  1022 | OSSL_DEPRECATEDIN_3_0 void EC_KEY_free(EC_KEY *key);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/cipher/HybridCipher.cpp:11:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:245:49: warning: 'EC_KEY_free' is deprecated [-Wdeprecated-declarations]
+C/C++:   245 | using DeleteFnPtr = typename FunctionDeleter<T, function>::Pointer;
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/ec.h:1022:1: note: 'EC_KEY_free' has been explicitly marked deprecated here
+C/C++:  1022 | OSSL_DEPRECATEDIN_3_0 void EC_KEY_free(EC_KEY *key);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/cipher/HybridCipher.cpp:11:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:1509:25: warning: 'HMAC_CTX_free' is deprecated [-Wdeprecated-declarations]
+C/C++:  1509 |   DeleteFnPtr<HMAC_CTX, HMAC_CTX_free> ctx_;
+C/C++:       |                         ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/hmac.h:35:1: note: 'HMAC_CTX_free' has been explicitly marked deprecated here
+C/C++:    35 | OSSL_DEPRECATEDIN_3_0 void HMAC_CTX_free(HMAC_CTX *ctx);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/cipher/HybridCipher.cpp:11:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:245:49: warning: 'HMAC_CTX_free' is deprecated [-Wdeprecated-declarations]
+C/C++:   245 | using DeleteFnPtr = typename FunctionDeleter<T, function>::Pointer;
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/hmac.h:35:1: note: 'HMAC_CTX_free' has been explicitly marked deprecated here
+C/C++:    35 | OSSL_DEPRECATEDIN_3_0 void HMAC_CTX_free(HMAC_CTX *ctx);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: 8 warnings generated.
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/cipher/HybridRsaCipher.cpp:2:
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/cipher/../keys/HybridKeyObjectHandle.hpp:10:
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/cipher/../keys/KeyObjectData.hpp:11:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:248:37: warning: 'RSA_free' is deprecated [-Wdeprecated-declarations]
+C/C++:   248 | using RSAPointer = DeleteFnPtr<RSA, RSA_free>;
+C/C++:       |                                     ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/rsa.h:304:1: note: 'RSA_free' has been explicitly marked deprecated here
+C/C++:   304 | OSSL_DEPRECATEDIN_3_0 void RSA_free(RSA *r);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/cipher/HybridRsaCipher.cpp:2:
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/cipher/../keys/HybridKeyObjectHandle.hpp:10:
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/cipher/../keys/KeyObjectData.hpp:11:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:245:49: warning: 'RSA_free' is deprecated [-Wdeprecated-declarations]
+C/C++:   245 | using DeleteFnPtr = typename FunctionDeleter<T, function>::Pointer;
+C/C++:       |                                                 ^
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:248:20: note: in instantiation of template type alias 'DeleteFnPtr' requested here
+C/C++:   248 | using RSAPointer = DeleteFnPtr<RSA, RSA_free>;
+C/C++:       |                    ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/rsa.h:304:1: note: 'RSA_free' has been explicitly marked deprecated here
+C/C++:   304 | OSSL_DEPRECATEDIN_3_0 void RSA_free(RSA *r);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/cipher/HybridRsaCipher.cpp:2:
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/cipher/../keys/HybridKeyObjectHandle.hpp:10:
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/cipher/../keys/KeyObjectData.hpp:11:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:1085:19: warning: 'DH_free' is deprecated [-Wdeprecated-declarations]
+C/C++:  1085 |   DeleteFnPtr<DH, DH_free> dh_;
+C/C++:       |                   ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/dh.h:211:1: note: 'DH_free' has been explicitly marked deprecated here
+C/C++:   211 | OSSL_DEPRECATEDIN_3_0 void DH_free(DH *dh);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/cipher/HybridRsaCipher.cpp:2:
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/cipher/../keys/HybridKeyObjectHandle.hpp:10:
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/cipher/../keys/KeyObjectData.hpp:11:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:245:49: warning: 'DH_free' is deprecated [-Wdeprecated-declarations]
+C/C++:   245 | using DeleteFnPtr = typename FunctionDeleter<T, function>::Pointer;
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/dh.h:211:1: note: 'DH_free' has been explicitly marked deprecated here
+C/C++:   211 | OSSL_DEPRECATEDIN_3_0 void DH_free(DH *dh);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/cipher/HybridRsaCipher.cpp:2:
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/cipher/../keys/HybridKeyObjectHandle.hpp:10:
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/cipher/../keys/KeyObjectData.hpp:11:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:1429:23: warning: 'EC_KEY_free' is deprecated [-Wdeprecated-declarations]
+C/C++:  1429 |   DeleteFnPtr<EC_KEY, EC_KEY_free> key_;
+C/C++:       |                       ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/ec.h:1022:1: note: 'EC_KEY_free' has been explicitly marked deprecated here
+C/C++:  1022 | OSSL_DEPRECATEDIN_3_0 void EC_KEY_free(EC_KEY *key);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/cipher/HybridRsaCipher.cpp:2:
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/cipher/../keys/HybridKeyObjectHandle.hpp:10:
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/cipher/../keys/KeyObjectData.hpp:11:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:245:49: warning: 'EC_KEY_free' is deprecated [-Wdeprecated-declarations]
+C/C++:   245 | using DeleteFnPtr = typename FunctionDeleter<T, function>::Pointer;
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/ec.h:1022:1: note: 'EC_KEY_free' has been explicitly marked deprecated here
+C/C++:  1022 | OSSL_DEPRECATEDIN_3_0 void EC_KEY_free(EC_KEY *key);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/cipher/HybridRsaCipher.cpp:2:
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/cipher/../keys/HybridKeyObjectHandle.hpp:10:
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/cipher/../keys/KeyObjectData.hpp:11:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:1509:25: warning: 'HMAC_CTX_free' is deprecated [-Wdeprecated-declarations]
+C/C++:  1509 |   DeleteFnPtr<HMAC_CTX, HMAC_CTX_free> ctx_;
+C/C++:       |                         ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/hmac.h:35:1: note: 'HMAC_CTX_free' has been explicitly marked deprecated here
+C/C++:    35 | OSSL_DEPRECATEDIN_3_0 void HMAC_CTX_free(HMAC_CTX *ctx);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/cipher/HybridRsaCipher.cpp:2:
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/cipher/../keys/HybridKeyObjectHandle.hpp:10:
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/cipher/../keys/KeyObjectData.hpp:11:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:245:49: warning: 'HMAC_CTX_free' is deprecated [-Wdeprecated-declarations]
+C/C++:   245 | using DeleteFnPtr = typename FunctionDeleter<T, function>::Pointer;
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/hmac.h:35:1: note: 'HMAC_CTX_free' has been explicitly marked deprecated here
+C/C++:    35 | OSSL_DEPRECATEDIN_3_0 void HMAC_CTX_free(HMAC_CTX *ctx);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: 8 warnings generated.
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/KeyObjectData.cpp:1:
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/KeyObjectData.hpp:11:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:248:37: warning: 'RSA_free' is deprecated [-Wdeprecated-declarations]
+C/C++:   248 | using RSAPointer = DeleteFnPtr<RSA, RSA_free>;
+C/C++:       |                                     ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/rsa.h:304:1: note: 'RSA_free' has been explicitly marked deprecated here
+C/C++:   304 | OSSL_DEPRECATEDIN_3_0 void RSA_free(RSA *r);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/KeyObjectData.cpp:1:
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/KeyObjectData.hpp:11:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:245:49: warning: 'RSA_free' is deprecated [-Wdeprecated-declarations]
+C/C++:   245 | using DeleteFnPtr = typename FunctionDeleter<T, function>::Pointer;
+C/C++:       |                                                 ^
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:248:20: note: in instantiation of template type alias 'DeleteFnPtr' requested here
+C/C++:   248 | using RSAPointer = DeleteFnPtr<RSA, RSA_free>;
+C/C++:       |                    ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/rsa.h:304:1: note: 'RSA_free' has been explicitly marked deprecated here
+C/C++:   304 | OSSL_DEPRECATEDIN_3_0 void RSA_free(RSA *r);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/KeyObjectData.cpp:1:
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/KeyObjectData.hpp:11:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:1085:19: warning: 'DH_free' is deprecated [-Wdeprecated-declarations]
+C/C++:  1085 |   DeleteFnPtr<DH, DH_free> dh_;
+C/C++:       |                   ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/dh.h:211:1: note: 'DH_free' has been explicitly marked deprecated here
+C/C++:   211 | OSSL_DEPRECATEDIN_3_0 void DH_free(DH *dh);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/KeyObjectData.cpp:1:
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/KeyObjectData.hpp:11:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:245:49: warning: 'DH_free' is deprecated [-Wdeprecated-declarations]
+C/C++:   245 | using DeleteFnPtr = typename FunctionDeleter<T, function>::Pointer;
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/dh.h:211:1: note: 'DH_free' has been explicitly marked deprecated here
+C/C++:   211 | OSSL_DEPRECATEDIN_3_0 void DH_free(DH *dh);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/KeyObjectData.cpp:1:
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/KeyObjectData.hpp:11:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:1429:23: warning: 'EC_KEY_free' is deprecated [-Wdeprecated-declarations]
+C/C++:  1429 |   DeleteFnPtr<EC_KEY, EC_KEY_free> key_;
+C/C++:       |                       ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/ec.h:1022:1: note: 'EC_KEY_free' has been explicitly marked deprecated here
+C/C++:  1022 | OSSL_DEPRECATEDIN_3_0 void EC_KEY_free(EC_KEY *key);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/KeyObjectData.cpp:1:
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/KeyObjectData.hpp:11:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:245:49: warning: 'EC_KEY_free' is deprecated [-Wdeprecated-declarations]
+C/C++:   245 | using DeleteFnPtr = typename FunctionDeleter<T, function>::Pointer;
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/ec.h:1022:1: note: 'EC_KEY_free' has been explicitly marked deprecated here
+C/C++:  1022 | OSSL_DEPRECATEDIN_3_0 void EC_KEY_free(EC_KEY *key);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/KeyObjectData.cpp:1:
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/KeyObjectData.hpp:11:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:1509:25: warning: 'HMAC_CTX_free' is deprecated [-Wdeprecated-declarations]
+C/C++:  1509 |   DeleteFnPtr<HMAC_CTX, HMAC_CTX_free> ctx_;
+C/C++:       |                         ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/hmac.h:35:1: note: 'HMAC_CTX_free' has been explicitly marked deprecated here
+C/C++:    35 | OSSL_DEPRECATEDIN_3_0 void HMAC_CTX_free(HMAC_CTX *ctx);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/KeyObjectData.cpp:1:
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/KeyObjectData.hpp:11:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:245:49: warning: 'HMAC_CTX_free' is deprecated [-Wdeprecated-declarations]
+C/C++:   245 | using DeleteFnPtr = typename FunctionDeleter<T, function>::Pointer;
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/hmac.h:35:1: note: 'HMAC_CTX_free' has been explicitly marked deprecated here
+C/C++:    35 | OSSL_DEPRECATEDIN_3_0 void HMAC_CTX_free(HMAC_CTX *ctx);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: 8 warnings generated.
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/HybridKeyObjectHandle.cpp:5:
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/HybridKeyObjectHandle.hpp:10:
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/KeyObjectData.hpp:11:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:248:37: warning: 'RSA_free' is deprecated [-Wdeprecated-declarations]
+C/C++:   248 | using RSAPointer = DeleteFnPtr<RSA, RSA_free>;
+C/C++:       |                                     ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/rsa.h:304:1: note: 'RSA_free' has been explicitly marked deprecated here
+C/C++:   304 | OSSL_DEPRECATEDIN_3_0 void RSA_free(RSA *r);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/HybridKeyObjectHandle.cpp:5:
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/HybridKeyObjectHandle.hpp:10:
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/KeyObjectData.hpp:11:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:245:49: warning: 'RSA_free' is deprecated [-Wdeprecated-declarations]
+C/C++:   245 | using DeleteFnPtr = typename FunctionDeleter<T, function>::Pointer;
+C/C++:       |                                                 ^
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:248:20: note: in instantiation of template type alias 'DeleteFnPtr' requested here
+C/C++:   248 | using RSAPointer = DeleteFnPtr<RSA, RSA_free>;
+C/C++:       |                    ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/rsa.h:304:1: note: 'RSA_free' has been explicitly marked deprecated here
+C/C++:   304 | OSSL_DEPRECATEDIN_3_0 void RSA_free(RSA *r);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/HybridKeyObjectHandle.cpp:5:
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/HybridKeyObjectHandle.hpp:10:
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/KeyObjectData.hpp:11:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:1085:19: warning: 'DH_free' is deprecated [-Wdeprecated-declarations]
+C/C++:  1085 |   DeleteFnPtr<DH, DH_free> dh_;
+C/C++:       |                   ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/dh.h:211:1: note: 'DH_free' has been explicitly marked deprecated here
+C/C++:   211 | OSSL_DEPRECATEDIN_3_0 void DH_free(DH *dh);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/HybridKeyObjectHandle.cpp:5:
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/HybridKeyObjectHandle.hpp:10:
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/KeyObjectData.hpp:11:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:245:49: warning: 'DH_free' is deprecated [-Wdeprecated-declarations]
+C/C++:   245 | using DeleteFnPtr = typename FunctionDeleter<T, function>::Pointer;
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/dh.h:211:1: note: 'DH_free' has been explicitly marked deprecated here
+C/C++:   211 | OSSL_DEPRECATEDIN_3_0 void DH_free(DH *dh);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/HybridKeyObjectHandle.cpp:5:
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/HybridKeyObjectHandle.hpp:10:
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/KeyObjectData.hpp:11:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:1429:23: warning: 'EC_KEY_free' is deprecated [-Wdeprecated-declarations]
+C/C++:  1429 |   DeleteFnPtr<EC_KEY, EC_KEY_free> key_;
+C/C++:       |                       ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/ec.h:1022:1: note: 'EC_KEY_free' has been explicitly marked deprecated here
+C/C++:  1022 | OSSL_DEPRECATEDIN_3_0 void EC_KEY_free(EC_KEY *key);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/HybridKeyObjectHandle.cpp:5:
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/HybridKeyObjectHandle.hpp:10:
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/KeyObjectData.hpp:11:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:245:49: warning: 'EC_KEY_free' is deprecated [-Wdeprecated-declarations]
+C/C++:   245 | using DeleteFnPtr = typename FunctionDeleter<T, function>::Pointer;
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/ec.h:1022:1: note: 'EC_KEY_free' has been explicitly marked deprecated here
+C/C++:  1022 | OSSL_DEPRECATEDIN_3_0 void EC_KEY_free(EC_KEY *key);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/HybridKeyObjectHandle.cpp:5:
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/HybridKeyObjectHandle.hpp:10:
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/KeyObjectData.hpp:11:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:1509:25: warning: 'HMAC_CTX_free' is deprecated [-Wdeprecated-declarations]
+C/C++:  1509 |   DeleteFnPtr<HMAC_CTX, HMAC_CTX_free> ctx_;
+C/C++:       |                         ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/hmac.h:35:1: note: 'HMAC_CTX_free' has been explicitly marked deprecated here
+C/C++:    35 | OSSL_DEPRECATEDIN_3_0 void HMAC_CTX_free(HMAC_CTX *ctx);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/HybridKeyObjectHandle.cpp:5:
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/HybridKeyObjectHandle.hpp:10:
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/KeyObjectData.hpp:11:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:245:49: warning: 'HMAC_CTX_free' is deprecated [-Wdeprecated-declarations]
+C/C++:   245 | using DeleteFnPtr = typename FunctionDeleter<T, function>::Pointer;
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/hmac.h:35:1: note: 'HMAC_CTX_free' has been explicitly marked deprecated here
+C/C++:    35 | OSSL_DEPRECATEDIN_3_0 void HMAC_CTX_free(HMAC_CTX *ctx);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/HybridKeyObjectHandle.cpp:241:22: warning: 'EVP_PKEY_get0_RSA' is deprecated [-Wdeprecated-declarations]
+C/C++:   241 |     const RSA* rsa = EVP_PKEY_get0_RSA(pkey.get());
+C/C++:       |                      ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/evp.h:1413:1: note: 'EVP_PKEY_get0_RSA' has been explicitly marked deprecated here
+C/C++:  1413 | OSSL_DEPRECATEDIN_3_0
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/HybridKeyObjectHandle.cpp:248:5: warning: 'RSA_get0_key' is deprecated [-Wdeprecated-declarations]
+C/C++:   248 |     RSA_get0_key(rsa, &n_bn, &e_bn, &d_bn);
+C/C++:       |     ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/rsa.h:228:1: note: 'RSA_get0_key' has been explicitly marked deprecated here
+C/C++:   228 | OSSL_DEPRECATEDIN_3_0 void RSA_get0_key(const RSA *r,
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/HybridKeyObjectHandle.cpp:249:5: warning: 'RSA_get0_factors' is deprecated [-Wdeprecated-declarations]
+C/C++:   249 |     RSA_get0_factors(rsa, &p_bn, &q_bn);
+C/C++:       |     ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/rsa.h:231:1: note: 'RSA_get0_factors' has been explicitly marked deprecated here
+C/C++:   231 | OSSL_DEPRECATEDIN_3_0 void RSA_get0_factors(const RSA *r,
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/HybridKeyObjectHandle.cpp:250:5: warning: 'RSA_get0_crt_params' is deprecated [-Wdeprecated-declarations]
+C/C++:   250 |     RSA_get0_crt_params(rsa, &dmp1_bn, &dmq1_bn, &iqmp_bn);
+C/C++:       |     ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/rsa.h:236:1: note: 'RSA_get0_crt_params' has been explicitly marked deprecated here
+C/C++:   236 | OSSL_DEPRECATEDIN_3_0 void RSA_get0_crt_params(const RSA *r,
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/HybridKeyObjectHandle.cpp:507:16: warning: 'RSA_new' is deprecated [-Wdeprecated-declarations]
+C/C++:   507 |     RSA* rsa = RSA_new();
+C/C++:       |                ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/rsa.h:212:1: note: 'RSA_new' has been explicitly marked deprecated here
+C/C++:   212 | OSSL_DEPRECATEDIN_3_0 RSA *RSA_new(void);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/HybridKeyObjectHandle.cpp:516:7: warning: 'RSA_free' is deprecated [-Wdeprecated-declarations]
+C/C++:   516 |       RSA_free(rsa);
+C/C++:       |       ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/rsa.h:304:1: note: 'RSA_free' has been explicitly marked deprecated here
+C/C++:   304 | OSSL_DEPRECATEDIN_3_0 void RSA_free(RSA *r);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/HybridKeyObjectHandle.cpp:525:9: warning: 'RSA_free' is deprecated [-Wdeprecated-declarations]
+C/C++:   525 |         RSA_free(rsa);
+C/C++:       |         ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/rsa.h:304:1: note: 'RSA_free' has been explicitly marked deprecated here
+C/C++:   304 | OSSL_DEPRECATEDIN_3_0 void RSA_free(RSA *r);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/HybridKeyObjectHandle.cpp:533:9: warning: 'RSA_free' is deprecated [-Wdeprecated-declarations]
+C/C++:   533 |         RSA_free(rsa);
+C/C++:       |         ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/rsa.h:304:1: note: 'RSA_free' has been explicitly marked deprecated here
+C/C++:   304 | OSSL_DEPRECATEDIN_3_0 void RSA_free(RSA *r);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/HybridKeyObjectHandle.cpp:538:11: warning: 'RSA_set0_key' is deprecated [-Wdeprecated-declarations]
+C/C++:   538 |       if (RSA_set0_key(rsa, n, e, d) != 1) {
+C/C++:       |           ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/rsa.h:218:1: note: 'RSA_set0_key' has been explicitly marked deprecated here
+C/C++:   218 | OSSL_DEPRECATEDIN_3_0 int RSA_set0_key(RSA *r, BIGNUM *n, BIGNUM *e, BIGNUM *d);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/HybridKeyObjectHandle.cpp:542:9: warning: 'RSA_free' is deprecated [-Wdeprecated-declarations]
+C/C++:   542 |         RSA_free(rsa);
+C/C++:       |         ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/rsa.h:304:1: note: 'RSA_free' has been explicitly marked deprecated here
+C/C++:   304 | OSSL_DEPRECATEDIN_3_0 void RSA_free(RSA *r);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/HybridKeyObjectHandle.cpp:551:11: warning: 'RSA_set0_factors' is deprecated [-Wdeprecated-declarations]
+C/C++:   551 |           RSA_set0_factors(rsa, p, q);
+C/C++:       |           ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/rsa.h:219:1: note: 'RSA_set0_factors' has been explicitly marked deprecated here
+C/C++:   219 | OSSL_DEPRECATEDIN_3_0 int RSA_set0_factors(RSA *r, BIGNUM *p, BIGNUM *q);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/HybridKeyObjectHandle.cpp:560:11: warning: 'RSA_set0_crt_params' is deprecated [-Wdeprecated-declarations]
+C/C++:   560 |           RSA_set0_crt_params(rsa, dmp1, dmq1, iqmp);
+C/C++:       |           ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/rsa.h:220:1: note: 'RSA_set0_crt_params' has been explicitly marked deprecated here
+C/C++:   220 | OSSL_DEPRECATEDIN_3_0 int RSA_set0_crt_params(RSA *r,
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/HybridKeyObjectHandle.cpp:566:20: warning: 'EVP_PKEY_assign' is deprecated [-Wdeprecated-declarations]
+C/C++:   566 |       if (!pkey || EVP_PKEY_assign_RSA(pkey, rsa) != 1) {
+C/C++:       |                    ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/evp.h:522:42: note: expanded from macro 'EVP_PKEY_assign_RSA'
+C/C++:   522 | #  define EVP_PKEY_assign_RSA(pkey, rsa) EVP_PKEY_assign((pkey), EVP_PKEY_RSA, \
+C/C++:       |                                          ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/evp.h:1395:1: note: 'EVP_PKEY_assign' has been explicitly marked deprecated here
+C/C++:  1395 | OSSL_DEPRECATEDIN_3_0
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/HybridKeyObjectHandle.cpp:567:9: warning: 'RSA_free' is deprecated [-Wdeprecated-declarations]
+C/C++:   567 |         RSA_free(rsa);
+C/C++:       |         ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/rsa.h:304:1: note: 'RSA_free' has been explicitly marked deprecated here
+C/C++:   304 | OSSL_DEPRECATEDIN_3_0 void RSA_free(RSA *r);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/HybridKeyObjectHandle.cpp:578:11: warning: 'RSA_set0_key' is deprecated [-Wdeprecated-declarations]
+C/C++:   578 |       if (RSA_set0_key(rsa, n, e, nullptr) != 1) {
+C/C++:       |           ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/rsa.h:218:1: note: 'RSA_set0_key' has been explicitly marked deprecated here
+C/C++:   218 | OSSL_DEPRECATEDIN_3_0 int RSA_set0_key(RSA *r, BIGNUM *n, BIGNUM *e, BIGNUM *d);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/HybridKeyObjectHandle.cpp:581:9: warning: 'RSA_free' is deprecated [-Wdeprecated-declarations]
+C/C++:   581 |         RSA_free(rsa);
+C/C++:       |         ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/rsa.h:304:1: note: 'RSA_free' has been explicitly marked deprecated here
+C/C++:   304 | OSSL_DEPRECATEDIN_3_0 void RSA_free(RSA *r);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/HybridKeyObjectHandle.cpp:586:20: warning: 'EVP_PKEY_assign' is deprecated [-Wdeprecated-declarations]
+C/C++:   586 |       if (!pkey || EVP_PKEY_assign_RSA(pkey, rsa) != 1) {
+C/C++:       |                    ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/evp.h:522:42: note: expanded from macro 'EVP_PKEY_assign_RSA'
+C/C++:   522 | #  define EVP_PKEY_assign_RSA(pkey, rsa) EVP_PKEY_assign((pkey), EVP_PKEY_RSA, \
+C/C++:       |                                          ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/evp.h:1395:1: note: 'EVP_PKEY_assign' has been explicitly marked deprecated here
+C/C++:  1395 | OSSL_DEPRECATEDIN_3_0
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/HybridKeyObjectHandle.cpp:587:9: warning: 'RSA_free' is deprecated [-Wdeprecated-declarations]
+C/C++:   587 |         RSA_free(rsa);
+C/C++:       |         ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/rsa.h:304:1: note: 'RSA_free' has been explicitly marked deprecated here
+C/C++:   304 | OSSL_DEPRECATEDIN_3_0 void RSA_free(RSA *r);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/HybridKeyObjectHandle.cpp:723:22: warning: 'EVP_PKEY_get0_RSA' is deprecated [-Wdeprecated-declarations]
+C/C++:   723 |     const RSA* rsa = EVP_PKEY_get0_RSA(pkey);
+C/C++:       |                      ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/evp.h:1413:1: note: 'EVP_PKEY_get0_RSA' has been explicitly marked deprecated here
+C/C++:  1413 | OSSL_DEPRECATEDIN_3_0
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/keys/HybridKeyObjectHandle.cpp:726:7: warning: 'RSA_get0_key' is deprecated [-Wdeprecated-declarations]
+C/C++:   726 |       RSA_get0_key(rsa, nullptr, &e_bn, nullptr);
+C/C++:       |       ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/rsa.h:228:1: note: 'RSA_get0_key' has been explicitly marked deprecated here
+C/C++:   228 | OSSL_DEPRECATEDIN_3_0 void RSA_get0_key(const RSA *r,
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: 28 warnings generated.
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/prime/HybridPrime.cpp:3:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:248:37: warning: 'RSA_free' is deprecated [-Wdeprecated-declarations]
+C/C++:   248 | using RSAPointer = DeleteFnPtr<RSA, RSA_free>;
+C/C++:       |                                     ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/rsa.h:304:1: note: 'RSA_free' has been explicitly marked deprecated here
+C/C++:   304 | OSSL_DEPRECATEDIN_3_0 void RSA_free(RSA *r);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/prime/HybridPrime.cpp:3:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:245:49: warning: 'RSA_free' is deprecated [-Wdeprecated-declarations]
+C/C++:   245 | using DeleteFnPtr = typename FunctionDeleter<T, function>::Pointer;
+C/C++:       |                                                 ^
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:248:20: note: in instantiation of template type alias 'DeleteFnPtr' requested here
+C/C++:   248 | using RSAPointer = DeleteFnPtr<RSA, RSA_free>;
+C/C++:       |                    ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/rsa.h:304:1: note: 'RSA_free' has been explicitly marked deprecated here
+C/C++:   304 | OSSL_DEPRECATEDIN_3_0 void RSA_free(RSA *r);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/prime/HybridPrime.cpp:3:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:1085:19: warning: 'DH_free' is deprecated [-Wdeprecated-declarations]
+C/C++:  1085 |   DeleteFnPtr<DH, DH_free> dh_;
+C/C++:       |                   ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/dh.h:211:1: note: 'DH_free' has been explicitly marked deprecated here
+C/C++:   211 | OSSL_DEPRECATEDIN_3_0 void DH_free(DH *dh);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/prime/HybridPrime.cpp:3:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:245:49: warning: 'DH_free' is deprecated [-Wdeprecated-declarations]
+C/C++:   245 | using DeleteFnPtr = typename FunctionDeleter<T, function>::Pointer;
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/dh.h:211:1: note: 'DH_free' has been explicitly marked deprecated here
+C/C++:   211 | OSSL_DEPRECATEDIN_3_0 void DH_free(DH *dh);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/prime/HybridPrime.cpp:3:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:1429:23: warning: 'EC_KEY_free' is deprecated [-Wdeprecated-declarations]
+C/C++:  1429 |   DeleteFnPtr<EC_KEY, EC_KEY_free> key_;
+C/C++:       |                       ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/ec.h:1022:1: note: 'EC_KEY_free' has been explicitly marked deprecated here
+C/C++:  1022 | OSSL_DEPRECATEDIN_3_0 void EC_KEY_free(EC_KEY *key);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/prime/HybridPrime.cpp:3:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:245:49: warning: 'EC_KEY_free' is deprecated [-Wdeprecated-declarations]
+C/C++:   245 | using DeleteFnPtr = typename FunctionDeleter<T, function>::Pointer;
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/ec.h:1022:1: note: 'EC_KEY_free' has been explicitly marked deprecated here
+C/C++:  1022 | OSSL_DEPRECATEDIN_3_0 void EC_KEY_free(EC_KEY *key);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/prime/HybridPrime.cpp:3:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:1509:25: warning: 'HMAC_CTX_free' is deprecated [-Wdeprecated-declarations]
+C/C++:  1509 |   DeleteFnPtr<HMAC_CTX, HMAC_CTX_free> ctx_;
+C/C++:       |                         ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/hmac.h:35:1: note: 'HMAC_CTX_free' has been explicitly marked deprecated here
+C/C++:    35 | OSSL_DEPRECATEDIN_3_0 void HMAC_CTX_free(HMAC_CTX *ctx);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: In file included from /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/cpp/prime/HybridPrime.cpp:3:
+C/C++: /Users/admin/echo-mobile/node_modules/react-native-quick-crypto/android/../deps/ncrypto/include/ncrypto.h:245:49: warning: 'HMAC_CTX_free' is deprecated [-Wdeprecated-declarations]
+C/C++:   245 | using DeleteFnPtr = typename FunctionDeleter<T, function>::Pointer;
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/hmac.h:35:1: note: 'HMAC_CTX_free' has been explicitly marked deprecated here
+C/C++:    35 | OSSL_DEPRECATEDIN_3_0 void HMAC_CTX_free(HMAC_CTX *ctx);
+C/C++:       | ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:229:49: note: expanded from macro 'OSSL_DEPRECATEDIN_3_0'
+C/C++:   229 | #   define OSSL_DEPRECATEDIN_3_0                OSSL_DEPRECATED(3.0)
+C/C++:       |                                                 ^
+C/C++: /Users/admin/.gradle/caches/8.14.3/transforms/3793f52eeef6e1b43211e5952181f693/transformed/openssl-3.6.0-1/prefab/modules/crypto/include/openssl/macros.h:62:52: note: expanded from macro 'OSSL_DEPRECATED'
+C/C++:    62 | #     define OSSL_DEPRECATED(since) __attribute__((deprecated))
+C/C++:       |                                                    ^
+C/C++: 8 warnings generated.
+
+> Task :react-native-gesture-handler:configureCMakeDebug[arm64-v8a]
+> Task :react-native-reanimated:buildCMakeDebug[arm64-v8a][reanimated]
+> Task :app:configureCMakeDebug[arm64-v8a]
