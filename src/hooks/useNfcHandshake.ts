@@ -1,6 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useEffect, useState } from 'react'
-import NfcManager, { NfcEvents } from 'react-native-nfc-manager'
+import { HCESession, NFCTagType4, NFCTagType4NDEFContentType } from 'react-native-hce'
+import NfcManager, { Ndef, NfcEvents } from 'react-native-nfc-manager'
 import { postHandshakeTweet, type XAuthCredentials } from '../../services/xTweetService'
 import { useHandshakeStore } from '../store/handshakeStore'
 
@@ -34,6 +35,56 @@ export function useNfcHandshake(): UseNfcHandshakeResult {
 
   const addHandshake = useHandshakeStore((state) => state.addHandshake)
 
+  // Start HCE broadcasting
+  useEffect(() => {
+    let mounted = true
+    let hceSession: HCESession | null = null
+
+    async function startHCEBroadcast() {
+      try {
+        // Get the user's screenName from storage
+        const storedData = await AsyncStorage.getItem(STORAGE_KEY)
+        if (!storedData) {
+          console.warn('[useNfcHandshake] No user credentials found, skipping HCE broadcast')
+          return
+        }
+
+        const stored: StoredCredentials = JSON.parse(storedData)
+        const username = stored.screenName
+
+        // Get HCE session instance
+        hceSession = await HCESession.getInstance()
+
+        // Create an NFC Tag Type 4 with NDEF text record
+        const tag = new NFCTagType4({
+          type: NFCTagType4NDEFContentType.Text,
+          content: `username:@${username}`,
+          writable: false,
+        })
+
+        // Set the application (tag content)
+        await hceSession.setApplication(tag)
+
+        // Enable HCE broadcasting
+        await hceSession.setEnabled(true)
+        console.log('[useNfcHandshake] HCE broadcasting started for @' + username)
+      } catch (e) {
+        console.warn('[useNfcHandshake] Failed to start HCE broadcast:', e)
+      }
+    }
+
+    startHCEBroadcast()
+
+    return () => {
+      mounted = false
+      // Stop HCE broadcasting on cleanup
+      if (hceSession) {
+        hceSession.setEnabled(false).catch(() => {})
+      }
+    }
+  }, [])
+
+  // Start NFC scanning
   useEffect(() => {
     let mounted = true
 
@@ -72,17 +123,18 @@ export function useNfcHandshake(): UseNfcHandshakeResult {
           setLastTagId(id)
 
           // Try to extract username from NFC tag data (if available)
-          // In a real implementation, this would be written by the other device
           let otherUsername: string | null = null
 
           try {
             // Check if there's NDEF data with username
             const ndefRecords = (tag as any)?.ndefMessage
             if (ndefRecords && ndefRecords.length > 0) {
-              // Try to parse the first record as text
+              // Parse the first record as text using proper NDEF decoder
               const record = ndefRecords[0]
-              if (record.payload) {
-                const payload = String.fromCharCode.apply(null, record.payload as any)
+              if (record.payload && record.payload.length > 0) {
+                // Use Ndef.text.decodePayload to properly decode the NDEF text record
+                // This handles the language code prefix automatically
+                const payload = Ndef.text.decodePayload(new Uint8Array(record.payload))
                 // Extract username if it's in the format "username:@handle"
                 if (payload.startsWith('username:@')) {
                   otherUsername = payload.replace('username:@', '')
@@ -90,7 +142,7 @@ export function useNfcHandshake(): UseNfcHandshakeResult {
               }
             }
           } catch (e) {
-            console.warn('Failed to parse NFC data:', e)
+            console.warn('[useNfcHandshake] Failed to parse NFC data:', e)
           }
 
           // For demo purposes, generate a placeholder username if none found
@@ -152,7 +204,7 @@ export function useNfcHandshake(): UseNfcHandshakeResult {
       NfcManager.setEventListener(NfcEvents.DiscoverTag, null as any)
       NfcManager.unregisterTagEvent().catch(() => {})
     }
-  }, [])
+  }, [addHandshake])
 
   const resetHandshake = () => {
     setHandshaking(false)

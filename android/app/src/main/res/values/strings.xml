@@ -1,3 +1,5 @@
 <resources>
   <string name="app_name">Echo: Proof of Seeker</string>
+  <string name="servicedesc">Echo NFC Handshake Service</string>
+  <string name="aiddescription">Echo NFC Username Exchange</string>
 </resources>
