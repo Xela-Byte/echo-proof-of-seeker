@@ -1,5 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Platform } from 'react-native'
 import { HCESession, NFCTagType4, NFCTagType4NDEFContentType } from 'react-native-hce'
 import NfcManager, { Ndef, NfcEvents } from 'react-native-nfc-manager'
@@ -33,6 +33,10 @@ export function useNfcHandshake(): UseNfcHandshakeResult {
   const [lastUsername, setLastUsername] = useState<string | null>(null)
   const [tweetPosted, setTweetPosted] = useState(false)
   const [tweetError, setTweetError] = useState<string | null>(null)
+
+  // Use refs to track state that needs to be accessed in event listener
+  const isProcessingRef = useRef(false)
+  const recentHandshakesRef = useRef<Set<string>>(new Set())
 
   const addHandshake = useHandshakeStore((state) => state.addHandshake)
 
@@ -134,15 +138,28 @@ export function useNfcHandshake(): UseNfcHandshakeResult {
           try {
             if (!mounted) return
 
+            // Prevent multiple concurrent processing
+            if (isProcessingRef.current) {
+              console.log('[useNfcHandshake] Already processing a handshake, ignoring...')
+              return
+            }
+
             console.log('[useNfcHandshake] NFC tag detected:', tag)
 
+            // Use a simple identifier from the tag
+            const id = (tag as any)?.id ?? (tag as any)?.serialNumber ?? (tag as any)?.tagId ?? null
+            const tagIdentifier = id || 'unknown'
+
+            // Check if we've processed this tag recently (within last 5 seconds)
+            if (recentHandshakesRef.current.has(tagIdentifier)) {
+              console.log('[useNfcHandshake] Tag already processed recently, ignoring duplicate')
+              return
+            }
+
+            isProcessingRef.current = true
             setHandshaking(true)
             setTweetPosted(false)
             setTweetError(null)
-
-            // Use a simple identifier from the tag so we can show something in the UI.
-            const id = (tag as any)?.id ?? (tag as any)?.serialNumber ?? (tag as any)?.tagId ?? null
-
             setLastTagId(id)
 
             // Try to extract username from NFC tag data (if available)
@@ -195,8 +212,20 @@ export function useNfcHandshake(): UseNfcHandshakeResult {
               otherUsername = `Seeker_${id?.substring(0, 8) || 'Unknown'}`
             }
 
-            if (!mounted) return
+            if (!mounted) {
+              isProcessingRef.current = false
+              return
+            }
             setLastUsername(otherUsername)
+
+            // Add to recent handshakes to prevent duplicates
+            recentHandshakesRef.current.add(tagIdentifier)
+
+            // Clear from recent after 5 seconds
+            setTimeout(() => {
+              recentHandshakesRef.current.delete(tagIdentifier)
+              console.log('[useNfcHandshake] Cleared tag from recent:', tagIdentifier)
+            }, 5000)
 
             // Store the handshake
             try {
@@ -241,13 +270,15 @@ export function useNfcHandshake(): UseNfcHandshakeResult {
               }
             }
 
-            // Immediately stop listening so the modal only triggers once per tap.
-            NfcManager.unregisterTagEvent().catch(() => {})
+            // Keep listening for more tags (don't unregister)
+            // This allows bidirectional handshake and continuous scanning
+            isProcessingRef.current = false
           } catch (error) {
             console.error('[useNfcHandshake] Critical error in NFC event handler:', error)
             if (mounted) {
               setTweetError(error instanceof Error ? error.message : 'NFC handling failed')
               setHandshaking(false)
+              isProcessingRef.current = false
             }
           }
         })
@@ -269,13 +300,14 @@ export function useNfcHandshake(): UseNfcHandshakeResult {
   }, [addHandshake])
 
   const resetHandshake = () => {
+    console.log('[useNfcHandshake] Resetting handshake state')
     setHandshaking(false)
     setLastTagId(null)
     setLastUsername(null)
     setTweetPosted(false)
     setTweetError(null)
-    // Re-register scan session so the user can handshake again.
-    NfcManager.registerTagEvent().catch(() => {})
+    isProcessingRef.current = false
+    // No need to re-register - we keep the listener active for continuous scanning
   }
 
   return {
