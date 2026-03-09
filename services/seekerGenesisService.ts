@@ -75,6 +75,8 @@ export async function checkSeekerGenesisHolder(address: string): Promise<SeekerG
   // 3. Fetch mint accounts and look for one with the desired mint authority
   const mintPubkeys = candidateMints.map((m) => new PublicKey(m))
   const mintAccounts = await connection.getMultipleParsedAccounts(mintPubkeys)
+  const contextSlot = mintAccounts.context.slot
+  const contextBlockTime = await connection.getBlockTime(contextSlot)
 
   for (let i = 0; i < mintAccounts.value.length; i++) {
     const acc = mintAccounts.value[i]
@@ -93,10 +95,10 @@ export async function checkSeekerGenesisHolder(address: string): Promise<SeekerG
 
     const mint: SeekerGenesisMint = {
       mint: mintAddress,
-      slot: String(acc.slot),
+      slot: String(contextSlot),
       // We don't have epoch directly; callers mostly care about "holder or not"
       epoch: 0,
-      blockTime: acc.blockTime ?? null,
+      blockTime: contextBlockTime ?? null,
     }
 
     const details: SeekerGenesisHolderResponse = {

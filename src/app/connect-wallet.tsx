@@ -38,10 +38,10 @@ export default function ConnectWalletScreen() {
   }, [walletConnected, loading, result])
 
   const handleConnect = async () => {
-    if (__DEV__) {
-      router.push('/dashboard')
-      return
-    }
+    // if (__DEV__) {
+    //   router.push('/dashboard')
+    //   return
+    // }
     setConnecting(true)
     try {
       const { publicKey } = await solanaService.connectWallet()
