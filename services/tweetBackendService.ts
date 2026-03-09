@@ -9,6 +9,9 @@ import type { XAuthCredentials } from './xTweetService'
 
 const BACKEND_URL = process.env.EXPO_PUBLIC_TWEET_BACKEND_URL || 'http://localhost:3000'
 
+// Log the backend URL for debugging
+console.log('[tweetBackendService] Backend URL:', BACKEND_URL)
+
 export interface TweetJobRequest {
   username: string
   credentials: {
@@ -42,6 +45,9 @@ export interface TweetStatusResponse {
  */
 export async function queueHandshakeTweet(username: string, credentials: XAuthCredentials): Promise<TweetJobResponse> {
   try {
+    console.log('[tweetBackendService] Queuing tweet to:', `${BACKEND_URL}/api/tweet/handshake`)
+    console.log('[tweetBackendService] Username:', username)
+
     const response = await axios.post<TweetJobResponse>(
       `${BACKEND_URL}/api/tweet/handshake`,
       {
@@ -57,7 +63,13 @@ export async function queueHandshakeTweet(username: string, credentials: XAuthCr
     console.log('[tweetBackendService] Tweet queued successfully:', response.data.jobId)
     return response.data
   } catch (error) {
+    console.error('[tweetBackendService] Full error:', error)
     if (axios.isAxiosError(error)) {
+      console.error('[tweetBackendService] Axios error code:', error.code)
+      console.error('[tweetBackendService] Axios error message:', error.message)
+      console.error('[tweetBackendService] Response status:', error.response?.status)
+      console.error('[tweetBackendService] Response data:', error.response?.data)
+
       const message = error.response?.data?.message || error.message || 'Failed to queue tweet'
       console.error('[tweetBackendService] Failed to queue tweet:', message)
       throw new Error(message)
