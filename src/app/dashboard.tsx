@@ -32,6 +32,9 @@ export default function DashboardScreen() {
     lastTagId,
     lastUsername,
     exchangeStatus,
+    pairing,
+    pairingSuccess,
+    pairedUsername,
     tweetPosting,
     tweetPosted,
     tweetError,
@@ -244,15 +247,33 @@ export default function DashboardScreen() {
                 <MaterialCommunityIcons name="handshake-outline" size={40} color="#0A0A18" />
                 <Text style={styles.handshakeTitle}>Handshake Complete! 🤝</Text>
 
-                {lastUsername && <Text style={styles.handshakeSubtitle}>Connected with: @{lastUsername}</Text>}
-
                 {lastTagId && (
                   <Text style={styles.handshakeTagId} numberOfLines={1} ellipsizeMode="middle">
                     Tag ID: {lastTagId}
                   </Text>
                 )}
 
-                {exchangeStatus && <Text style={styles.handshakeMetaStatus}>Exchange: {exchangeStatus}</Text>}
+                {/* Pairing Status */}
+                {pairing && (
+                  <View style={styles.tweetStatusContainer}>
+                    <Ionicons name="people-outline" size={20} color="#0A0A18" />
+                    <Text style={styles.tweetStatusText}>Finding other device...</Text>
+                  </View>
+                )}
+
+                {!pairing && pairingSuccess && pairedUsername && (
+                  <View style={styles.tweetStatusContainer}>
+                    <Ionicons name="checkmark-circle" size={20} color="#74C69D" />
+                    <Text style={styles.tweetStatusText}>Paired with @{pairedUsername}! 🎉</Text>
+                  </View>
+                )}
+
+                {!pairing && !pairingSuccess && !tweetPosting && !tweetPosted && !tweetError && (
+                  <View style={styles.tweetStatusContainer}>
+                    <Ionicons name="information-circle-outline" size={20} color="#0A0A18" />
+                    <Text style={styles.tweetStatusText}>Unable to pair - posting generic tweet</Text>
+                  </View>
+                )}
 
                 {/* Tweet Posting Status */}
                 {tweetPosting && !tweetPosted && !tweetError && (
@@ -265,7 +286,11 @@ export default function DashboardScreen() {
                 {tweetPosted && (
                   <View style={styles.tweetStatusContainer}>
                     <Ionicons name="checkmark-circle" size={20} color="#74C69D" />
-                    <Text style={styles.tweetStatusText}>Tweet posted successfully! 🎉</Text>
+                    <Text style={styles.tweetStatusText}>
+                      {pairingSuccess
+                        ? `Tweet posted mentioning @${pairedUsername}! 🎉`
+                        : 'Tweet posted successfully! 🎉'}
+                    </Text>
                   </View>
                 )}
 
@@ -280,10 +305,10 @@ export default function DashboardScreen() {
                   </View>
                 )}
 
-                {!tweetPosting && !tweetPosted && !tweetError && (
+                {!pairing && !tweetPosting && !tweetPosted && !tweetError && (
                   <Text style={styles.handshakeText}>
-                    {exchangeStatus?.startsWith('Peer target is not NDEF')
-                      ? 'Handshake detected, but profile exchange is unavailable on this target.'
+                    {pairingSuccess
+                      ? 'Great! Your tweet will mention the other user.'
                       : 'Handshake recorded! Tweet will be posted shortly...'}
                   </Text>
                 )}

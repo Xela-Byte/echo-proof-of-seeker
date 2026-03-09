@@ -4,6 +4,11 @@
     "userInterfaceStyle": "automatic",
     "orientation": "default",
     "icon": "./src/assets/icon.png",
+    "splash": {
+      "image": "./src/assets/icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0a0015"
+    },
     "web": {
       "output": "static"
     },
@@ -29,6 +34,16 @@
         "ITSAppUsesNonExemptEncryption": false
       }
     },
-    "plugins": ["expo-web-browser", "react-native-nfc-manager"]
+    "plugins": [
+      "expo-web-browser",
+      "react-native-nfc-manager",
+      [
+        "expo-splash-screen",
+        {
+          "backgroundColor": "#0a0015",
+          "imageWidth": 200
+        }
+      ]
+    ]
   }
 }

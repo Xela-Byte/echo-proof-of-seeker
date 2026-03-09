@@ -11,7 +11,4 @@
 -keep class com.swmansion.reanimated.** { *; }
 -keep class com.facebook.react.turbomodule.** { *; }
 
-# react-native-hce
--keep class com.reactnativehce.** { *; }
-
 # Add any project specific keep options here:

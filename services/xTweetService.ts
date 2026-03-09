@@ -10,8 +10,7 @@ const X_API_BASE_URL = 'https://api.twitter.com/2'
 export type XAuthCredentials = OAuth1Credentials
 
 /**
- * Tweet templates for handshake interactions
- * Each template includes a placeholder for the other user's username
+ * Tweet templates for handshake interactions WITH @username mention
  */
 export const HANDSHAKE_TWEET_TEMPLATES = [
   "Just had an IRL connection with @{username} using the Seeker Mobile handshake feature! 🤝✨ Meeting fellow Seekers in the wild is what it's all about. #EchoSeeker #ProofOfSeeker",
@@ -26,11 +25,33 @@ export const HANDSHAKE_TWEET_TEMPLATES = [
 ]
 
 /**
- * Get a random tweet template and format it with the username
- * Ensures the tweet stays within Twitter's 280 character limit
+ * Generic tweet templates WITHOUT @username mention (fallback when pairing fails)
  */
-export function getRandomHandshakeTweet(username: string): string {
+export const GENERIC_HANDSHAKE_TWEET_TEMPLATES = [
+  "Just completed an IRL Seeker handshake! 🤝✨ Meeting fellow Seekers in the wild is what it's all about. #EchoSeeker #ProofOfSeeker",
+
+  'IRL vibes only! 🌟 Just completed a Seeker Mobile NFC handshake. Nothing beats meeting real people in the real world. #EchoSeeker #IRLConnections',
+
+  'Seeker spotted! 📡 Just completed an NFC handshake with a fellow Seeker. The future of IRL networking is here. #EchoSeeker #SeekerNetwork',
+
+  'Real connections, real people! Just completed a Seeker handshake IRL. This is the way. 🚀 #EchoSeeker #ProofOfSeeker',
+
+  'From digital to physical! ⚡ Just completed a Seeker NFC handshake. Building connections one tap at a time. #EchoSeeker #NFCHandshake',
+]
+
+/**
+ * Get a random tweet template and format it with the username
+ * If username is null/empty, uses generic template without @mention
+ */
+export function getRandomHandshakeTweet(username: string | null): string {
   const MAX_TWEET_LENGTH = 280
+
+  // If no username provided, use generic templates
+  if (!username || username.trim() === '') {
+    const randomIndex = Math.floor(Math.random() * GENERIC_HANDSHAKE_TWEET_TEMPLATES.length)
+    return GENERIC_HANDSHAKE_TWEET_TEMPLATES[randomIndex]
+  }
+
   const randomIndex = Math.floor(Math.random() * HANDSHAKE_TWEET_TEMPLATES.length)
   const template = HANDSHAKE_TWEET_TEMPLATES[randomIndex]
   let tweet = template.replace('{username}', username)

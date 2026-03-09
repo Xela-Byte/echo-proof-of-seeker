@@ -39,6 +39,18 @@ export interface TweetStatusResponse {
   completedAt?: string
 }
 
+export interface HandshakePairRequest {
+  myUsername: string
+  handshakeId: string
+  deviceId?: string
+}
+
+export interface HandshakePairResponse {
+  success: boolean
+  pairedUsername?: string
+  message: string
+}
+
 /**
  * Queue a handshake tweet for posting via the backend service
  * Returns immediately after queuing (non-blocking)
@@ -94,6 +106,39 @@ export async function getTweetStatus(jobId: string): Promise<TweetStatusResponse
       throw new Error(message)
     }
     throw error
+  }
+}
+
+/**
+ * Register handshake and attempt to pair with another device
+ * Returns the paired user's username if found within timeout
+ */
+export async function registerHandshakePair(myUsername: string, handshakeId: string): Promise<HandshakePairResponse> {
+  try {
+    console.log('[tweetBackendService] Registering handshake pair:', { myUsername, handshakeId })
+
+    const response = await axios.post<HandshakePairResponse>(
+      `${BACKEND_URL}/api/handshake/pair`,
+      {
+        myUsername,
+        handshakeId,
+        deviceId: Device.osInternalBuildId,
+      },
+      {
+        headers: { 'Content-Type': 'application/json' },
+        timeout: 8000, // 8 second timeout for pairing
+      },
+    )
+
+    console.log('[tweetBackendService] Pairing response:', response.data)
+    return response.data
+  } catch (error) {
+    console.error('[tweetBackendService] Pairing failed:', error)
+    // Return unsuccessful pairing, app will post generic tweet
+    return {
+      success: false,
+      message: error instanceof Error ? error.message : 'Pairing timeout',
+    }
   }
 }
 

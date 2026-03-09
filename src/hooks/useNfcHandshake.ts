@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import NfcManager, { Ndef, NfcTech } from 'react-native-nfc-manager'
-import { queueHandshakeTweet, waitForTweetCompletion } from '../../services/tweetBackendService'
+import { queueHandshakeTweet, registerHandshakePair, waitForTweetCompletion } from '../../services/tweetBackendService'
 import { type XAuthCredentials } from '../../services/xTweetService'
 import { useHandshakeStore } from '../store/handshakeStore'
 
@@ -21,6 +21,9 @@ interface UseNfcHandshakeResult {
   lastTagId: string | null
   lastUsername: string | null
   exchangeStatus: string | null
+  pairing: boolean
+  pairingSuccess: boolean
+  pairedUsername: string | null
   tweetPosting: boolean
   tweetPosted: boolean
   tweetError: string | null
@@ -80,6 +83,9 @@ export function useNfcHandshake(): UseNfcHandshakeResult {
   const [lastTagId, setLastTagId] = useState<string | null>(null)
   const [lastUsername, setLastUsername] = useState<string | null>(null)
   const [exchangeStatus, setExchangeStatus] = useState<string | null>(null)
+  const [pairing, setPairing] = useState(false)
+  const [pairingSuccess, setPairingSuccess] = useState(false)
+  const [pairedUsername, setPairedUsername] = useState<string | null>(null)
   const [tweetPosting, setTweetPosting] = useState(false)
   const [tweetPosted, setTweetPosted] = useState(false)
   const [tweetError, setTweetError] = useState<string | null>(null)
@@ -99,6 +105,9 @@ export function useNfcHandshake(): UseNfcHandshakeResult {
       setTweetPosted(false)
       setTweetError(null)
       setExchangeStatus(null)
+      setPairing(false)
+      setPairingSuccess(false)
+      setPairedUsername(null)
 
       await NfcManager.requestTechnology(NfcTech.Ndef, {
         alertMessage: 'Hold your phone near another NFC target',
@@ -182,8 +191,9 @@ export function useNfcHandshake(): UseNfcHandshakeResult {
 
       addHandshake(handshakeData)
 
-      // Queue tweet posting via backend service (non-blocking)
-      // This happens in the background and doesn't block the handshake success UI
+      // Queue tweet posting via backend service with pairing (non-blocking)
+      // Step 1: Try to pair with another device to get their username
+      // Step 2: Tweet mentioning the other user (or generic if pairing fails)
       try {
         const storedData = await AsyncStorage.getItem(STORAGE_KEY)
         if (storedData) {
@@ -193,7 +203,7 @@ export function useNfcHandshake(): UseNfcHandshakeResult {
           const consumerKey = process.env.EXPO_PUBLIC_X_CONSUMER_KEY ?? ''
           const consumerSecret = process.env.EXPO_PUBLIC_X_CONSUMER_SECRET ?? ''
 
-          if (consumerKey && consumerSecret) {
+          if (consumerKey && consumerSecret && stored.screenName) {
             const credentials: XAuthCredentials = {
               consumerKey,
               consumerSecret,
@@ -201,10 +211,42 @@ export function useNfcHandshake(): UseNfcHandshakeResult {
               accessTokenSecret: stored.accessTokenSecret,
             }
 
+            const myUsername = sanitizeUsername(stored.screenName)
+            // Use timestamp as handshake ID (both devices will use same timestamp window)
+            const handshakeId = `${id}_${Math.floor(Date.now() / 5000)}` // 5 second window
+
+            console.log('[useNfcHandshake] Attempting to pair with other device...')
+            console.log('[useNfcHandshake] My username:', myUsername)
+            console.log('[useNfcHandshake] Handshake ID:', handshakeId)
+
+            // Show pairing status in UI
+            setPairing(true)
+
+            // Try to pair with other device (has 8 second timeout)
+            const pairResult = await registerHandshakePair(myUsername, handshakeId)
+
+            setPairing(false)
+
+            let usernameForTweet: string | null = null
+            if (pairResult.success && pairResult.pairedUsername) {
+              console.log('[useNfcHandshake] 🎉 Pairing successful! Other user:', pairResult.pairedUsername)
+              usernameForTweet = pairResult.pairedUsername
+              setPairingSuccess(true)
+              setPairedUsername(pairResult.pairedUsername)
+              setLastUsername(`@${pairResult.pairedUsername}`)
+            } else {
+              console.log('[useNfcHandshake] Pairing failed, will use generic tweet')
+              usernameForTweet = null // Will trigger generic tweet
+              setPairingSuccess(false)
+              setPairedUsername(null)
+            }
+
             console.log('[useNfcHandshake] Queueing tweet to backend service...')
 
             // Queue the tweet (returns immediately)
-            const response = await queueHandshakeTweet(otherUsername, credentials)
+            // Pass pairedUsername if found, or null for generic tweet (never send own username!)
+            console.log('[useNfcHandshake] Username for tweet:', usernameForTweet || 'generic (no @mention)')
+            const response = await queueHandshakeTweet(usernameForTweet || '', credentials)
             console.log('[useNfcHandshake] Tweet queued with jobId:', response.jobId)
 
             // Start background polling for tweet status
@@ -298,6 +340,9 @@ export function useNfcHandshake(): UseNfcHandshakeResult {
     setLastTagId(null)
     setLastUsername(null)
     setExchangeStatus(null)
+    setPairing(false)
+    setPairingSuccess(false)
+    setPairedUsername(null)
     setTweetPosting(false)
     setTweetPosted(false)
     setTweetError(null)
@@ -311,6 +356,9 @@ export function useNfcHandshake(): UseNfcHandshakeResult {
     lastTagId,
     lastUsername,
     exchangeStatus,
+    pairing,
+    pairingSuccess,
+    pairedUsername,
     tweetPosting,
     tweetPosted,
     tweetError,
