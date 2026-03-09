@@ -25,8 +25,17 @@ export default function DashboardScreen() {
   const [refreshing, setRefreshing] = useState(false)
   const [skrState, setSkrState] = useState<any>(null)
   const [publicKey, setPublicKey] = useState<string | null>(null)
-  const { supported, enabled, handshaking, lastTagId, lastUsername, tweetPosted, tweetError, resetHandshake } =
-    useNfcHandshake()
+  const {
+    supported,
+    enabled,
+    handshaking,
+    lastTagId,
+    lastUsername,
+    exchangeStatus,
+    tweetPosted,
+    tweetError,
+    resetHandshake,
+  } = useNfcHandshake()
 
   // Get handshake count from store
   const handshakeCount = useHandshakeStore((state) => state.count)
@@ -242,6 +251,8 @@ export default function DashboardScreen() {
                   </Text>
                 )}
 
+                {exchangeStatus && <Text style={styles.handshakeMetaStatus}>Exchange: {exchangeStatus}</Text>}
+
                 {tweetPosted && (
                   <View style={styles.tweetStatusContainer}>
                     <Ionicons name="checkmark-circle" size={20} color="#74C69D" />
@@ -260,7 +271,13 @@ export default function DashboardScreen() {
                   </View>
                 )}
 
-                {!tweetPosted && !tweetError && <Text style={styles.handshakeText}>Handshake recorded!</Text>}
+                {!tweetPosted && !tweetError && (
+                  <Text style={styles.handshakeText}>
+                    {exchangeStatus?.startsWith('Peer target is not NDEF')
+                      ? 'Handshake detected, but profile exchange is unavailable on this target.'
+                      : 'Handshake recorded!'}
+                  </Text>
+                )}
 
                 <TouchableOpacity onPress={resetHandshake} activeOpacity={0.85} style={styles.modalButtonWrapper}>
                   <BrutalistBox backgroundColor="#74C69D" offset={4} contentStyle={styles.modalButtonContent}>
@@ -517,6 +534,14 @@ const styles = StyleSheet.create({
     color: '#0A0A18',
     textAlign: 'center',
     marginVertical: 4,
+  },
+  handshakeMetaStatus: {
+    fontSize: 12,
+    fontFamily: 'ClashDisplay-Medium',
+    color: '#0A0A18',
+    opacity: 0.8,
+    textAlign: 'center',
+    marginBottom: 4,
   },
   tweetStatusContainer: {
     flexDirection: 'row',

@@ -34,6 +34,8 @@ export const useHandshakeStore = create<HandshakeStore>()(
           ...handshake,
         }
 
+        console.log('[handshakeStore] Stored handshake model:', newHandshake)
+
         set((state) => ({
           handshakes: [...state.handshakes, newHandshake],
           count: state.count + 1,
