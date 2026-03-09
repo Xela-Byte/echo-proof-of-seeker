@@ -1,18 +1,25 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
-import { useEffect, useRef, useState } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 import { Platform } from 'react-native'
 import { HCESession, NFCTagType4, NFCTagType4NDEFContentType } from 'react-native-hce'
 import NfcManager, { Ndef, NfcEvents } from 'react-native-nfc-manager'
 import { postHandshakeTweet, type XAuthCredentials } from '../../services/xTweetService'
 import { useHandshakeStore } from '../store/handshakeStore'
+import type { NfcHandshakeTagEvent, StoredXCredentials } from '../types/nfc.types'
+
+// ─── Constants ────────────────────────────────────────────────────────────────
 
 const STORAGE_KEY = 'x_oauth_credentials'
+const DUPLICATE_TAG_TTL_MS = 5_000
+const __DEV__ = process.env.NODE_ENV === 'development'
 
-interface StoredCredentials {
-  accessToken: string
-  accessTokenSecret: string
-  screenName: string
-}
+// Custom AID for Xelabyte (F078656C61627974 = "xelabyt" in hex with F0 prefix)
+const XELABYTE_AID = 'F078656C61627974'
+
+// Read env keys once at module level — they are constant and do not belong
+// inside hot-path event handlers.
+const CONSUMER_KEY = process.env.EXPO_PUBLIC_X_CONSUMER_KEY ?? ''
+const CONSUMER_SECRET = process.env.EXPO_PUBLIC_X_CONSUMER_SECRET ?? ''
 
 interface UseNfcHandshakeResult {
   supported: boolean | null
@@ -23,7 +30,10 @@ interface UseNfcHandshakeResult {
   tweetPosted: boolean
   tweetError: string | null
   resetHandshake: () => void
+  refreshCredentials: () => Promise<void>
 }
+
+// ─── Hook ─────────────────────────────────────────────────────────────────────
 
 export function useNfcHandshake(): UseNfcHandshakeResult {
   const [supported, setSupported] = useState<boolean | null>(null)
@@ -34,62 +44,99 @@ export function useNfcHandshake(): UseNfcHandshakeResult {
   const [tweetPosted, setTweetPosted] = useState(false)
   const [tweetError, setTweetError] = useState<string | null>(null)
 
-  // Use refs to track state that needs to be accessed in event listener
+  // Refs are used for values accessed inside NFC event listeners to avoid
+  // stale closure issues with React state.
+  const mounted = useRef(true)
   const isProcessingRef = useRef(false)
   const recentHandshakesRef = useRef<Set<string>>(new Set())
 
+  // Cache credentials in a ref so AsyncStorage is not called on every tag
+  // detection. Credentials are loaded once on mount and can be refreshed manually.
+  const credentialsRef = useRef<StoredXCredentials | null>(null)
+
   const addHandshake = useHandshakeStore((state) => state.addHandshake)
 
-  // Start HCE broadcasting
+  // ── Load credentials with refresh mechanism ───────────────────────────────
+  const refreshCredentials = useCallback(async () => {
+    try {
+      const raw = await AsyncStorage.getItem(STORAGE_KEY)
+      credentialsRef.current = raw ? (JSON.parse(raw) as StoredXCredentials) : null
+      if (__DEV__) {
+        console.log('[useNfcHandshake] Credentials refreshed:', credentialsRef.current ? 'Found' : 'Not found')
+      }
+    } catch (err) {
+      console.warn('[useNfcHandshake] Failed to refresh credentials:', err)
+      credentialsRef.current = null
+    }
+  }, [])
+
+  // Load credentials once on mount
   useEffect(() => {
-    // HCE is only supported on Android
+    refreshCredentials()
+  }, [refreshCredentials])
+
+  // ── HCE broadcasting (Android only) ───────────────────────────────────────
+  useEffect(() => {
     if (Platform.OS !== 'android') {
       console.log('[useNfcHandshake] HCE only supported on Android')
       return
     }
 
     let mounted = true
+    // The docs require us to keep a reference to the HCESession so we can
+    // call setEnabled(false) on cleanup. HCESession.getInstance() returns
+    // the singleton — storing it here is safe.
     let hceSession: HCESession | null = null
+    // The `on()` method returns a cancel function — store it so we can remove
+    // the read-event listener on cleanup.
+    let removeReadListener: (() => void) | null = null
 
     async function startHCEBroadcast() {
       try {
-        // Get the user's screenName from storage
-        const storedData = await AsyncStorage.getItem(STORAGE_KEY)
-        if (!storedData) {
-          console.warn('[useNfcHandshake] No user credentials found, skipping HCE broadcast')
+        // Prefer the already-cached credentials; fall back to AsyncStorage.
+        const stored =
+          credentialsRef.current ??
+          (await AsyncStorage.getItem(STORAGE_KEY).then((raw) =>
+            raw ? (JSON.parse(raw) as StoredXCredentials) : null,
+          ))
+
+        if (!stored?.screenName) {
+          console.warn('[useNfcHandshake] No username found, skipping HCE broadcast')
           return
         }
 
-        const stored: StoredCredentials = JSON.parse(storedData)
-        const username = stored.screenName
+        // Update cache in case it was empty.
+        credentialsRef.current = stored
 
-        if (!username) {
-          console.warn('[useNfcHandshake] No username found in credentials')
-          return
-        }
-
-        // Get HCE session instance
         hceSession = await HCESession.getInstance()
-
         if (!mounted) return
 
-        // Create an NFC Tag Type 4 with NDEF text record
         const tag = new NFCTagType4({
           type: NFCTagType4NDEFContentType.Text,
-          content: `username:@${username}`,
+          content: `username:@${stored.screenName}`,
           writable: false,
         })
 
-        // Set the application (tag content)
+        // Per docs: call setApplication BEFORE setEnabled(true).
         await hceSession.setApplication(tag)
-
         if (!mounted) return
 
-        // Enable HCE broadcasting
         await hceSession.setEnabled(true)
-        console.log('[useNfcHandshake] HCE broadcasting started for @' + username)
-      } catch (e) {
-        console.error('[useNfcHandshake] Failed to start HCE broadcast:', e)
+        if (__DEV__) {
+          console.log('[useNfcHandshake] HCE broadcasting started for @' + stored.screenName)
+        } else {
+          console.log('[useNfcHandshake] HCE broadcasting started')
+        }
+
+        // The HCESession exposes an HCE_STATE_READ event that fires when
+        // another device has successfully read our emulated tag. We use this
+        // to confirm that our broadcast side was consumed — useful for logging
+        // or future feedback UI.
+        removeReadListener = hceSession.on(HCESession.Events.HCE_STATE_READ, () => {
+          console.log('[useNfcHandshake] Our HCE tag was read by a remote device')
+        })
+      } catch (error) {
+        console.error('[useNfcHandshake] Failed to start HCE broadcast:', error)
       }
     }
 
@@ -97,217 +144,254 @@ export function useNfcHandshake(): UseNfcHandshakeResult {
 
     return () => {
       mounted = false
-      // Stop HCE broadcasting on cleanup
-      if (hceSession) {
-        hceSession.setEnabled(false).catch((err) => {
-          console.warn('[useNfcHandshake] Failed to disable HCE:', err)
-        })
-      }
+      removeReadListener?.()
+      hceSession?.setEnabled(false).catch((error) => {
+        console.warn('[useNfcHandshake] Failed to disable HCE on cleanup:', error)
+      })
     }
   }, [])
 
-  // Start NFC scanning
+  // ── NFC scanning ──────────────────────────────────────────────────────────
   useEffect(() => {
-    let mounted = true
-
     async function init() {
       try {
         const isSupported = await NfcManager.isSupported()
-        if (!mounted) return
-
+        if (!mounted.current) return
         setSupported(isSupported)
-
-        if (!isSupported) {
-          return
-        }
+        if (!isSupported) return
 
         await NfcManager.start()
-        if (!mounted) return
+        if (!mounted.current) return
 
-        const isEnabled = await NfcManager.isEnabled()
-        if (!mounted) return
+        const isNfcEnabled = await NfcManager.isEnabled()
+        if (!mounted.current) return
+        setEnabled(isNfcEnabled)
+        if (!isNfcEnabled) return
 
-        setEnabled(isEnabled)
+        // Also listen for SessionClosed so we can clean up gracefully if the
+        // OS terminates the scanning session (e.g., screen-off on some devices).
+        NfcManager.setEventListener(NfcEvents.SessionClosed, () => {
+          console.log('[useNfcHandshake] NFC session closed by OS')
+          isProcessingRef.current = false
+          recentHandshakesRef.current.clear() // Clear recent handshakes on session close
+          if (mounted.current) setHandshaking(false)
+        })
 
-        if (!isEnabled) {
-          return
-        }
+        NfcManager.setEventListener(NfcEvents.DiscoverTag, async (rawTag: NfcHandshakeTagEvent) => {
+          console.log('[useNfcHandshake] ★★★ Tag discovered! ★★★', {
+            id: rawTag?.id,
+            serialNumber: rawTag?.serialNumber,
+            tagId: rawTag?.tagId,
+            hasNdefMessage: !!rawTag?.ndefMessage,
+            ndefLength: rawTag?.ndefMessage?.length || 0,
+          })
 
-        // Listen for any NFC tag / peer detection.
-        NfcManager.setEventListener(NfcEvents.DiscoverTag, async (tag: any) => {
+          // Wrap entire handler in try-finally to GUARANTEE state cleanup
           try {
-            if (!mounted) return
+            if (!mounted.current) {
+              console.log('[useNfcHandshake] Component unmounted, ignoring tag')
+              return
+            }
 
-            // Prevent multiple concurrent processing
             if (isProcessingRef.current) {
               console.log('[useNfcHandshake] Already processing a handshake, ignoring...')
               return
             }
 
-            console.log('[useNfcHandshake] NFC tag detected:', tag)
+            const id = rawTag?.id ?? rawTag?.serialNumber ?? rawTag?.tagId ?? null
+            const tagIdentifier = id ?? 'unknown'
 
-            // Use a simple identifier from the tag
-            const id = (tag as any)?.id ?? (tag as any)?.serialNumber ?? (tag as any)?.tagId ?? null
-            const tagIdentifier = id || 'unknown'
-
-            // Check if we've processed this tag recently (within last 5 seconds)
             if (recentHandshakesRef.current.has(tagIdentifier)) {
-              console.log('[useNfcHandshake] Tag already processed recently, ignoring duplicate')
+              console.log('[useNfcHandshake] Duplicate tag ignored:', tagIdentifier)
               return
             }
 
             isProcessingRef.current = true
-            setHandshaking(true)
-            setTweetPosted(false)
-            setTweetError(null)
-            setLastTagId(id)
+            console.log('[useNfcHandshake] Setting handshaking to TRUE, showing modal...')
 
-            // Try to extract username from NFC tag data (if available)
-            let otherUsername: string | null = null
+            if (mounted.current) {
+              setHandshaking(true)
+              setTweetPosted(false)
+              setTweetError(null)
+              setLastTagId(id)
+            }
 
             try {
-              // Check if there's NDEF data with username
-              const ndefRecords = (tag as any)?.ndefMessage
+              // ── Parse NDEF payload ───────────────────────────────────────
+              console.log('[useNfcHandshake] Starting NDEF parsing...')
+              let otherUsername: string | null = null
+              const ndefRecords = rawTag?.ndefMessage
+
+              if (!ndefRecords || ndefRecords.length === 0) {
+                console.warn('[useNfcHandshake] No NDEF records found in tag!')
+                console.log('[useNfcHandshake] Tag details:', JSON.stringify(rawTag, null, 2))
+              } else {
+                console.log(`[useNfcHandshake] Found ${ndefRecords.length} NDEF record(s)`)
+              }
+
               if (ndefRecords && ndefRecords.length > 0) {
-                // Parse the first record as text using proper NDEF decoder
                 const record = ndefRecords[0]
+                console.log('[useNfcHandshake] First NDEF record:', {
+                  hasPayload: !!record.payload,
+                  payloadLength: record.payload?.length || 0,
+                  tnf: record.tnf,
+                  type: record.type,
+                })
+
                 if (record.payload && record.payload.length > 0) {
                   try {
-                    // Ensure payload is a Uint8Array
-                    const payloadArray =
-                      record.payload instanceof Uint8Array ? record.payload : new Uint8Array(record.payload)
+                    // Try simple approach first (matches old working version)
+                    const payloadBytes = Array.from(record.payload as number[])
+                    const raw = String.fromCharCode(...payloadBytes)
+                    console.log('[useNfcHandshake] Raw payload string:', raw)
 
-                    // Use Ndef.text.decodePayload to properly decode the NDEF text record
-                    // This handles the language code prefix automatically
-                    const payload = Ndef.text.decodePayload(payloadArray)
-                    console.log('[useNfcHandshake] Decoded payload:', payload)
-
-                    // Extract username if it's in the format "username:@handle"
-                    if (payload && payload.startsWith('username:@')) {
-                      otherUsername = payload.replace('username:@', '')
-                    }
-                  } catch (decodeErr) {
-                    console.error('[useNfcHandshake] Failed to decode NDEF payload:', decodeErr)
-                    // Fallback: try to read as plain text
-                    try {
-                      const textPayload = String.fromCharCode.apply(null, Array.from(record.payload))
-                      if (textPayload && textPayload.includes('username:@')) {
-                        const match = textPayload.match(/username:@(\w+)/)
-                        if (match && match[1]) {
-                          otherUsername = match[1]
-                        }
+                    // Look for username pattern
+                    if (raw.includes('username:@')) {
+                      const match = raw.match(/username:@(\w+)/)
+                      if (match?.[1]) {
+                        otherUsername = match[1]
+                        console.log('[useNfcHandshake] ✓ Username extracted:', otherUsername)
                       }
-                    } catch (fallbackErr) {
-                      console.error('[useNfcHandshake] Fallback decode also failed:', fallbackErr)
                     }
+
+                    // If simple approach didn't work, try proper NDEF decoding
+                    if (!otherUsername) {
+                      const payloadArray =
+                        record.payload instanceof Uint8Array ? record.payload : new Uint8Array(record.payload)
+                      const decoded = Ndef.text.decodePayload(payloadArray)
+                      console.log('[useNfcHandshake] Ndef.text decoded:', decoded)
+
+                      if (decoded?.startsWith('username:@')) {
+                        otherUsername = decoded.replace('username:@', '')
+                        console.log('[useNfcHandshake] ✓ Username from NDEF decoder:', otherUsername)
+                      }
+                    }
+                  } catch (parseErr) {
+                    console.warn('[useNfcHandshake] Failed to parse NDEF payload:', parseErr)
                   }
                 }
               }
-            } catch (e) {
-              console.warn('[useNfcHandshake] Failed to parse NFC data:', e)
-            }
 
-            // For demo purposes, generate a placeholder username if none found
-            if (!otherUsername) {
-              otherUsername = `Seeker_${id?.substring(0, 8) || 'Unknown'}`
-            }
+              // Fallback: Generate a placeholder username if parsing failed
+              // This matches the old working behavior
+              if (!otherUsername) {
+                console.warn('[useNfcHandshake] Could not parse username from tag, generating placeholder')
+                otherUsername = `Seeker_${tagIdentifier.substring(0, 8)}`
+                console.log('[useNfcHandshake] Generated placeholder username:', otherUsername)
+              }
 
-            if (!mounted) {
-              isProcessingRef.current = false
-              return
-            }
-            setLastUsername(otherUsername)
+              console.log('[useNfcHandshake] ✓ SUCCESS: Handshake with @' + otherUsername)
+              if (mounted.current) setLastUsername(otherUsername)
 
-            // Add to recent handshakes to prevent duplicates
-            recentHandshakesRef.current.add(tagIdentifier)
+              // Mark tag as recently processed to suppress duplicates.
+              recentHandshakesRef.current.add(tagIdentifier)
+              setTimeout(() => {
+                recentHandshakesRef.current.delete(tagIdentifier)
+              }, DUPLICATE_TAG_TTL_MS)
 
-            // Clear from recent after 5 seconds
-            setTimeout(() => {
-              recentHandshakesRef.current.delete(tagIdentifier)
-              console.log('[useNfcHandshake] Cleared tag from recent:', tagIdentifier)
-            }, 5000)
+              // ── Store handshake ──────────────────────────────────────────
+              try {
+                addHandshake({ username: otherUsername, tagId: tagIdentifier })
+                if (__DEV__) {
+                  console.log('[useNfcHandshake] Handshake stored for:', otherUsername)
+                } else {
+                  console.log('[useNfcHandshake] Handshake stored')
+                }
+              } catch (storeErr) {
+                console.error('[useNfcHandshake] Failed to store handshake:', storeErr)
+              }
 
-            // Store the handshake
-            try {
-              addHandshake({
-                username: otherUsername,
-                tagId: id || 'unknown',
+              // ── Post tweet ───────────────────────────────────────────────
+              // Use cached credentials — no AsyncStorage call in the hot path.
+              const stored = credentialsRef.current
+              console.log('[useNfcHandshake] Checking tweet credentials...', {
+                hasCredentials: !!stored,
+                hasConsumerKey: !!CONSUMER_KEY,
+                hasConsumerSecret: !!CONSUMER_SECRET,
               })
-              console.log('[useNfcHandshake] Handshake stored for:', otherUsername)
-            } catch (storeErr) {
-              console.error('[useNfcHandshake] Failed to store handshake:', storeErr)
-            }
 
-            // Try to post a tweet if user is connected to Twitter
-            try {
-              const storedData = await AsyncStorage.getItem(STORAGE_KEY)
-              if (storedData && mounted) {
-                const stored: StoredCredentials = JSON.parse(storedData)
-
-                // Get consumer keys from env
-                const consumerKey = process.env.EXPO_PUBLIC_X_CONSUMER_KEY ?? ''
-                const consumerSecret = process.env.EXPO_PUBLIC_X_CONSUMER_SECRET ?? ''
-
-                if (consumerKey && consumerSecret) {
+              if (stored && CONSUMER_KEY && CONSUMER_SECRET) {
+                console.log('[useNfcHandshake] Posting tweet for @' + otherUsername + '...')
+                try {
                   const credentials: XAuthCredentials = {
-                    consumerKey,
-                    consumerSecret,
+                    consumerKey: CONSUMER_KEY,
+                    consumerSecret: CONSUMER_SECRET,
                     accessToken: stored.accessToken,
                     accessTokenSecret: stored.accessTokenSecret,
                   }
-
                   await postHandshakeTweet(otherUsername, credentials)
-                  if (mounted) {
+                  if (mounted.current) {
                     setTweetPosted(true)
-                    console.log('[useNfcHandshake] Tweet posted successfully')
+                    console.log('[useNfcHandshake] ✓ Tweet posted successfully')
+                  }
+                } catch (err) {
+                  console.error('[useNfcHandshake] ✗ Failed to post tweet:', err)
+                  if (mounted.current) {
+                    setTweetError(err instanceof Error ? err.message : 'Failed to post tweet')
                   }
                 }
+              } else {
+                console.warn('[useNfcHandshake] Skipping tweet — missing credentials or consumer keys')
               }
-            } catch (err) {
-              console.error('[useNfcHandshake] Failed to post tweet:', err)
-              if (mounted) {
-                setTweetError(err instanceof Error ? err.message : 'Failed to post tweet')
+            } catch (error) {
+              console.error('[useNfcHandshake] Error in handshake processing:', error)
+              if (mounted.current) {
+                setTweetError(error instanceof Error ? error.message : 'NFC handling failed')
               }
             }
-
-            // Keep listening for more tags (don't unregister)
-            // This allows bidirectional handshake and continuous scanning
-            isProcessingRef.current = false
-          } catch (error) {
-            console.error('[useNfcHandshake] Critical error in NFC event handler:', error)
-            if (mounted) {
-              setTweetError(error instanceof Error ? error.message : 'NFC handling failed')
-              setHandshaking(false)
+          } catch (outerError) {
+            // Catch any errors from the outer try block (early returns, etc.)
+            console.error('[useNfcHandshake] ✗✗✗ Critical error in NFC event handler:', outerError)
+          } finally {
+            // CRITICAL FIX: This finally block ALWAYS runs, even with early returns
+            // Reset processing lock but KEEP handshaking=true so modal stays visible
+            // User must manually close modal via resetHandshake()
+            console.log('[useNfcHandshake] Finally block: resetting processing lock, keeping modal visible')
+            if (mounted.current) {
               isProcessingRef.current = false
+              // DON'T set handshaking to false - let modal stay visible until user closes it
             }
           }
         })
 
-        // Start a foreground tag scan session.
-        await NfcManager.registerTagEvent()
-      } catch (e) {
-        console.warn('NFC handshake init failed:', e)
+        // registerTagEvent keeps the foreground scanning session alive
+        // continuously — the listener above handles each detected tag without
+        // calling unregisterTagEvent, which is the correct pattern for ongoing
+        // bidirectional scanning.
+        await NfcManager.registerTagEvent({
+          alertMessage: 'Tap to connect',
+          invalidateAfterFirstRead: false,
+          isReaderModeEnabled: true,
+          readerModeFlags:
+            Platform.OS === 'android'
+              ? // NFC_A | NFC_B | NFC_F | NFC_V
+                // Handle all NFC tag types - removed SKIP_NDEF_CHECK to allow automatic NDEF reading
+                0x01 | 0x02 | 0x04 | 0x08
+              : undefined,
+        })
+      } catch (error) {
+        console.warn('[useNfcHandshake] NFC init failed:', error)
       }
     }
 
     init()
 
     return () => {
-      mounted = false
+      mounted.current = false
       NfcManager.setEventListener(NfcEvents.DiscoverTag, null as any)
+      NfcManager.setEventListener(NfcEvents.SessionClosed, null as any)
       NfcManager.unregisterTagEvent().catch(() => {})
     }
   }, [addHandshake])
 
+  // ── Public reset ──────────────────────────────────────────────────────────
   const resetHandshake = () => {
-    console.log('[useNfcHandshake] Resetting handshake state')
     setHandshaking(false)
     setLastTagId(null)
     setLastUsername(null)
     setTweetPosted(false)
     setTweetError(null)
     isProcessingRef.current = false
-    // No need to re-register - we keep the listener active for continuous scanning
   }
 
   return {
@@ -319,5 +403,6 @@ export function useNfcHandshake(): UseNfcHandshakeResult {
     tweetPosted,
     tweetError,
     resetHandshake,
+    refreshCredentials,
   }
 }

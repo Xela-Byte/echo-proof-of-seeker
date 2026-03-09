@@ -5,11 +5,12 @@
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons'
 import { router } from 'expo-router'
 import React, { useEffect, useState } from 'react'
-import { RefreshControl, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { ActivityIndicator, RefreshControl, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { SvgXml } from 'react-native-svg'
 import solanaService from '../../services/solanaService'
 import BrutalistBox from '../components/BrutalistBox'
+import { colors } from '../constants/theme'
 import { useNfcHandshake } from '../hooks/useNfcHandshake'
 import { useHandshakeStore } from '../store/handshakeStore'
 
@@ -23,10 +24,20 @@ const scrSmileSvg = `<svg width="70" height="70" viewBox="0 0 194 195" fill="non
 
 export default function DashboardScreen() {
   const [refreshing, setRefreshing] = useState(false)
+  const [loading, setLoading] = useState(true)
   const [skrState, setSkrState] = useState<any>(null)
   const [publicKey, setPublicKey] = useState<string | null>(null)
-  const { supported, enabled, handshaking, lastTagId, lastUsername, tweetPosted, tweetError, resetHandshake } =
-    useNfcHandshake()
+  const {
+    supported,
+    enabled,
+    handshaking,
+    lastTagId,
+    lastUsername,
+    tweetPosted,
+    tweetError,
+    resetHandshake,
+    refreshCredentials,
+  } = useNfcHandshake()
 
   // Get handshake count from store
   const handshakeCount = useHandshakeStore((state) => state.count)
@@ -36,6 +47,7 @@ export default function DashboardScreen() {
   }, [])
 
   const loadData = async () => {
+    setLoading(true)
     const key = solanaService.getPublicKey()
     setPublicKey(key)
 
@@ -47,22 +59,23 @@ export default function DashboardScreen() {
         console.error('Failed to load SKR state:', error)
       }
     }
+    setLoading(false)
   }
 
   const handleRefresh = async () => {
     setRefreshing(true)
-    await loadData()
+    await Promise.all([loadData(), refreshCredentials()])
     setRefreshing(false)
   }
 
   const getStatusColor = (status: string): string => {
     switch (status) {
       case 'gold':
-        return '#FFD700'
+        return colors.gold
       case 'diamond_hands':
-        return '#74C69D'
+        return colors.diamondHands
       case 'paper_hands':
-        return '#F8D7BF'
+        return colors.paperHands
       default:
         return '#FEF5E7'
     }
@@ -109,13 +122,23 @@ export default function DashboardScreen() {
                   router.push('/settings')
                 }}
                 hitSlop={8}
+                accessibilityRole="button"
+                accessibilityLabel="Open settings"
+                accessibilityHint="Navigate to settings page"
               >
-                <Ionicons name="settings-outline" size={28} color="#0A0A18" />
+                <Ionicons name="settings-outline" size={28} color={colors.primary} />
               </TouchableOpacity>
               <SvgXml xml={scrSparkSvg} width="35" height="35" style={styles.scrSparkSettings} />
               <SvgXml xml={scrCirclySvg} width="45" height="45" style={styles.scrCirclySettings} />
             </View>
           </View>
+
+          {loading && (
+            <View style={styles.loadingContainer}>
+              <ActivityIndicator size="large" color={colors.primary} />
+              <Text style={styles.loadingText}>Loading dashboard data...</Text>
+            </View>
+          )}
 
           {publicKey && (
             <View style={styles.walletCardContainer}>
@@ -190,10 +213,16 @@ export default function DashboardScreen() {
 
           <View style={styles.actions}>
             <View style={styles.bannerButtonContainer}>
-              <TouchableOpacity onPress={() => router.push('/x-banner-update')} activeOpacity={0.8}>
-                <BrutalistBox backgroundColor="#74C69D" contentStyle={styles.buttonContent}>
+              <TouchableOpacity
+                onPress={() => router.push('/x-banner-update')}
+                activeOpacity={0.8}
+                accessibilityRole="button"
+                accessibilityLabel="Update Twitter banner"
+                accessibilityHint="Navigate to banner update page"
+              >
+                <BrutalistBox backgroundColor={colors.success} contentStyle={styles.buttonContent}>
                   <View style={styles.buttonInner}>
-                    <Ionicons name="image-outline" size={20} color="#0A0A18" />
+                    <Ionicons name="image-outline" size={20} color={colors.primary} />
                     <Text style={styles.secondaryButtonText}>Update Banner</Text>
                   </View>
                 </BrutalistBox>
@@ -203,7 +232,7 @@ export default function DashboardScreen() {
           </View>
 
           <View style={styles.infoBox}>
-            <Ionicons name="information-circle-outline" size={16} color="#0A0A18" />
+            <Ionicons name="information-circle-outline" size={16} color={colors.primary} />
             <Text style={styles.infoText}>
               Bring two Seeker devices together to start a handshake session automatically via NFC.
             </Text>
@@ -211,14 +240,14 @@ export default function DashboardScreen() {
 
           {supported === false && (
             <View style={styles.infoBox}>
-              <Ionicons name="alert-circle-outline" size={16} color="#FF5555" />
+              <Ionicons name="alert-circle-outline" size={16} color={colors.error} />
               <Text style={styles.infoText}>This device does not support NFC handshakes.</Text>
             </View>
           )}
 
           {supported && !enabled && (
             <View style={styles.infoBox}>
-              <Ionicons name="alert-circle-outline" size={16} color="#FFAA00" />
+              <Ionicons name="alert-circle-outline" size={16} color={colors.warning} />
               <Text style={styles.infoText}>Turn on NFC in your system settings to enable handshakes.</Text>
             </View>
           )}
@@ -231,39 +260,72 @@ export default function DashboardScreen() {
                 style={styles.handshakeModalWrapper}
                 contentStyle={styles.handshakeModalContent}
               >
-                <MaterialCommunityIcons name="handshake-outline" size={40} color="#0A0A18" />
-                <Text style={styles.handshakeTitle}>Handshake Complete! 🤝</Text>
-
-                {lastUsername && <Text style={styles.handshakeSubtitle}>Connected with: @{lastUsername}</Text>}
-
-                {lastTagId && (
-                  <Text style={styles.handshakeTagId} numberOfLines={1} ellipsizeMode="middle">
-                    Tag ID: {lastTagId}
-                  </Text>
-                )}
-
-                {tweetPosted && (
-                  <View style={styles.tweetStatusContainer}>
-                    <Ionicons name="checkmark-circle" size={20} color="#74C69D" />
-                    <Text style={styles.tweetStatusText}>Tweet posted successfully!</Text>
-                  </View>
-                )}
-
-                {tweetError && (
-                  <View style={styles.tweetStatusContainer}>
-                    <Ionicons name="alert-circle" size={20} color="#FF5555" />
-                    <Text style={[styles.tweetStatusText, { color: '#FF5555' }]}>
-                      {tweetError.includes('credentials') || tweetError.includes('Connect')
-                        ? 'Connect Twitter to auto-tweet'
-                        : 'Failed to post tweet'}
+                {/* Show processing state when we don't have results yet */}
+                {!lastUsername && !tweetError ? (
+                  <>
+                    <MaterialCommunityIcons name="nfc-variant" size={50} color={colors.primary} />
+                    <ActivityIndicator size="large" color={colors.primary} style={{ marginVertical: 12 }} />
+                    <Text style={styles.handshakeTitle}>Processing Handshake...</Text>
+                    <Text style={styles.handshakeText}>Reading NFC tag data</Text>
+                  </>
+                ) : (
+                  <>
+                    <MaterialCommunityIcons
+                      name={tweetError && !lastUsername ? 'alert-circle-outline' : 'handshake-outline'}
+                      size={50}
+                      color={tweetError && !lastUsername ? colors.error : colors.primary}
+                    />
+                    <Text style={styles.handshakeTitle}>
+                      {tweetError && !lastUsername ? 'Handshake Failed' : 'Handshake Complete! 🤝'}
                     </Text>
-                  </View>
+
+                    {lastUsername && <Text style={styles.handshakeSubtitle}>Connected with: @{lastUsername}</Text>}
+
+                    {lastTagId && (
+                      <Text style={styles.handshakeTagId} numberOfLines={1} ellipsizeMode="middle">
+                        Tag ID: {lastTagId}
+                      </Text>
+                    )}
+
+                    {tweetPosted && (
+                      <View style={styles.tweetStatusContainer}>
+                        <Ionicons name="checkmark-circle" size={20} color={colors.success} />
+                        <Text style={styles.tweetStatusText}>Tweet posted successfully!</Text>
+                      </View>
+                    )}
+
+                    {tweetError && (
+                      <View
+                        style={[
+                          styles.tweetStatusContainer,
+                          !lastUsername && { backgroundColor: colors.errorLight, borderColor: colors.error },
+                        ]}
+                      >
+                        <Ionicons name="alert-circle" size={20} color={colors.error} />
+                        <Text style={[styles.tweetStatusText, { color: colors.error }]}>
+                          {tweetError.includes('read username')
+                            ? tweetError
+                            : tweetError.includes('credentials') || tweetError.includes('Connect')
+                              ? 'Connect Twitter to auto-tweet'
+                              : 'Failed to post tweet'}
+                        </Text>
+                      </View>
+                    )}
+
+                    {lastUsername && !tweetPosted && !tweetError && (
+                      <Text style={styles.handshakeText}>Handshake recorded!</Text>
+                    )}
+                  </>
                 )}
 
-                {!tweetPosted && !tweetError && <Text style={styles.handshakeText}>Handshake recorded!</Text>}
-
-                <TouchableOpacity onPress={resetHandshake} activeOpacity={0.85} style={styles.modalButtonWrapper}>
-                  <BrutalistBox backgroundColor="#74C69D" offset={4} contentStyle={styles.modalButtonContent}>
+                <TouchableOpacity
+                  onPress={resetHandshake}
+                  activeOpacity={0.85}
+                  style={styles.modalButtonWrapper}
+                  accessibilityRole="button"
+                  accessibilityLabel="Close handshake modal"
+                >
+                  <BrutalistBox backgroundColor={colors.success} offset={4} contentStyle={styles.modalButtonContent}>
                     <Text style={styles.buttonText}>Close</Text>
                   </BrutalistBox>
                 </TouchableOpacity>
@@ -277,8 +339,20 @@ export default function DashboardScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#F8D7BF' },
+  container: { flex: 1, backgroundColor: colors.background },
   scrollView: { flex: 1 },
+  loadingContainer: {
+    padding: 24,
+    alignItems: 'center',
+    justifyContent: 'center',
+    minHeight: 200,
+  },
+  loadingText: {
+    marginTop: 12,
+    fontSize: 14,
+    fontFamily: 'ClashDisplay-Regular',
+    color: colors.primary,
+  },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -288,25 +362,25 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 32,
     fontFamily: 'ClashDisplay-Bold',
-    color: '#0A0A18',
+    color: colors.primary,
     letterSpacing: 3,
   },
   subtitle: {
     fontSize: 14,
     fontFamily: 'ClashDisplay-Bold',
-    color: '#0A0A18',
-    backgroundColor: '#74C69D',
+    color: colors.primary,
+    backgroundColor: colors.success,
     paddingHorizontal: 10,
     paddingVertical: 2,
     marginTop: 4,
     borderWidth: 2,
-    borderColor: '#0A0A18',
+    borderColor: colors.primary,
     alignSelf: 'flex-start',
   },
   cardLabel: {
     fontSize: 12,
     fontFamily: 'ClashDisplay-Bold',
-    color: '#0A0A18',
+    color: colors.primary,
     marginBottom: 8,
     textTransform: 'uppercase',
     letterSpacing: 1,
@@ -314,7 +388,7 @@ const styles = StyleSheet.create({
   walletAddress: {
     fontSize: 12,
     fontFamily: 'ClashDisplay-Regular',
-    color: '#0A0A18',
+    color: colors.primary,
   },
   cardWrapper: {
     marginHorizontal: 24,
@@ -335,7 +409,7 @@ const styles = StyleSheet.create({
   cardTitle: {
     fontSize: 18,
     fontFamily: 'ClashDisplay-Bold',
-    color: '#0A0A18',
+    color: colors.primary,
     letterSpacing: 1,
   },
   statusEmoji: { fontSize: 24 },
@@ -348,7 +422,7 @@ const styles = StyleSheet.create({
   statLabel: {
     fontSize: 12,
     fontFamily: 'ClashDisplay-Bold',
-    color: '#0A0A18',
+    color: colors.primary,
     opacity: 0.8,
     marginBottom: 8,
     textTransform: 'uppercase',
@@ -356,7 +430,7 @@ const styles = StyleSheet.create({
   statValue: {
     fontSize: 24,
     fontFamily: 'ClashDisplay-Bold',
-    color: '#0A0A18',
+    color: colors.primary,
   },
   statusBadge: {
     borderWidth: 2,
@@ -404,13 +478,13 @@ const styles = StyleSheet.create({
   statsNumber: {
     fontSize: 32,
     fontFamily: 'ClashDisplay-Bold',
-    color: '#0A0A18',
+    color: colors.primary,
     marginBottom: 8,
   },
   statsLabel: {
     fontSize: 12,
     fontFamily: 'ClashDisplay-Bold',
-    color: '#0A0A18',
+    color: colors.primary,
     opacity: 0.8,
     textTransform: 'uppercase',
     letterSpacing: 1,
@@ -437,14 +511,14 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 16,
     fontFamily: 'ClashDisplay-Bold',
-    color: '#0A0A18',
+    color: colors.primary,
     letterSpacing: 1,
     textTransform: 'uppercase',
   },
   secondaryButtonText: {
     fontSize: 16,
     fontFamily: 'ClashDisplay-Bold',
-    color: '#0A0A18',
+    color: colors.primary,
     textTransform: 'uppercase',
     letterSpacing: 1,
   },
@@ -452,18 +526,18 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'flex-start',
     gap: 8,
-    backgroundColor: '#74C69D',
+    backgroundColor: colors.success,
     padding: 16,
     marginHorizontal: 24,
     marginBottom: 24,
     borderWidth: 3,
-    borderColor: '#0A0A18',
+    borderColor: colors.primary,
   },
   infoText: {
     flex: 1,
     fontSize: 13,
     fontFamily: 'ClashDisplay-Medium',
-    color: '#0A0A18',
+    color: colors.primary,
     lineHeight: 20,
   },
   handshakeModalBackdrop: {
@@ -495,26 +569,26 @@ const styles = StyleSheet.create({
   handshakeTitle: {
     fontSize: 20,
     fontFamily: 'ClashDisplay-Bold',
-    color: '#0A0A18',
+    color: colors.primary,
   },
   handshakeSubtitle: {
     fontSize: 16,
     fontFamily: 'ClashDisplay-Bold',
-    color: '#0A0A18',
+    color: colors.primary,
     textAlign: 'center',
     marginBottom: 4,
   },
   handshakeTagId: {
     fontSize: 11,
     fontFamily: 'ClashDisplay-Regular',
-    color: '#0A0A18',
+    color: colors.primary,
     opacity: 0.6,
     marginBottom: 8,
   },
   handshakeText: {
     fontSize: 14,
     fontFamily: 'ClashDisplay-Regular',
-    color: '#0A0A18',
+    color: colors.primary,
     textAlign: 'center',
     marginVertical: 4,
   },
@@ -527,13 +601,13 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     borderRadius: 8,
     borderWidth: 2,
-    borderColor: '#0A0A18',
+    borderColor: colors.primary,
     marginVertical: 8,
   },
   tweetStatusText: {
     fontSize: 13,
     fontFamily: 'ClashDisplay-Medium',
-    color: '#0A0A18',
+    color: colors.primary,
   },
   scrArrowTitle: {
     position: 'absolute',

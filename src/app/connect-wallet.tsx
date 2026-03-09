@@ -38,10 +38,10 @@ export default function ConnectWalletScreen() {
   }, [walletConnected, loading, result])
 
   const handleConnect = async () => {
-    // if (__DEV__) {
-    //   router.push('/dashboard')
-    //   return
-    // }
+    if (__DEV__) {
+      router.push('/dashboard')
+      return
+    }
     setConnecting(true)
     try {
       const { publicKey } = await solanaService.connectWallet()
@@ -57,7 +57,7 @@ export default function ConnectWalletScreen() {
       console.error('Connection failed:', error)
       Alert.alert(
         'Connection Failed',
-        'Failed to connect wallet. In Expo Go, demo mode is used. For full functionality, create a custom dev client.',
+        'Failed to connect wallet. Please ensure you have a compatible Solana wallet installed and try again.',
         [{ text: 'OK' }],
       )
     } finally {
