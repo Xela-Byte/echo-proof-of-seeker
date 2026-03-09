@@ -32,6 +32,7 @@ export default function DashboardScreen() {
     lastTagId,
     lastUsername,
     exchangeStatus,
+    tweetPosting,
     tweetPosted,
     tweetError,
     resetHandshake,
@@ -253,10 +254,18 @@ export default function DashboardScreen() {
 
                 {exchangeStatus && <Text style={styles.handshakeMetaStatus}>Exchange: {exchangeStatus}</Text>}
 
+                {/* Tweet Posting Status */}
+                {tweetPosting && !tweetPosted && !tweetError && (
+                  <View style={styles.tweetStatusContainer}>
+                    <Ionicons name="time-outline" size={20} color="#0A0A18" />
+                    <Text style={styles.tweetStatusText}>Posting tweet...</Text>
+                  </View>
+                )}
+
                 {tweetPosted && (
                   <View style={styles.tweetStatusContainer}>
                     <Ionicons name="checkmark-circle" size={20} color="#74C69D" />
-                    <Text style={styles.tweetStatusText}>Tweet posted successfully!</Text>
+                    <Text style={styles.tweetStatusText}>Tweet posted successfully! 🎉</Text>
                   </View>
                 )}
 
@@ -266,16 +275,16 @@ export default function DashboardScreen() {
                     <Text style={[styles.tweetStatusText, { color: '#FF5555' }]}>
                       {tweetError.includes('credentials') || tweetError.includes('Connect')
                         ? 'Connect Twitter to auto-tweet'
-                        : 'Failed to post tweet'}
+                        : `Tweet error: ${tweetError}`}
                     </Text>
                   </View>
                 )}
 
-                {!tweetPosted && !tweetError && (
+                {!tweetPosting && !tweetPosted && !tweetError && (
                   <Text style={styles.handshakeText}>
                     {exchangeStatus?.startsWith('Peer target is not NDEF')
                       ? 'Handshake detected, but profile exchange is unavailable on this target.'
-                      : 'Handshake recorded!'}
+                      : 'Handshake recorded! Tweet will be posted shortly...'}
                   </Text>
                 )}
 

@@ -1,7 +1,8 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import NfcManager, { Ndef, NfcTech } from 'react-native-nfc-manager'
-import { postHandshakeTweet, type XAuthCredentials } from '../../services/xTweetService'
+import { queueHandshakeTweet, waitForTweetCompletion } from '../../services/tweetBackendService'
+import { type XAuthCredentials } from '../../services/xTweetService'
 import { useHandshakeStore } from '../store/handshakeStore'
 
 const STORAGE_KEY = 'x_oauth_credentials'
@@ -20,6 +21,7 @@ interface UseNfcHandshakeResult {
   lastTagId: string | null
   lastUsername: string | null
   exchangeStatus: string | null
+  tweetPosting: boolean
   tweetPosted: boolean
   tweetError: string | null
   resetHandshake: () => void
@@ -78,6 +80,7 @@ export function useNfcHandshake(): UseNfcHandshakeResult {
   const [lastTagId, setLastTagId] = useState<string | null>(null)
   const [lastUsername, setLastUsername] = useState<string | null>(null)
   const [exchangeStatus, setExchangeStatus] = useState<string | null>(null)
+  const [tweetPosting, setTweetPosting] = useState(false)
   const [tweetPosted, setTweetPosted] = useState(false)
   const [tweetError, setTweetError] = useState<string | null>(null)
   const sessionInProgressRef = useRef(false)
@@ -92,6 +95,7 @@ export function useNfcHandshake(): UseNfcHandshakeResult {
     sessionInProgressRef.current = true
 
     try {
+      setTweetPosting(false)
       setTweetPosted(false)
       setTweetError(null)
       setExchangeStatus(null)
@@ -178,7 +182,8 @@ export function useNfcHandshake(): UseNfcHandshakeResult {
 
       addHandshake(handshakeData)
 
-      // Try to post a tweet if user is connected to Twitter
+      // Queue tweet posting via backend service (non-blocking)
+      // This happens in the background and doesn't block the handshake success UI
       try {
         const storedData = await AsyncStorage.getItem(STORAGE_KEY)
         if (storedData) {
@@ -196,14 +201,40 @@ export function useNfcHandshake(): UseNfcHandshakeResult {
               accessTokenSecret: stored.accessTokenSecret,
             }
 
-            await postHandshakeTweet(otherUsername, credentials)
-            setTweetPosted(true)
-            console.log('[useNfcHandshake] Tweet posted successfully')
+            console.log('[useNfcHandshake] Queueing tweet to backend service...')
+
+            // Queue the tweet (returns immediately)
+            const response = await queueHandshakeTweet(otherUsername, credentials)
+            console.log('[useNfcHandshake] Tweet queued with jobId:', response.jobId)
+
+            // Start background polling for tweet status
+            setTweetPosting(true)
+
+            // Poll for completion in the background (doesn't block)
+            waitForTweetCompletion(response.jobId)
+              .then((status) => {
+                if (status.status === 'completed') {
+                  setTweetPosted(true)
+                  setTweetError(null)
+                  console.log('[useNfcHandshake] Tweet posted successfully:', status.tweetId)
+                } else if (status.status === 'failed') {
+                  setTweetError(status.error || 'Tweet posting failed')
+                  console.error('[useNfcHandshake] Tweet posting failed:', status.error)
+                }
+              })
+              .catch((error) => {
+                const errorMessage = error instanceof Error ? error.message : 'Failed to post tweet'
+                setTweetError(errorMessage)
+                console.error('[useNfcHandshake] Tweet polling error:', errorMessage)
+              })
+              .finally(() => {
+                setTweetPosting(false)
+              })
           }
         }
       } catch (err) {
-        console.error('[useNfcHandshake] Failed to post tweet:', err)
-        setTweetError(err instanceof Error ? err.message : 'Failed to post tweet')
+        console.error('[useNfcHandshake] Failed to queue tweet:', err)
+        setTweetError(err instanceof Error ? err.message : 'Failed to queue tweet')
       }
     } catch (error) {
       const reason = error instanceof Error ? error.message : 'Unknown NFC error'
@@ -212,6 +243,7 @@ export function useNfcHandshake(): UseNfcHandshakeResult {
       setHandshaking(true)
       setLastTagId(null)
       setLastUsername(null)
+      setTweetPosting(false)
       setTweetPosted(false)
       setTweetError(null)
       setExchangeStatus(`Peer target is not NDEF-capable or access was cancelled (${reason})`)
@@ -266,6 +298,7 @@ export function useNfcHandshake(): UseNfcHandshakeResult {
     setLastTagId(null)
     setLastUsername(null)
     setExchangeStatus(null)
+    setTweetPosting(false)
     setTweetPosted(false)
     setTweetError(null)
     runNdefHandshakeSession().catch(() => {})
@@ -278,6 +311,7 @@ export function useNfcHandshake(): UseNfcHandshakeResult {
     lastTagId,
     lastUsername,
     exchangeStatus,
+    tweetPosting,
     tweetPosted,
     tweetError,
     resetHandshake,
