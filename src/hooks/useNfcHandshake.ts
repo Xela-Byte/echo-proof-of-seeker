@@ -301,7 +301,9 @@ export function useNfcHandshake(): UseNfcHandshakeResult {
     async function init() {
       try {
         const isSupported = await NfcManager.isSupported()
-        if (!mounted) return
+        if (!mounted) {
+          return
+        }
 
         setSupported(isSupported)
 
@@ -310,10 +312,14 @@ export function useNfcHandshake(): UseNfcHandshakeResult {
         }
 
         await NfcManager.start()
-        if (!mounted) return
+        if (!mounted) {
+          return
+        }
 
         const isEnabled = await NfcManager.isEnabled()
-        if (!mounted) return
+        if (!mounted) {
+          return
+        }
 
         setEnabled(isEnabled)
 
