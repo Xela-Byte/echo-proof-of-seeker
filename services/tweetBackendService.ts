@@ -143,6 +143,24 @@ export async function registerHandshakePair(myUsername: string, handshakeId: str
 }
 
 /**
+ * Wake up the backend service (keeps Render from spinning down)
+ * Call this when the app launches to prevent 15min downtime
+ */
+export async function wakeUpBackend(): Promise<boolean> {
+  try {
+    console.log('[tweetBackendService] Pinging health endpoint:', `${BACKEND_URL}/health`)
+    const response = await axios.get(`${BACKEND_URL}/health`, {
+      timeout: 5000,
+    })
+    console.log('[tweetBackendService] Backend is alive:', response.data)
+    return true
+  } catch (error) {
+    console.error('[tweetBackendService] Health check failed:', error)
+    return false
+  }
+}
+
+/**
  * Poll for tweet completion with exponential backoff
  * Waits until the tweet is either completed or failed
  *

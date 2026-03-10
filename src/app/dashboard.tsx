@@ -9,6 +9,7 @@ import { RefreshControl, ScrollView, StyleSheet, Text, TouchableOpacity, View } 
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { SvgXml } from 'react-native-svg'
 import solanaService from '../../services/solanaService'
+import { wakeUpBackend } from '../../services/tweetBackendService'
 import BrutalistBox from '../components/BrutalistBox'
 import { useNfcHandshake } from '../hooks/useNfcHandshake'
 import { useHandshakeStore } from '../store/handshakeStore'
@@ -46,6 +47,8 @@ export default function DashboardScreen() {
 
   useEffect(() => {
     loadData()
+    // Wake up backend to prevent Render 15min downtime
+    wakeUpBackend().catch(console.error)
   }, [])
 
   const loadData = async () => {
